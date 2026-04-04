@@ -69,10 +69,17 @@ const PROJECT_ITEMS = [
   },
 ];
 
-const ABOUT_STATS = [
-  { title: "Total Projects", value: "11", icon: "</>" },
-  { title: "Certificates", value: "7", icon: "*" },
-  { title: "Years of Experience", value: "3", icon: "o" },
+const ABOUT_SERVICES = [
+  {
+    title: "Web Development",
+    description: "Building responsive and interactive websites with modern technologies.",
+    icon: "</>",
+  },
+  {
+    title: "UI/UX Design",
+    description: "Designing modern and user-friendly interfaces.",
+    icon: "[ ]",
+  },
 ];
 
 const SOCIALS = [
@@ -116,12 +123,27 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
+const EXPERIENCE_MENU = [
+  { key: "experience", label: "Experience", targetId: "experience-overview" },
+  { key: "certificates", label: "Certificates", targetId: "experience-certificates" },
+  { key: "tech-stack", label: "Tech Stack", targetId: "experience-techstack" },
+];
+
 const SPLINE_SCENE_URL = "https://prod.spline.design/JIYBLPAE8cBGGEJ7/scene.splinecode";
 
 export default function PortfolioPage() {
   const [isLightMode, setIsLightMode] = useState(false);
   const [activeNav, setActiveNav] = useState("home");
   const [openCertificate, setOpenCertificate] = useState(null);
+  const [activeExperienceMenu, setActiveExperienceMenu] = useState("experience");
+
+  const handleExperienceMenuClick = (menuKey, targetId) => {
+    setActiveExperienceMenu(menuKey);
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   useEffect(() => {
     const trackedIds = ["project", "about", "experience", "certification", "contact"];
@@ -166,7 +188,7 @@ export default function PortfolioPage() {
   return (
     <main
       data-theme={isLightMode ? "light" : "dark"}
-      className={`relative min-h-screen snap-y snap-proximity scroll-smooth [scroll-padding-top:4.5rem] transition-colors duration-500 ${
+      className={`relative min-h-screen snap-y snap-proximity scroll-smooth [scroll-padding-top:7rem] transition-colors duration-500 ${
         isLightMode ? "bg-slate-100 text-slate-900" : "bg-[#050816] text-white"
       }`}
     >
@@ -187,7 +209,7 @@ export default function PortfolioPage() {
 
       <header className="fixed inset-x-0 top-3 z-50 px-3 sm:px-5 lg:px-8">
         <div
-          className={`mx-auto flex w-full max-w-[96rem] items-center rounded-full border px-4 py-2 text-xs shadow-[0_10px_30px_rgba(2,6,23,0.22)] backdrop-blur-2xl sm:px-6 sm:py-2.5 sm:text-sm lg:px-10 ${
+          className={`mx-auto flex w-full max-w-5xl items-center rounded-full border px-4 py-2 text-xs shadow-[0_10px_30px_rgba(2,6,23,0.22)] backdrop-blur-2xl sm:px-6 sm:py-2.5 sm:text-sm lg:px-10 ${
             isLightMode ? "border-slate-400/30 bg-white/60" : "border-white/15 bg-[#050816]/45"
           }`}
         >
@@ -250,24 +272,24 @@ export default function PortfolioPage() {
 
       <div className="relative mx-auto w-full max-w-7xl px-4 pb-3 pt-14 sm:px-6 sm:pb-4 sm:pt-16 lg:px-10 lg:pb-5 lg:pt-16">
 
-        <section id="home" className="snap-start flex min-h-[calc(100vh-5.5rem)] items-center pt-6 sm:pt-8 lg:pt-10">
-          <div className="grid w-full items-center gap-7 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+        <section id="home" className="snap-start scroll-mt-28 flex min-h-[100svh] items-start pt-4 pb-6 sm:pt-5 sm:pb-8 lg:pt-4">
+          <div className="mx-auto grid w-full max-w-5xl items-start gap-7 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
             <div className="max-w-xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1.5 text-[11px] font-medium text-violet-100 backdrop-blur-xl sm:px-4 sm:py-2 sm:text-xs">
                 <span className="h-2 w-2 rounded-full bg-violet-300" />
                 Ready to Innovate
               </div>
 
-              <h1 className="mt-4 text-3xl font-black leading-[0.95] tracking-tight text-white sm:text-4xl lg:text-5xl">
-                Frontend
-                <span className="block bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-                  Developer
+              <h1 className="mt-8 text-3xl font-black leading-[0.95] tracking-tight text-white sm:text-4xl lg:text-5xl">
+                <span className="bg-gradient-to-r from-indigo-400 via-violet-300 to-fuchsia-300 bg-clip-text text-transparent">
+                  Frontend Developer
                 </span>
+                <span className="block text-white">&amp; UI/UX Designer</span>
               </h1>
 
-              <p className="mt-3 text-sm text-slate-200/75 sm:text-base">Network &amp; Telecom Studio</p>
-              <p className="mt-4 max-w-lg text-xs leading-relaxed text-slate-300/85 sm:text-sm">
-                I create simple, modern, and user-friendly digital experiences. The design stays clean, calm, and easy to read.
+              <p className="mt-3 text-sm text-slate-200/75 sm:text-base">Crafting modern, user-friendly web experiences</p>
+              <p className="mt-4 max-w-xl text-xs leading-relaxed text-slate-300/85 sm:text-sm">
+                I design and develop modern, responsive web interfaces by combining frontend development and UI/UX design. I focus on creating clean, intuitive layouts that are easy to use and visually appealing. With attention to performance and detail, I aim to deliver seamless user experiences that are both functional and engaging.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2.5">
@@ -305,14 +327,8 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        <section id="about" className="snap-start flex items-center py-3 sm:py-4 lg:h-[calc(100vh-6rem)] lg:min-h-0 lg:py-4">
-          <div className="w-full space-y-4 sm:space-y-5 lg:space-y-4">
-            <div className="text-center">
-              <h2 className="about-title text-2xl font-black text-white sm:text-3xl lg:text-4xl">About Me</h2>
-              <p className="about-subtitle mt-1 text-xs text-violet-100/75 sm:text-sm lg:text-base">
-                Transforming ideas into digital experiences
-              </p>
-            </div>
+        <section id="about" className="snap-start scroll-mt-28 flex items-start pt-4 sm:pt-5 lg:h-[calc(100vh-6rem)] lg:min-h-0 lg:pt-4">
+          <div className="mx-auto w-full max-w-5xl space-y-4 sm:space-y-5 lg:space-y-4">
 
             <div className="grid items-center gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
               <div className="max-w-xl about-copy">
@@ -321,8 +337,7 @@ export default function PortfolioPage() {
                   <span className="mt-1 block text-white">Refina Kusuma Friambudi</span>
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-300/90 sm:text-base">
-                  seorang siswa Teknik JInformatika yang tertarik dalam pengembangan Front-End.
-                  Saya berfokus pada menciptakan pengalaman digital yang menarik dan selalu berusaha memberikan solusi terbaik dalam setiap proyek.
+                  I am an Informatics student focused on frontend development and UI/UX design. I enjoy creating modern and responsive web interfaces that are visually appealing and easy to use. By combining design and development skills, I aim to build clean, intuitive, and user-friendly digital experiences while continuously improving my abilities.
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2.5">
@@ -351,32 +366,51 @@ export default function PortfolioPage() {
               </div>
             </div>
 
-            <div id="certification" className="grid gap-2.5 sm:grid-cols-3">
-              {ABOUT_STATS.map((item, index) => (
+            <div id="certification" className="grid gap-3 sm:grid-cols-2">
+              {ABOUT_SERVICES.map((item, index) => (
                 <article
                   key={item.title}
-                  style={{ "--stat-delay": `${index * 0.55}s` }}
-                  className="rounded-2xl border border-white/10 bg-white/6 p-3 backdrop-blur-xl"
+                  style={{ "--service-delay": `${index * 0.55}s` }}
+                  className="about-service-card rounded-2xl border border-white/10 bg-white/6 p-4 backdrop-blur-xl"
                 >
-                  <div className="about-stat-content flex items-center justify-between">
-                    <span className="text-base font-semibold text-teal-200 sm:text-lg">{item.icon}</span>
-                    <span className="text-2xl font-black text-white sm:text-3xl">{item.value}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-base font-semibold text-violet-300 sm:text-lg">{item.icon}</span>
+                    <h4 className="text-base font-bold text-white sm:text-lg">{item.title}</h4>
                   </div>
-                  <p className="mt-2 text-[11px] font-medium uppercase tracking-wide text-slate-300/75 sm:text-xs">{item.title}</p>
+                  <p className="mt-2 text-sm text-slate-300/85">{item.description}</p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="experience" className="snap-start min-h-screen py-6 sm:py-8">
+        <section id="experience" className="snap-start scroll-mt-28 min-h-screen pt-4 pb-6 sm:pt-5 sm:pb-8 lg:pt-4">
           <div className="mx-auto w-full max-w-5xl rounded-3xl border border-white/10 bg-[#050816]/35 p-4 backdrop-blur-xl sm:p-6">
+            <div className="mb-5 flex justify-center sm:mb-6">
+              <div className="inline-flex items-center rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur-md">
+                {EXPERIENCE_MENU.map((menu) => (
+                  <button
+                    key={menu.key}
+                    type="button"
+                    onClick={() => handleExperienceMenuClick(menu.key, menu.targetId)}
+                    className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300 sm:px-5 sm:text-sm ${
+                      activeExperienceMenu === menu.key
+                        ? "bg-violet-500 text-white shadow-[0_6px_18px_rgba(139,92,246,0.45)]"
+                        : "text-slate-300 hover:bg-white/8 hover:text-white"
+                    }`}
+                  >
+                    {menu.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="mb-5 sm:mb-6">
-              <h2 className="text-2xl font-black text-white sm:text-3xl">Pengalaman &amp; Kontribusi</h2>
+              <h2 className="text-2xl font-black text-white sm:text-3xl">Experience &amp; Contributions</h2>
               <div className="mt-2 h-1 w-10 rounded-full bg-violet-500" />
             </div>
 
-            <div className="relative pl-9 sm:pl-12">
+            <div id="experience-overview" className="scroll-mt-36 relative pl-9 sm:pl-12">
               <div className="absolute left-2 top-0 h-full w-[2px] bg-gradient-to-b from-fuchsia-500 via-indigo-500 to-cyan-400 sm:left-3" />
 
               <div className="space-y-4 sm:space-y-5">
@@ -428,10 +462,41 @@ export default function PortfolioPage() {
                 ))}
               </div>
             </div>
+
+            <div id="experience-certificates" className="scroll-mt-36 mt-8 sm:mt-10">
+              <h3 className="text-lg font-bold text-white sm:text-xl">Certificates</h3>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {EXPERIENCE_ITEMS.filter((item) => item.certificate).map((item) => (
+                  <button
+                    key={item.certificate.label}
+                    type="button"
+                    onClick={() => setOpenCertificate(item.certificate)}
+                    className="rounded-2xl border border-white/10 bg-white/6 px-4 py-3 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-300/25 hover:bg-white/10"
+                  >
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-200/80">Certificate</p>
+                    <p className="mt-1 text-sm font-semibold text-white">{item.certificate.label}</p>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div id="experience-techstack" className="scroll-mt-36 mt-8 sm:mt-10">
+              <h3 className="text-lg font-bold text-white sm:text-xl">Tech Stack</h3>
+              <div className="mt-4 flex flex-wrap gap-2.5">
+                {SKILLS.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-xs font-medium text-slate-200/90"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
-        <section id="project" className="snap-start min-h-screen py-6 sm:py-8">
+        <section id="project" className="snap-start scroll-mt-28 min-h-screen pt-4 pb-6 sm:pt-5 sm:pb-8 lg:pt-4">
           <div className="mx-auto w-full max-w-6xl">
             <div className="mb-5 px-1 sm:mb-6">
               <h2 className="text-3xl font-black text-white sm:text-4xl">Proyek Yang Dikerjakan</h2>
