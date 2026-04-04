@@ -82,6 +82,34 @@ const ABOUT_SERVICES = [
   },
 ];
 
+const CERTIFICATE_GALLERY = [
+  {
+    title: "Certificate of Participation",
+    subtitle: "Software Development Webinar (Frontend & Backend for Beginners)",
+    image: "/certificates/gallery/certificate-1.jpg",
+  },
+  {
+    title: "Cloud Camp Class 2025 Certificate",
+    subtitle: "Unlocking the Power of Cloud - AWS x Metrodatas",
+    image: "/certificates/gallery/certificate-2.jpg",
+  },
+  {
+    title: "National Webinar Certificate",
+    subtitle: "Participation Award - Technology & Digital Innovation",
+    image: "/certificates/gallery/certificate-3.jpg",
+  },
+  {
+    title: "Cyber Security Webinar Certificate",
+    subtitle: "Preventing Cyber Attacks with Penetration Testing",
+    image: "/certificates/gallery/certificate-4.jpg",
+  },
+  {
+    title: "Sertifikat Workshop UI/UX",
+    subtitle: "Unlock Your Digital Skill: Fundamental UI/UX",
+    image: "/certificates/gallery/certificate-5.jpg",
+  },
+];
+
 const SOCIALS = [
   {
     label: "GitHub",
@@ -118,15 +146,14 @@ const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About Me", href: "#about" },
   { label: "Experience", href: "#experience" },
-  { label: "Certification", href: "#certification" },
   { label: "Project", href: "#project" },
   { label: "Contact", href: "#contact" },
 ];
 
 const EXPERIENCE_MENU = [
   { key: "experience", label: "Experience", targetId: "experience-overview" },
-  { key: "certificates", label: "Certificates", targetId: "experience-certificates" },
-  { key: "tech-stack", label: "Tech Stack", targetId: "experience-techstack" },
+  { key: "certificates", label: "Certificates", targetId: "certification" },
+  { key: "tech-stack", label: "Tech Stack", targetId: "tech-stack" },
 ];
 
 const SPLINE_SCENE_URL = "https://prod.spline.design/JIYBLPAE8cBGGEJ7/scene.splinecode";
@@ -270,10 +297,10 @@ export default function PortfolioPage() {
         </div>
       </header>
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 pb-3 pt-14 sm:px-6 sm:pb-4 sm:pt-16 lg:px-10 lg:pb-5 lg:pt-16">
+      <div className="relative mx-auto w-full max-w-7xl px-4 pb-3 pt-12 sm:px-6 sm:pb-4 sm:pt-14 lg:px-10 lg:pb-5 lg:pt-14">
 
-        <section id="home" className="snap-start scroll-mt-28 flex min-h-[100svh] items-start pt-4 pb-6 sm:pt-5 sm:pb-8 lg:pt-4">
-          <div className="mx-auto grid w-full max-w-5xl items-start gap-7 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+        <section id="home" className="snap-start scroll-mt-28 flex min-h-[calc(100svh-5.5rem)] items-center pt-8 pb-8 sm:pt-10 sm:pb-10 lg:pt-12 lg:pb-10">
+          <div className="mx-auto grid w-full max-w-5xl items-center gap-7 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
             <div className="max-w-xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1.5 text-[11px] font-medium text-violet-100 backdrop-blur-xl sm:px-4 sm:py-2 sm:text-xs">
                 <span className="h-2 w-2 rounded-full bg-violet-300" />
@@ -366,7 +393,7 @@ export default function PortfolioPage() {
               </div>
             </div>
 
-            <div id="certification" className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2">
               {ABOUT_SERVICES.map((item, index) => (
                 <article
                   key={item.title}
@@ -384,26 +411,28 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        <section id="experience" className="snap-start scroll-mt-28 min-h-screen pt-4 pb-6 sm:pt-5 sm:pb-8 lg:pt-4">
-          <div className="mx-auto w-full max-w-5xl rounded-3xl border border-white/10 bg-[#050816]/35 p-4 backdrop-blur-xl sm:p-6">
-            <div className="mb-5 flex justify-center sm:mb-6">
-              <div className="inline-flex items-center rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur-md">
-                {EXPERIENCE_MENU.map((menu) => (
-                  <button
-                    key={menu.key}
-                    type="button"
-                    onClick={() => handleExperienceMenuClick(menu.key, menu.targetId)}
-                    className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300 sm:px-5 sm:text-sm ${
-                      activeExperienceMenu === menu.key
-                        ? "bg-violet-500 text-white shadow-[0_6px_18px_rgba(139,92,246,0.45)]"
-                        : "text-slate-300 hover:bg-white/8 hover:text-white"
-                    }`}
-                  >
-                    {menu.label}
-                  </button>
-                ))}
-              </div>
+        <section id="experience" className="snap-start scroll-mt-28 min-h-screen pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-8">
+          <div className="mx-auto w-full max-w-5xl space-y-6 sm:space-y-7">
+            <div className="flex justify-center">
+            <div className="inline-flex items-center rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur-md">
+              {EXPERIENCE_MENU.map((menu) => (
+                <button
+                  key={menu.key}
+                  type="button"
+                  onClick={() => handleExperienceMenuClick(menu.key, menu.targetId)}
+                  className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300 sm:px-5 sm:text-sm ${
+                    activeExperienceMenu === menu.key
+                      ? "bg-violet-500 text-white shadow-[0_6px_18px_rgba(139,92,246,0.45)]"
+                      : "text-slate-300 hover:bg-white/8 hover:text-white"
+                  }`}
+                >
+                  {menu.label}
+                </button>
+              ))}
             </div>
+            </div>
+
+          <div className="rounded-3xl border border-white/10 bg-[#050816]/35 p-4 backdrop-blur-xl sm:p-6">
 
             <div className="mb-5 sm:mb-6">
               <h2 className="text-2xl font-black text-white sm:text-3xl">Experience &amp; Contributions</h2>
@@ -463,35 +492,57 @@ export default function PortfolioPage() {
               </div>
             </div>
 
-            <div id="experience-certificates" className="scroll-mt-36 mt-8 sm:mt-10">
-              <h3 className="text-lg font-bold text-white sm:text-xl">Certificates</h3>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                {EXPERIENCE_ITEMS.filter((item) => item.certificate).map((item) => (
-                  <button
-                    key={item.certificate.label}
-                    type="button"
-                    onClick={() => setOpenCertificate(item.certificate)}
-                    className="rounded-2xl border border-white/10 bg-white/6 px-4 py-3 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-violet-300/25 hover:bg-white/10"
-                  >
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-violet-200/80">Certificate</p>
-                    <p className="mt-1 text-sm font-semibold text-white">{item.certificate.label}</p>
-                  </button>
-                ))}
-              </div>
+          </div>
+          </div>
+        </section>
+
+        <section id="certification" className="snap-start scroll-mt-28 min-h-screen pt-4 pb-6 sm:pt-5 sm:pb-8 lg:pt-4">
+          <div className="mx-auto w-full max-w-5xl rounded-3xl border border-white/10 bg-[#050816]/35 p-4 backdrop-blur-xl sm:p-6">
+            <div className="mb-5 sm:mb-6">
+              <h2 className="text-2xl font-black text-white sm:text-3xl">Certificates</h2>
+              <div className="mt-2 h-1 w-10 rounded-full bg-violet-500" />
             </div>
 
-            <div id="experience-techstack" className="scroll-mt-36 mt-8 sm:mt-10">
-              <h3 className="text-lg font-bold text-white sm:text-xl">Tech Stack</h3>
-              <div className="mt-4 flex flex-wrap gap-2.5">
-                {SKILLS.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-xs font-medium text-slate-200/90"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {CERTIFICATE_GALLERY.map((item) => (
+                <article
+                  key={item.title}
+                  className="overflow-hidden rounded-2xl border border-white/10 bg-white/6 transition-all duration-300 hover:-translate-y-1 hover:border-violet-300/25"
+                >
+                  <div className="aspect-[4/3] overflow-hidden border-b border-white/10 bg-black/20">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-sm font-bold text-white">{item.title}</p>
+                    <p className="mt-1 text-xs text-slate-300/80">{item.subtitle}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="tech-stack" className="snap-start scroll-mt-28 min-h-[60vh] pt-4 pb-6 sm:pt-5 sm:pb-8 lg:pt-4">
+          <div className="mx-auto w-full max-w-5xl rounded-3xl border border-white/10 bg-[#050816]/35 p-4 backdrop-blur-xl sm:p-6">
+            <div className="mb-5 sm:mb-6">
+              <h2 className="text-2xl font-black text-white sm:text-3xl">Tech Stack</h2>
+              <div className="mt-2 h-1 w-10 rounded-full bg-violet-500" />
+            </div>
+
+            <div className="flex flex-wrap gap-2.5">
+              {SKILLS.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-xs font-medium text-slate-200/90"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
         </section>
