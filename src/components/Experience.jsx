@@ -10,7 +10,7 @@ const EXPERIENCE_ITEMS = [
     certificate: {
       label: "Practicum Assistant Certificate",
       detail: "Klik untuk melihat sertifikat yang diperoleh pada kegiatan Advanced Algorithm and Programming Practicum (2024).",
-      image: "/certificates/SKA%20ASDOS.jpg",
+      image: "/certificates/gallery/experience/SKA ASDOS.jpg",
       alt: "Practicum Assistant Certificate",
     },
     points: [
@@ -24,7 +24,7 @@ const EXPERIENCE_ITEMS = [
     certificate: {
       label: "Secretary Certificate",
       detail: "Klik untuk melihat sertifikat yang terkait dengan administrasi organisasi dan kegiatan internal.",
-      image: "/certificates/SKA%20IK.jpg",
+      image: "/certificates/gallery/experience/SKA IK.jpg",
       alt: "Secretary Certificate",
     },
     points: [
@@ -45,27 +45,27 @@ const CERTIFICATE_GALLERY = [
   {
     title: "Certificate of Participation",
     subtitle: "Software Development Webinar (Frontend & Backend for Beginners)",
-    image: "/certificates/gallery/certificate-1.jpg",
+    image: "/certificates/gallery/certificate/certificate-1.jpg",
   },
   {
     title: "Cloud Camp Class 2025 Certificate",
     subtitle: "Unlocking the Power of Cloud - AWS x Metrodatas",
-    image: "/certificates/gallery/certificate-2.jpg",
+    image: "/certificates/gallery/certificate/certificate-2.jpg",
   },
   {
     title: "National Webinar Certificate",
     subtitle: "Participation Award - Technology & Digital Innovation",
-    image: "/certificates/gallery/certificate-3.jpg",
+    image: "/certificates/gallery/certificate/certificate-3.jpg",
   },
   {
     title: "Cyber Security Webinar Certificate",
     subtitle: "Preventing Cyber Attacks with Penetration Testing",
-    image: "/certificates/gallery/certificate-4.jpg",
+    image: "/certificates/gallery/certificate/certificate-4.jpg",
   },
   {
     title: "Sertifikat Workshop UI/UX",
     subtitle: "Unlock Your Digital Skill: Fundamental UI/UX",
-    image: "/certificates/gallery/certificate-5.jpg",
+    image: "/certificates/gallery/certificate/certificate-5.jpg",
   },
 ];
 
