@@ -34,7 +34,7 @@ const ICONS = [
   },
 ];
 
-export default function HeroSection() {
+export default function LandingPage() {
   return (
     <section className="relative isolate flex h-screen items-center justify-center overflow-hidden bg-black px-4 py-4 text-white sm:px-6 sm:py-6">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_22%,rgba(168,85,247,0.45),transparent_32%),radial-gradient(circle_at_84%_30%,rgba(56,189,248,0.35),transparent_35%),linear-gradient(120deg,#0f0122_0%,#091330_45%,#03030b_100%)]" />
