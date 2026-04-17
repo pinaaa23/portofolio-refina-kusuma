@@ -81,6 +81,12 @@ function ProjectCard({ project }) {
             />
             {/* Overlay gradient bottom */}
             <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#050816]/80 to-transparent" />
+            {/* Category bubble */}
+            <div className="absolute bottom-4 left-4">
+              <span className="inline-flex rounded-full border border-white/15 bg-black/30 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur-sm">
+                {project.category}
+              </span>
+            </div>
           </div>
         ) : (
           <div className={`h-52 sm:h-56 bg-gradient-to-br ${project.previewGradient || 'from-violet-900 to-indigo-900'} p-4`}>
@@ -98,21 +104,6 @@ function ProjectCard({ project }) {
 
       {/* Card Body */}
       <div className="p-5 sm:p-6">
-        {/* Category label */}
-        <span
-          className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${project.accentFrom} ${project.accentTo} bg-clip-text px-0 text-[10px] font-bold uppercase tracking-[0.22em] text-transparent`}
-          style={{
-            backgroundImage: undefined,
-          }}
-        >
-          <span
-            className={`inline-block rounded-full bg-gradient-to-r ${project.accentFrom} ${project.accentTo} px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white/80`}
-            style={{ background: 'transparent', border: '1px solid rgba(139,92,246,0.3)' }}
-          >
-            {project.category}
-          </span>
-        </span>
-
         {/* Title */}
         <h3 className="mt-3 text-xl font-extrabold text-white sm:text-2xl leading-tight group-hover:text-violet-200 transition-colors duration-300">
           {project.title}

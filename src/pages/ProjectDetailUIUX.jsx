@@ -6,25 +6,26 @@ const PROJECT = {
   title: "DailyDrip",
   label: "Mobile Design",
   category: "UI/UX Design",
-  subtitle: "Social Café & Daily Moments App",
-  year: "2024",
+  subtitle: "Private & Pressure-Free Drink Sharing Appp",
+  year: "2025",
   role: "UI/UX Designer",
   platform: "Mobile (iOS & Android)",
-  tools: ["Figma", "Prototyping", "User Research", "Auto Layout"],
-  figmaUrl: "https://www.figma.com",
+  tools: ["Figma","Figjam"],
+  figmaUrl: "https://www.figma.com/proto/ZRL9sOiSTs0rl0eD9cWr0s/DESIGNVERSE_DAILYDRIP?node-id=256-1372&starting-point-node-id=256%3A1372&t=DrLliMhf3o2tSHta-1",
   cover: "/gallery/project/UIUX/DailyDrip/cover.png",
   about:
-    "DailyDrip adalah aplikasi mobile sosial yang memungkinkan pengguna berbagi momen harian seputar café culture, minuman favorit, dan lokasi terbaik bersama komunitas mereka. Proyek ini hadir untuk menjawab kebutuhan pengguna Gen-Z yang ingin platform yang lebih personal dan visual dibanding media sosial umum — menghadirkan galeri harian, story maps, dan rekomendasi berbasis selera.",
+    "DailyDrip is a mobile social app that allows users to share beverage and café moments in a more personal and pressure-free environment. Designed based on user research, it offers a simple and visually appealing experience with features like drink photo sharing, aesthetic filters, and flexible privacy settings, creating a safe space for personal visual expression.",
   problem:
-    "Pengguna tidak memiliki platform khusus yang menggabungkan dokumentasi tempat café, berbagi momen minuman, dan koneksi sosial dalam satu pengalaman yang intuitif dan estetik. Aplikasi umum terlalu generik dan tidak memenuhi kebutuhan niche yang semakin berkembang.",
+    "Users who enjoy beverages need a safe and relaxed space to share their daily drink moments and express themselves casually, as they often feel uncomfortable and pressured when sharing on mainstream social media platforms like Instagram.  memiliki platform khusus yang menggabungkan dokumentasi tempat café, berbagi momen minuman, dan koneksi sosial dalam satu pengalaman yang intuitif dan estetik. Aplikasi umum terlalu generik dan tidak memenuhi kebutuhan niche yang semakin berkembang.",
   process: [
     {
       phase: "01",
-      label: "Empathize & Research",
+      label: "Empathize",
       icon: "🔍",
       description:
-        "Melakukan user interview dengan 12 partisipan usia 18–26 tahun, competitive analysis terhadap 4 aplikasi sejenis, dan pemetaan user journey untuk memahami pain points utama.",
-      detail: "Output: Persona, Empathy Map, Competitor Matrix",
+        "In the empathize stage, user insights were first prioritized through emoji voting, revealing a strong need for a private, casual, and pressure-free space to share drink moments. This was followed by a validation survey, which confirmed that users often hesitate to post on mainstream social media due to social pressure, reinforcing the need for a simple, visually-driven platform with flexible privacy control.",
+      detail: "Output: User Insights, Key Pain Points, User Needs",   
+
       color: "from-violet-600/20 to-indigo-600/10",
       border: "border-violet-500/25",
       accent: "text-violet-300",
@@ -32,68 +33,72 @@ const PROJECT = {
     },
     {
       phase: "02",
-      label: "Define & Ideate",
+      label: "Define",
       icon: "💡",
       description:
-        "Menetapkan How Might We statements, membuat information architecture, dan menentukan fitur inti melalui sesi brainstorming dan prioritization matrix.",
-      detail: "Output: HMW Statements, Site Map, Feature List",
+      "In the define stage, insights from the empathize phase were synthesized into key user needs and refined into a clear problem statement, highlighting the need for a safe and pressure-free space to share drink moments. Based on this, several How Might We questions were created to guide solutions focused on a more personal, low-pressure, and visually expressive experience, forming the foundation for DailyDrip’s design direction.",
+      detail: "Output: Problem Statement, How Might We",
       color: "from-fuchsia-600/20 to-pink-600/10",
       border: "border-fuchsia-500/25",
       accent: "text-fuchsia-300",
-      visual: "ideate",
+      visual: "define",
     },
     {
       phase: "03",
-      label: "Design & Prototype",
+      label: "Ideate",
       icon: "✏️",
       description:
-        "Membangun wireframe low-fidelity, dilanjutkan ke high-fidelity UI design di Figma dengan sistem komponen yang konsisten, lalu membuat interactive prototype.",
-      detail: "Output: Wireframe, Hi-Fi UI, Interactive Prototype",
+        "In the ideate stage, the How Might We questions were used to generate various solution ideas focused on creating a more relaxed, personal, and pressure-free sharing experience. These ideas included features to limit social circles, enhance privacy, and support simple yet aesthetic visual expression. The ideas were then prioritized based on user needs and feasibility to determine the key features for further development.",
+      detail: "Output: Feature Ideas, Prioritized Features,Solution Concepts",
       color: "from-cyan-600/20 to-teal-600/10",
       border: "border-cyan-500/25",
       accent: "text-cyan-300",
-      visual: "design",
+      visual: "ideate",
     },
     {
       phase: "04",
-      label: "Test & Iterate",
+      label: "Prototype",
       icon: "🧪",
       description:
-        "Usability testing dengan 8 partisipan menggunakan think-aloud protocol. Mengidentifikasi 14 usability issues dan melakukan 2 iterasi desain berdasarkan feedback.",
-      detail: "Output: Usability Report, Revised UI, Final Prototype",
+        "In the prototype stage, ideas from the ideate phase were translated into low-fidelity wireframes to define structure and user flow, then developed into high-fidelity designs to refine visual style and interface details. These designs were further built into interactive prototypes to simulate the user experience, enabling early validation of usability, flow, and overall design direction before implementation.",
+      detail: "Output: Wireframe Low-fidelity, High-fidelity Design, Interactive Prototype",
       color: "from-emerald-600/20 to-green-600/10",
       border: "border-emerald-500/25",
       accent: "text-emerald-300",
-      visual: "test",
+      visual: "design",
     },
   ],
   typography: [
-    { name: "Poppins", weight: "800", role: "Display / Heading", size: "32px" },
-    { name: "Poppins", weight: "600", role: "Subheading", size: "18px" },
-    { name: "Inter", weight: "400", role: "Body Text", size: "14px" },
-    { name: "Inter", weight: "400", role: "Caption", size: "11px" },
-  ],
+  { name: "Poppins", weight: "800", role: "Display / Heading", size: "32px", text: "Welcome Back" },
+  { name: "Poppins", weight: "600", role: "Subheading", size: "18px", text: "Friends / Memories" },
+  { name: "Inter", weight: "400", role: "Body Text", size: "14px", text: "Share your drips to your close friends!" },
+  { name: "Inter", weight: "400", role: "Caption", size: "11px", text: "Don’t have an account? Register now!" },
+  { name: "Inter", weight: "500", role: "Button", size: "14px", text: "Add Location" }
+],
   palette: [
-    { hex: "#C1717E", name: "Rose Mauve", role: "Primary" },
-    { hex: "#FADADD", name: "Blush Pink", role: "Background" },
-    { hex: "#F5A0A9", name: "Soft Coral", role: "Accent" },
-    { hex: "#FFFFFF", name: "Pure White", role: "Surface" },
-    { hex: "#4A2530", name: "Deep Rose", role: "Text" },
-    { hex: "#E8C4C8", name: "Muted Pink", role: "Stroke" },
+    { hex: "#f39999", name: "Salmon Pink", role: "Button" },
+    { hex: "#f45b5b", name: "Coral Red", role: "Button Active" },
+    { hex: "#fffdfe", name: "Near White", role: "BG Light" },
+    { hex: "#d9d9d9", name: "Light Gray", role: "BG Normal" },
+    { hex: "#fceaf2", name: "Blush Pink", role: "BG Gradation" },
+    { hex: "#f39999", name: "Salmon Pink", role: "Accent" },
   ],
-  uiElements: [
-    { name: "Navigation Bar", desc: "Bottom tab dengan active indicator pill" },
-    { name: "Card Component", desc: "Image card dengan overlay gradient dan caption" },
-    { name: "Story Ring", desc: "Circular avatar dengan animasi progress ring" },
-    { name: "CTA Button", desc: "Rounded-full dengan shadow coral-rose" },
-    { name: "Input Field", desc: "Soft background dengan floating label" },
-    { name: "Toast Notification", desc: "Micro-interaction feedback element" },
-  ],
+  uiElements: {
+    buttons: [
+      { label: "Button", style: "gradient" },
+      { label: "Button", style: "outline-light" },
+      { label: "Button", style: "outline" },
+      { label: "Button", style: "solid" },
+    ],
+    icons: ["wifi", "music", "sparkles", "map-pin", "apple", "user", "key", "eye", "battery", "mail",
+            "google", "apple2", "message", "zap", "trash", "copy", "refresh", "send", "grid", "download",
+            "search", "star", "check-circle", "qr", "settings", "bell", "cake", "person", "text", "logout"],
+  },
   stats: [
     { value: "14+", label: "Screens Designed" },
-    { value: "8", label: "Usability Tests" },
-    { value: "2", label: "Design Iterations" },
-    { value: "4wk", label: "Project Duration" },
+    { value: "20", label: "Usability Tests" },
+    { value: "5+", label: "Design Iterations" },
+    { value: "6mo", label: "Project Duration" },
   ],
 };
 
@@ -102,7 +107,7 @@ function ResearchVisual() {
   return (
     <div className="flex h-full w-full items-center justify-center p-3">
       <div className="w-full space-y-2">
-        {["User Interview", "Competitive Analysis", "Pain Point Mapping"].map((item, i) => (
+        {["Team Discussion", "Emoji Voting", "User Survey"].map((item, i) => (
           <div key={i} className="flex items-center gap-2">
             <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
             <div className="flex-1 rounded-full bg-white/5 px-2 py-1">
@@ -114,12 +119,41 @@ function ResearchVisual() {
           </div>
         ))}
         <div className="mt-1 rounded-xl border border-violet-500/20 bg-violet-500/10 p-2">
-          <p className="text-[9px] font-bold text-violet-300">12 Participants Interviewed</p>
-          <div className="mt-1 flex gap-0.5">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <div key={i} className="h-3 w-3 rounded-full bg-violet-400/60" />
-            ))}
+          <a
+            href="https://docs.google.com/spreadsheets/d/1iYUPiMEf5UHEYxQFQ4bAwhpIGkHYLUW4JaPeqAg3Nok/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-[9px] font-bold text-violet-300 underline underline-offset-2 transition-colors duration-200 hover:text-violet-100"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-2.5 w-2.5 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+            </svg>
+            Click here to view survey results
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DefineVisual() {
+  const hmws = [
+    "How might we create a pressure-free sharing space?",
+    "How might we protect user privacy by default?",
+    "How might we simplify the sharing experience?",
+  ];
+  return (
+    <div className="flex h-full w-full items-center justify-center p-3">
+      <div className="w-full space-y-1.5">
+        <p className="mb-2 text-[9px] font-bold uppercase tracking-widest text-fuchsia-300">How Might We</p>
+        {hmws.map((q, i) => (
+          <div key={i} className="rounded-lg border border-fuchsia-500/25 bg-fuchsia-500/10 px-2 py-1.5">
+            <p className="text-[8px] font-medium leading-snug text-slate-200">{q}</p>
           </div>
+        ))}
+        <div className="mt-1 rounded-lg border border-pink-500/20 bg-pink-500/10 px-2 py-1 text-center">
+          <p className="text-[8px] font-bold text-pink-300">Problem Statement Defined ✓</p>
         </div>
       </div>
     </div>
@@ -127,15 +161,14 @@ function ResearchVisual() {
 }
 
 function IdeateVisual() {
-  const items = ["Feature A", "Feature B", "Feature C", "Feature D"];
   return (
     <div className="flex h-full w-full items-center justify-center p-3">
       <div className="w-full space-y-1.5">
-        <p className="mb-2 text-[9px] font-bold uppercase tracking-widest text-fuchsia-300">Priority Matrix</p>
+        <p className="mb-2 text-[9px] font-bold uppercase tracking-widest text-cyan-300">Priority Matrix</p>
         <div className="grid grid-cols-2 gap-1">
           {[
-            { label: "High Impact\nHigh Effort", bg: "bg-fuchsia-500/20", border: "border-fuchsia-500/30" },
-            { label: "High Impact\nLow Effort", bg: "bg-pink-500/30", border: "border-pink-400/40" },
+            { label: "High Impact\nHigh Effort", bg: "bg-cyan-500/20", border: "border-cyan-500/30" },
+            { label: "High Impact\nLow Effort", bg: "bg-teal-500/30", border: "border-teal-400/40" },
             { label: "Low Impact\nHigh Effort", bg: "bg-white/5", border: "border-white/10" },
             { label: "Low Impact\nLow Effort", bg: "bg-white/5", border: "border-white/10" },
           ].map((q, i) => (
@@ -204,7 +237,7 @@ function TestVisual() {
   );
 }
 
-const PROCESS_VISUALS = { research: ResearchVisual, ideate: IdeateVisual, design: DesignVisual, test: TestVisual };
+const PROCESS_VISUALS = { research: ResearchVisual, define: DefineVisual, ideate: IdeateVisual, design: DesignVisual, test: TestVisual };
 
 /* ─────────────────── INTERSECTION OBSERVER HOOK ─────────────────── */
 function useInView(options = {}) {
@@ -250,6 +283,10 @@ export default function ProjectDetailUIUX() {
   const navigate = useNavigate();
   const [imgLoaded, setImgLoaded] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   return (
     <main className="relative min-h-screen bg-[#050816] text-white">
       {/* ── BG Layer ── */}
@@ -279,7 +316,7 @@ export default function ProjectDetailUIUX() {
               <img
                 src={PROJECT.cover}
                 alt={`${PROJECT.title} cover`}
-                className="h-64 w-full object-cover object-top sm:h-80 lg:h-[420px]"
+                className="h-64 w-full object-cover object-center sm:h-80 lg:h-[420px]"
                 onLoad={() => setImgLoaded(true)}
               />
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#070b1d] via-[#070b1d]/40 to-transparent" />
@@ -365,7 +402,7 @@ export default function ProjectDetailUIUX() {
                 <p className="mt-3 text-sm leading-7 text-slate-300/90">{PROJECT.problem}</p>
                 <div className="mt-4 rounded-2xl border border-rose-500/20 bg-rose-500/8 p-4">
                   <p className="text-xs font-semibold italic text-rose-200/80">
-                    "Bagaimana kita bisa menciptakan ruang digital yang nyaman untuk berbagi momen café culture sehari-hari?"
+                    "How might we create a safe and pressure-free space for users to share their daily beverage moments without feeling judged on mainstream social media?"
                   </p>
                 </div>
               </div>
@@ -376,7 +413,7 @@ export default function ProjectDetailUIUX() {
         {/* ══════════════ PROCESS / METODE ══════════════ */}
         <FadeUp delay={120} className="mt-8">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8">
-            <SectionHeader label="Methodology" title="Design Process" />
+            <SectionHeader label="Methodology" title="Design Thinking" />
 
             <div className="space-y-5">
               {PROJECT.process.map((step, idx) => {
@@ -464,21 +501,71 @@ export default function ProjectDetailUIUX() {
               {/* ── UI Elements ── */}
               <div>
                 <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-slate-400">UI Elements</p>
-                <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                  {PROJECT.uiElements.map((el, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-3 rounded-xl border border-white/8 bg-white/4 p-3 transition-all duration-200 hover:border-violet-400/20 hover:bg-white/6"
-                    >
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet-500/20 text-[10px] font-black text-violet-300">
-                        {i + 1}
-                      </span>
-                      <div>
-                        <p className="text-xs font-bold text-white">{el.name}</p>
-                        <p className="mt-0.5 text-[10px] leading-relaxed text-slate-400">{el.desc}</p>
+                <div className="grid gap-4 sm:grid-cols-2">
+
+                  {/* Button Variants */}
+                  <div className="rounded-2xl border border-white/8 bg-white/4 p-4">
+                    <p className="mb-3 text-[9px] font-bold uppercase tracking-widest text-slate-400">❖ button</p>
+                    <div className="space-y-2">
+                      {/* Gradient */}
+                      <button className="w-full rounded-2xl py-2.5 text-xs font-bold text-white shadow-md" style={{ background: "linear-gradient(135deg, #f45b5b, #f39999)" }}>Button</button>
+                      {/* Outline white filled */}
+                      <button className="w-full rounded-2xl border border-[#f39999]/40 bg-white py-2.5 text-xs font-bold" style={{ color: "#f45b5b" }}>Button</button>
+                      {/* Outline transparent */}
+                      <button className="w-full rounded-2xl border border-[#f39999]/60 bg-white/5 py-2.5 text-xs font-bold" style={{ color: "#f39999" }}>Button</button>
+                      {/* Solid red */}
+                      <button className="w-full rounded-2xl py-2.5 text-xs font-bold text-white" style={{ background: "#f45b5b" }}>Button</button>
+                    </div>
+                  </div>
+
+                  {/* Icon Library */}
+                  <div className="rounded-2xl border border-white/8 bg-white/4 p-4">
+                    <p className="mb-3 text-[9px] font-bold uppercase tracking-widest text-slate-400">❖ Icon</p>
+                    <div className="rounded-xl border border-white/10 bg-white p-3">
+                      <div className="grid grid-cols-10 gap-1.5">
+                        {[
+                          /* Row 1 */
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18.09 4.87A10 10 0 0 1 22 12c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2c1.39 0 2.71.28 3.91.79"/><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
+                          /* Row 2 */
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0c2.157 0 3.978.704 5.316 1.922"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 8 19 8"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>,
+                          /* Row 3 */
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>,
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>,
+                        ].map((icon, i) => (
+                          <div key={i} className="flex h-6 w-6 items-center justify-center text-gray-800">
+                            {React.cloneElement(icon, { className: "h-4 w-4" })}
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  ))}
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -490,49 +577,37 @@ export default function ProjectDetailUIUX() {
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8">
             <SectionHeader label="Final Output" title="Design Mockups" />
 
-            {/* Main cover full-width */}
-            <div className="group overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-500 hover:shadow-[0_28px_70px_rgba(193,113,126,0.2)]">
-              <img
-                src={PROJECT.cover}
-                alt="DailyDrip full mockup showcase"
-                className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Two cropped panels */}
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {/* Left — crop top portion */}
-              <div className="group overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#C1717E]/15 to-[#FADADD]/5 shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(193,113,126,0.25)]">
+            {/* Two mockup panels */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              {/* Mockup 1 */}
+              <div className="group overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#f39999]/10 to-[#fceaf2]/5 shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(243,153,153,0.25)]">
                 <div className="overflow-hidden">
                   <img
-                    src={PROJECT.cover}
-                    alt="DailyDrip screens overview"
-                    className="w-full object-cover object-right transition-transform duration-700 group-hover:scale-105"
-                    style={{ height: "220px", objectPosition: "right 20%" }}
+                    src="/gallery/project/UIUX/DailyDrip/mockup1.png"
+                    alt="DailyDrip UI screens showcase"
+                    className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
                 <div className="p-4">
-                  <p className="text-xs font-bold text-white">Screen Overview</p>
-                  <p className="mt-1 text-[11px] text-slate-400">Multi-screen UI showcase menampilkan keseluruhan alur aplikasi DailyDrip.</p>
+                  <p className="text-xs font-bold text-white">UI Screen Overview</p>
+                  <p className="mt-1 text-[11px] text-slate-400">Full-screen UI design showcasing the core screens and visual style of DailyDrip.</p>
                 </div>
               </div>
 
-              {/* Right — crop center/left portion */}
-              <div className="group overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-violet-600/10 to-indigo-600/5 shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(139,92,246,0.2)]">
+              {/* Mockup 2 */}
+              <div className="group overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#f45b5b]/10 to-[#f39999]/5 shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(244,91,91,0.2)]">
                 <div className="overflow-hidden">
                   <img
-                    src={PROJECT.cover}
-                    alt="DailyDrip branding detail"
-                    className="w-full object-cover object-left transition-transform duration-700 group-hover:scale-105"
-                    style={{ height: "220px", objectPosition: "left 40%" }}
+                    src="/gallery/project/UIUX/DailyDrip/mockup2.jpg"
+                    alt="DailyDrip mobile mockup detail"
+                    className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
                 <div className="p-4">
-                  <p className="text-xs font-bold text-white">Branding & Identity</p>
-                  <p className="mt-1 text-[11px] text-slate-400">Label kategori, tipografi, dan identitas visual yang konsisten pada setiap layar.</p>
+                  <p className="text-xs font-bold text-white">Mobile Mockup Detail</p>
+                  <p className="mt-1 text-[11px] text-slate-400">Close-up view of the app interface displayed on a real device mockup.</p>
                 </div>
               </div>
             </div>
