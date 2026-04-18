@@ -14,9 +14,9 @@ const PROJECT = {
   figmaUrl: "https://www.figma.com/proto/ZRL9sOiSTs0rl0eD9cWr0s/DESIGNVERSE_DAILYDRIP?node-id=256-1372&starting-point-node-id=256%3A1372&t=DrLliMhf3o2tSHta-1",
   cover: "/gallery/project/UIUX/DailyDrip/cover.png",
   about:
-    "DailyDrip is a mobile social app that allows users to share beverage and café moments in a more personal and pressure-free environment. Designed based on user research, it offers a simple and visually appealing experience with features like drink photo sharing, aesthetic filters, and flexible privacy settings, creating a safe space for personal visual expression.",
+    "DailyDrip is a mobile social app that allows users to share beverage and cafe moments in a more personal and pressure-free environment. Designed based on user research, it offers a simple and visually appealing experience with features like drink photo sharing, aesthetic filters, and flexible privacy settings, creating a safe space for personal visual expression.",
   problem:
-    "Users who enjoy beverages need a safe and relaxed space to share their daily drink moments and express themselves casually, as they often feel uncomfortable and pressured when sharing on mainstream social media platforms like Instagram.  memiliki platform khusus yang menggabungkan dokumentasi tempat café, berbagi momen minuman, dan koneksi sosial dalam satu pengalaman yang intuitif dan estetik. Aplikasi umum terlalu generik dan tidak memenuhi kebutuhan niche yang semakin berkembang.",
+    "Users who enjoy beverages need a safe and relaxed space to share their daily drink moments and express themselves casually, as they often feel uncomfortable and pressured when sharing on mainstream social media platforms like Instagram.",
   process: [
     {
       phase: "01",
@@ -395,13 +395,13 @@ export default function ProjectDetailUIUX() {
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-violet-400">What is DailyDrip?</p>
-                <p className="mt-3 text-sm leading-7 text-slate-300/90">{PROJECT.about}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-300/90 text-justify">{PROJECT.about}</p>
               </div>
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-rose-400">Problem Statement</p>
-                <p className="mt-3 text-sm leading-7 text-slate-300/90">{PROJECT.problem}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-300/90 text-justify">{PROJECT.problem}</p>
                 <div className="mt-4 rounded-2xl border border-rose-500/20 bg-rose-500/8 p-4">
-                  <p className="text-xs font-semibold italic text-rose-200/80">
+                  <p className="text-xs font-semibold italic text-rose-200/80 text-justify">
                     "How might we create a safe and pressure-free space for users to share their daily beverage moments without feeling judged on mainstream social media?"
                   </p>
                 </div>
@@ -431,7 +431,7 @@ export default function ProjectDetailUIUX() {
                               {step.label}
                             </h3>
                           </div>
-                          <p className="mt-3 text-sm leading-relaxed text-slate-300/90">{step.description}</p>
+                          <p className="mt-3 text-sm leading-relaxed text-slate-300/90 text-justify">{step.description}</p>
                           <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1">
                             <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400">Output:</span>
                             <span className="text-[9px] font-semibold text-slate-300">{step.detail.replace("Output: ", "")}</span>
@@ -591,7 +591,7 @@ export default function ProjectDetailUIUX() {
                 </div>
                 <div className="p-4">
                   <p className="text-xs font-bold text-white">UI Screen Overview</p>
-                  <p className="mt-1 text-[11px] text-slate-400">Full-screen UI design showcasing the core screens and visual style of DailyDrip.</p>
+                  <p className="mt-1 text-[11px] text-slate-400 text-justify">Full-screen UI design showcasing the core screens and visual style of DailyDrip.</p>
                 </div>
               </div>
 
@@ -607,7 +607,7 @@ export default function ProjectDetailUIUX() {
                 </div>
                 <div className="p-4">
                   <p className="text-xs font-bold text-white">Mobile Mockup Detail</p>
-                  <p className="mt-1 text-[11px] text-slate-400">Close-up view of the app interface displayed on a real device mockup.</p>
+                  <p className="mt-1 text-[11px] text-slate-400 text-justify">Close-up view of the app interface displayed on a real device mockup.</p>
                 </div>
               </div>
             </div>

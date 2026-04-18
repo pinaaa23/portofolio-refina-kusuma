@@ -23,15 +23,14 @@ const PROJECT_ITEMS = [
   {
     filterKey: "web",
     category: "Web Development",
-    title: "Final Project Digital System",
+    title: "Cashier Web App",
     description:
-      "Platform web berbasis proyek akademik dengan pendekatan profesional, modern UI/UX, dan sistem terstruktur yang siap diimplementasikan di dunia nyata.",
-    tags: ["Web System", "UI/UX", "React"],
-    cover: null,
-    link: null,
-    accentFrom: "from-indigo-600",
-    accentTo: "to-violet-700",
-    previewGradient: "from-slate-900 via-indigo-900 to-violet-700",
+      "Aplikasi web kasir (POS) sederhana dan efisien untuk mengelola produk, memproses transaksi, dan melacak riwayat penjualan secara real-time.",
+    tags: ["Web App", "HTML/CSS/JS", "POS System"],
+    cover: "/gallery/project/WebDev/kasir/cover.png",
+    link: "/project/webdev/cashier",
+    accentFrom: "from-emerald-600",
+    accentTo: "to-teal-500",
   },
   {
     filterKey: "ui-ux",
