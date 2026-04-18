@@ -13,20 +13,20 @@ const PROJECT_ITEMS = [
     category: "UI/UX Design",
     title: "DailyDrip",
     description:
-      "Aplikasi mobile untuk tracking kebiasaan minum air harian dengan antarmuka yang intuitif, gamifikasi, dan notifikasi pengingat hidrasi.",
+      "DailyDrip is a mobile social app that allows users to share beverage and cafe moments in a more personal and pressure-free environment. Designed based on user research, it offers a simple and visually appealing experience with features like drink photo sharing, aesthetic filters, and flexible privacy settings, creating a safe space for personal visual expression.",
     tags: ["Mobile Design", "Figma", "UX Research"],
     cover: "/gallery/project/UIUX/DailyDrip/cover.png",
     link: "/project/uiux/dailydrip",
     accentFrom: "from-violet-600",
     accentTo: "to-indigo-500",
   },
-  {
+  { 
     filterKey: "web",
     category: "Web Development",
     title: "Cashier Web App",
     description:
-      "Aplikasi web kasir (POS) sederhana dan efisien untuk mengelola produk, memproses transaksi, dan melacak riwayat penjualan secara real-time.",
-    tags: ["Web App", "HTML/CSS/JS", "POS System"],
+      "Cashier Web App is a lightweight point of sale (POS) system designed for small businesses and academic projects. It provides a streamlined interface for managing products, processing transactions, and tracking sales history within a clean, modern web based environment. The system focuses on simplicity and efficiency, allowing users to handle daily operations with minimal effort while reducing manual errors. With role based access and an intuitive workflow, it ensures a smooth and structured transaction process without the need for complex setup or installation.",
+    tags: ["Web App", "CSS/JavaScript", "POS System"],
     cover: "/gallery/project/WebDev/kasir/cover.png",
     link: "/project/webdev/cashier",
     accentFrom: "from-emerald-600",
@@ -35,15 +35,14 @@ const PROJECT_ITEMS = [
   {
     filterKey: "ui-ux",
     category: "UI/UX Design",
-    title: "Smart Content Strategy",
+    title: "Parakelana",
     description:
-      "Manajemen media sosial, perencanaan konten strategis, produksi visual & video digital, serta optimalisasi engagement berbasis data dan tren.",
-    tags: ["Content Planning", "Social Media", "Figma"],
-    cover: null,
-    link: null,
-    accentFrom: "from-fuchsia-600",
-    accentTo: "to-pink-500",
-    previewGradient: "from-stone-300 via-zinc-400 to-slate-700",
+      "Parakelana is a comprehensive outdoor equipment rental platform designed to simplify the preparation process for hikers and outdoor enthusiasts. The platform provides a seamless bridge between rental stores and users, ensuring that reliable gear is accessible with just a few clicks. Focused on user confidence and operational efficiency, Parakelana eliminates the traditional hurdles of manual inventory checks and physical store scouting.",
+    tags: ["Mobile Design", "Figma", "Outdoor Rental"],
+    cover: "/gallery/project/UIUX/parakelana/cover1.jpg",
+    link: "/project/uiux/parakelana",
+    accentFrom: "from-emerald-500",
+    accentTo: "to-green-400",
   },
 ];
 
@@ -150,7 +149,7 @@ export default function Project() {
     <section id="project" className="snap-start scroll-mt-14 min-h-screen pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-8">
       <div className="mx-auto w-full max-w-5xl space-y-6 sm:space-y-7">
         <div className="px-1">
-          <h2 className="text-3xl font-black text-white sm:text-4xl">Proyek Yang Dikerjakan</h2>
+          <h2 className="text-3xl font-black text-white sm:text-4xl">Projects</h2>
           <div className="mt-3 h-1 w-12 rounded-full bg-violet-500" />
         </div>
 
