@@ -6,19 +6,19 @@ const PROJECT = {
   title: "Cashier Web App",
   label: "Web Application",
   category: "Web Development",
-  subtitle: "Simple & Efficient Point-of-Sale System",
+  subtitle: "Digital Cashier System for More Efficient Transactions",
   year: "2025",
-  role: "Full-Stack Developer",
+  role: "Front End Developer",
   platform: "Web (Desktop & Mobile Browser)",
-  tools: ["HTML", "CSS", "JavaScript"],
+  tools: ["React", "CSS", "JavaScript"],
   githubUrl: "#",
   cover: "/gallery/project/WebDev/kasir/cover.png",
   about:
-    "Cashier Web App is a lightweight point-of-sale (POS) system designed for small businesses and academic projects. It provides a streamlined interface for managing products, processing transactions, and tracking sales history — all within a clean, modern web-based experience that requires no installation.",
+    "Cashier Web App is a lightweight point of sale (POS) system designed for small businesses and academic projects. It provides a streamlined interface for managing products, processing transactions, and tracking sales history within a clean, modern web based environment. The system focuses on simplicity and efficiency, allowing users to handle daily operations with minimal effort while reducing manual errors. With role based access and an intuitive workflow, it ensures a smooth and structured transaction process without the need for complex setup or installation.",
   problem:
     "Small businesses often rely on manual calculations for transactions, leading to human errors in pricing, change calculation, and record-keeping. The lack of a simple, affordable digital system results in inefficient operations, lost revenue from miscalculations, and difficulty tracking daily sales and inventory.",
   solution:
-    "Cashier Web App provides a simple yet powerful POS solution that automates product selection, price calculation, and change computation. With role-based access, real-time cart management, and transaction history, it eliminates manual errors while keeping the workflow fast and intuitive for any user.",
+    "A simple POS system that streamlines transactions with automated calculations, real-time cart, and transaction tracking.",
   features: [
     {
       title: "Role-Based Access",
@@ -52,36 +52,38 @@ const PROJECT = {
     },
   ],
   systemFlow: [
-    { step: "01", label: "Select Role", description: "Choose Admin or Cashier role to access the system", icon: "👤" },
-    { step: "02", label: "Browse Products", description: "View available products by category with search", icon: "🛍️" },
-    { step: "03", label: "Add to Cart", description: "Select products and add them to the transaction cart", icon: "🛒" },
-    { step: "04", label: "Calculate Total", description: "System auto-calculates subtotal and total price", icon: "🧮" },
-    { step: "05", label: "Process Payment", description: "Enter payment amount from the customer", icon: "💳" },
-    { step: "06", label: "Get Change", description: "System calculates and displays the change amount", icon: "💰" },
-    { step: "07", label: "Save Transaction", description: "Transaction saved to history for future reference", icon: "✅" },
+    { step: "01", label: "Select Role", description: "Choose Admin or Customer role to access the system", icon: "👤" },
+    { step: "02", label: "Browse Products", description: "View available products and choose items to purchase", icon: "🔎" },
+    { step: "03", label: "Add to Cart", description: "Add selected products to the shopping cart", icon: "🛒" },
+    { step: "04", label: "Checkout", description: "Review selected items before proceeding", icon: "📋" },
+    { step: "05", label: "Fill Customer Details", description: "Enter customer information for the transaction", icon: "✍️" },
+    { step: "06", label: "Choose Payment Method", description: "Select the preferred payment method", icon: "💳" },
+    { step: "07", label: "Make Payment", description: "Complete the payment process", icon: "💸" },
+    { step: "08", label: "Payment Verification", description: "Admin verifies the payment before confirming the order", icon: "🛂" },
+    { step: "09", label: "Send Invoice", description: "Invoice is sent to the customer via WhatsApp", icon: "📱" },
   ],
   mockups: [
     {
-      title: "Cashier Dashboard",
-      description: "Main cashier interface with product selection, cart management, and payment processing in one view.",
-      image: "/gallery/project/WebDev/kasir/mockup1.png",
+      title: "Cashier Page",
+      description: "Combines product catalog and cart in one interface for fast and efficient transactions.",
+      image: "/gallery/project/WebDev/kasir/foto3.png",
     },
     {
       title: "Product Management",
       description: "Admin panel for managing product inventory, categories, pricing, and stock levels.",
-      image: "/gallery/project/WebDev/kasir/mockup2.png",
+      image: "/gallery/project/WebDev/kasir/foto2.png",
     },
     {
       title: "Transaction History",
       description: "Complete log of all transactions with search, filter, and detailed receipt view.",
-      image: "/gallery/project/WebDev/kasir/mockup3.png",
+      image: "/gallery/project/WebDev/kasir/foto5.png",
     },
   ],
   stats: [
-    { value: "7+", label: "Core Features" },
+    { value: "6", label: "Key Features" },
+    { value: "3", label: "Main Modules" },
     { value: "2", label: "User Roles" },
-    { value: "100%", label: "Responsive" },
-    { value: "Fast", label: "Performance" },
+    { value: "5+", label: "Pages Developed" },
   ],
 };
 
@@ -301,7 +303,7 @@ export default function ProjectDetailWebDev() {
               {/* Connection line */}
               <div className="absolute left-6 top-0 hidden h-full w-px bg-gradient-to-b from-emerald-500 via-teal-500 to-cyan-400 sm:block" />
 
-              <div className="space-y-4 sm:pl-16">
+              <div className="space-y-6 sm:pl-16">
                 {PROJECT.systemFlow.map((item, idx) => (
                   <FadeUp key={item.step} delay={idx * 60}>
                     <div className="relative flex items-start gap-4 rounded-2xl border border-white/8 bg-gradient-to-r from-slate-900/80 to-emerald-900/10 p-4 transition-all duration-300 hover:border-emerald-400/20 hover:bg-gradient-to-r hover:from-slate-900/90 hover:to-emerald-900/20 sm:p-5">
@@ -321,15 +323,6 @@ export default function ProjectDetailWebDev() {
                         </div>
                         <p className="mt-1 text-xs leading-relaxed text-slate-400 text-justify">{item.description}</p>
                       </div>
-
-                      {/* Arrow to next */}
-                      {idx < PROJECT.systemFlow.length - 1 && (
-                        <div className="absolute -bottom-3 left-1/2 z-10 hidden -translate-x-1/2 text-emerald-500/40 sm:block">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                      )}
                     </div>
                   </FadeUp>
                 ))}
