@@ -70,7 +70,7 @@ export default function LandingPage() {
 
           <div className="mt-5 flex justify-center md:mt-6">
             <Link
-              to="/portfolio"
+              to="/refinakusuma"
               className="relative inline-flex items-center justify-center rounded-full border border-cyan-300/45 bg-gradient-to-r from-fuchsia-500/55 via-violet-500/55 to-cyan-500/55 px-5 py-2.5 text-xs font-semibold tracking-wide text-white shadow-[0_0_28px_rgba(56,189,248,0.35)] transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_40px_rgba(236,72,153,0.45)] sm:px-6 sm:py-3 sm:text-sm md:text-base"
             >
               <span className="absolute inset-0 -z-10 rounded-full bg-cyan-300/30 blur-xl opacity-80" />
