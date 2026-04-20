@@ -146,38 +146,40 @@ export default function Project() {
   );
 
   return (
-    <section id="project" className="snap-start scroll-mt-15 min-h-screen pt-0 pb-10 sm:pt-8 lg:pt-0">
-      <div className="mx-auto w-full max-w-5xl space-y-2 sm:space-y-5">
-        <div className="px-1">
-          <h2 className="text-3xl font-black text-white sm:text-4xl">Projects</h2>
-          <div className="mt-1 h-1 w-12 rounded-full bg-violet-500" />
-        </div>
+    <section id="project" className="snap-start scroll-mt-15 min-h-screen pt-2 pb-10 sm:pt-8 lg:pt-6">
+      <div className="px-3 sm:px-5 lg:px-8">
+        <div className="mx-auto w-full max-w-5xl space-y-2 sm:space-y-5">
+          <div className="px-1">
+            <h2 className="text-3xl font-black text-white sm:text-4xl">Projects</h2>
+            <div className="mt-1 h-1 w-12 rounded-full bg-violet-500" />
+          </div>
 
-        {/* Filter Tabs */}
-        <div className="flex justify-center">
-          <div className="inline-flex items-center rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur-md">
-            {PROJECT_MENU.map((menu) => (
-              <button
-                key={menu.key}
-                type="button"
-                onClick={() => setActiveTab(menu.key)}
-                className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300 sm:px-5 sm:text-sm ${
-                  activeTab === menu.key
-                    ? "bg-violet-500 text-white shadow-[0_6px_18px_rgba(139,92,246,0.45)]"
-                    : "text-slate-300 hover:bg-white/8 hover:text-white"
-                }`}
-              >
-                {menu.label}
-              </button>
+          {/* Filter Tabs */}
+          <div className="flex justify-center">
+            <div className="inline-flex items-center rounded-2xl border border-white/10 bg-white/5 p-1 backdrop-blur-md">
+              {PROJECT_MENU.map((menu) => (
+                <button
+                  key={menu.key}
+                  type="button"
+                  onClick={() => setActiveTab(menu.key)}
+                  className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300 sm:px-5 sm:text-sm ${
+                    activeTab === menu.key
+                      ? "bg-violet-500 text-white shadow-[0_6px_18px_rgba(139,92,246,0.45)]"
+                      : "text-slate-300 hover:bg-white/8 hover:text-white"
+                  }`}
+                >
+                  {menu.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Project Grid */}
+          <div key={activeTab} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
             ))}
           </div>
-        </div>
-
-        {/* Project Grid */}
-        <div key={activeTab} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
-          ))}
         </div>
       </div>
     </section>
