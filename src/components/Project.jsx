@@ -69,7 +69,7 @@ function ProjectCard({ project }) {
       {/* Image / Gradient Preview */}
       <div className="relative overflow-hidden">
         {project.cover && !imgError ? (
-          <div className="relative h-52 sm:h-56 overflow-hidden bg-black/30">
+          <div className="relative h-44 sm:h-48 overflow-hidden bg-black/30">
             <img
               src={project.cover}
               alt={`${project.title} preview`}
@@ -87,7 +87,7 @@ function ProjectCard({ project }) {
             </div>
           </div>
         ) : (
-          <div className={`h-52 sm:h-56 bg-gradient-to-br ${project.previewGradient || 'from-violet-900 to-indigo-900'} p-4`}>
+          <div className={`h-44 sm:h-48 bg-gradient-to-br ${project.previewGradient || 'from-violet-900 to-indigo-900'} p-4`}>
             <div className="flex h-full items-end rounded-2xl border border-white/15 bg-black/10 p-4 backdrop-blur-sm">
               <div className="w-full space-y-2">
                 <span className="inline-flex rounded-full border border-white/15 bg-black/20 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/80">
@@ -101,7 +101,7 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Card Body */}
-      <div className="p-5 sm:p-6">
+      <div className="p-4 sm:p-5">
         {/* Title */}
         <h3 className="mt-3 text-xl font-extrabold text-white sm:text-2xl leading-tight group-hover:text-violet-200 transition-colors duration-300">
           {project.title}
@@ -126,7 +126,7 @@ function ProjectCard({ project }) {
 
         {/* CTA arrow for clickable cards */}
         {project.link && (
-          <div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-violet-400 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5">
+          <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-violet-400 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0.5">
             <span>View Project</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -146,11 +146,11 @@ export default function Project() {
   );
 
   return (
-    <section id="project" className="snap-start scroll-mt-14 min-h-screen pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-8">
-      <div className="mx-auto w-full max-w-5xl space-y-6 sm:space-y-7">
+    <section id="project" className="snap-start scroll-mt-15 min-h-screen pt-0 pb-10 sm:pt-8 lg:pt-0">
+      <div className="mx-auto w-full max-w-5xl space-y-2 sm:space-y-5">
         <div className="px-1">
           <h2 className="text-3xl font-black text-white sm:text-4xl">Projects</h2>
-          <div className="mt-3 h-1 w-12 rounded-full bg-violet-500" />
+          <div className="mt-1 h-1 w-12 rounded-full bg-violet-500" />
         </div>
 
         {/* Filter Tabs */}

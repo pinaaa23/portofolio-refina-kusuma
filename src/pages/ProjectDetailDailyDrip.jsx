@@ -24,7 +24,7 @@ const PROJECT = {
       icon: "🔍",
       description:
         "In the empathize stage, user insights were first prioritized through emoji voting, revealing a strong need for a private, casual, and pressure-free space to share drink moments. This was followed by a validation survey, which confirmed that users often hesitate to post on mainstream social media due to social pressure, reinforcing the need for a simple, visually-driven platform with flexible privacy control.",
-      detail: "Output: User Insights, Key Pain Points, User Needs",   
+      detail: "Output: User Insights, Key Pain Points, User Needs",
 
       color: "from-violet-600/20 to-indigo-600/10",
       border: "border-violet-500/25",

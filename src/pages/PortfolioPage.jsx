@@ -5,18 +5,20 @@ import Experience from "../components/Experience";
 import Project from "../components/Project";
 import Sidebar from "../components/Sidebar";
 
+import Contact from "../components/Contact";
+
 
 export default function PortfolioPage() {
   const [isLightMode, setIsLightMode] = useState(false);
   const [activeNav, setActiveNav] = useState("home");
   useEffect(() => {
-    const trackedIds = ["project", "about", "experience", "certification", "contact"];
+    const trackedIds = ["home", "about", "experience", "project", "contact"];
     const trackedElements = trackedIds
       .map((id) => document.getElementById(id))
       .filter(Boolean);
 
     const handleTopState = () => {
-      if (window.scrollY < 120) {
+      if (window.scrollY < 100) {
         setActiveNav("home");
       }
     };
@@ -35,8 +37,8 @@ export default function PortfolioPage() {
       },
       {
         root: null,
-        rootMargin: "-35% 0px -45% 0px",
-        threshold: [0.15, 0.35, 0.6],
+        rootMargin: "-25% 0px -25% 0px",
+        threshold: [0.1, 0.4, 0.7],
       }
     );
 
@@ -84,6 +86,7 @@ export default function PortfolioPage() {
         <About />
         <Experience />
         <Project />
+        <Contact />
       </div>
 
       <style>{`

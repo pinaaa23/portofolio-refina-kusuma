@@ -70,7 +70,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="mt-6 flex gap-3" id="contact">
+              <div className="mt-6 flex gap-3">
                 {SOCIALS.map((social) => (
                   <a
                     key={social.label}

@@ -19,25 +19,32 @@ export default function Sidebar({ isLightMode, setIsLightMode, activeNav, setAct
           <span className={`font-semibold tracking-wide ${isLightMode ? "text-slate-700" : "text-violet-200"}`}>RFNKSM</span>
 
           <div className="ml-auto hidden items-center gap-3 md:flex lg:gap-4">
-            <nav className="flex items-center gap-5 lg:gap-7">
-              {NAV_LINKS.map((item) => (
-                <a
-                  key={item.label}
-                  onClick={() => setActiveNav(item.href.slice(1))}
-                  className={`transition-colors ${
-                    activeNav === item.href.slice(1)
-                      ? isLightMode
-                        ? "text-slate-900"
-                        : "text-white"
-                      : isLightMode
-                        ? "text-slate-700 hover:text-slate-900"
-                        : "text-slate-200/85 hover:text-white"
-                  }`}
-                  href={item.href}
-                >
-                  {item.label}
-                </a>
-              ))}
+            <nav className="flex items-center gap-2 lg:gap-3">
+              {NAV_LINKS.map((item) => {
+                const isActive = activeNav === item.href.slice(1);
+                return (
+                  <a
+                    key={item.label}
+                    onClick={() => setActiveNav(item.href.slice(1))}
+                    href={item.href}
+                    className={`relative group px-1 py-1.5 text-xs font-semibold transition-all duration-300 sm:text-sm ${
+                      isActive
+                        ? "text-violet-400"
+                        : isLightMode
+                          ? "text-slate-600 hover:text-slate-900"
+                          : "text-slate-400 hover:text-violet-300"
+                    }`}
+                  >
+                    {item.label}
+                    {/* Active Underline */}
+                    <span 
+                      className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300 ${
+                        isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-50"
+                      }`} 
+                    />
+                  </a>
+                );
+              })}
             </nav>
 
             <button

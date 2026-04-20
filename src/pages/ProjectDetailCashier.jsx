@@ -127,7 +127,7 @@ function SectionHeader({ label, title }) {
 }
 
 /* ═══════════════════════════ MAIN PAGE ═══════════════════════════ */
-export default function ProjectDetailWebDev() {
+export default function ProjectDetailCashier() {
   const navigate = useNavigate();
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -146,7 +146,7 @@ export default function ProjectDetailWebDev() {
         {/* ── Back Button ── */}
         <button
           type="button"
-          onClick={() => navigate("/portfolio")}
+          onClick={() => navigate("/refinakusuma#project")}
           className="group mb-10 inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 backdrop-blur-md transition-all duration-300 hover:-translate-x-0.5 hover:border-emerald-400/30 hover:text-white"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" viewBox="0 0 20 20" fill="currentColor">
@@ -378,7 +378,7 @@ export default function ProjectDetailWebDev() {
         <FadeUp delay={80} className="mt-10 flex items-center justify-between">
           <button
             type="button"
-            onClick={() => navigate("/portfolio")}
+            onClick={() => navigate("/refinakusuma#project")}
             className="group inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-slate-300 backdrop-blur-md transition-all duration-300 hover:-translate-x-0.5 hover:border-emerald-400/30 hover:text-white"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" viewBox="0 0 20 20" fill="currentColor">
