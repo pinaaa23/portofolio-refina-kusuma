@@ -17,9 +17,25 @@ export default function PortfolioPage() {
       .map((id) => document.getElementById(id))
       .filter(Boolean);
 
-    const handleTopState = () => {
-      if (window.scrollY < 100) {
+    const focusSectionFromViewport = () => {
+      if (window.scrollY < 80) {
         setActiveNav("home");
+        return;
+      }
+
+      const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 120;
+      if (nearBottom) {
+        setActiveNav("contact");
+        return;
+      }
+
+      const focusLine = window.innerHeight * 0.42;
+      const nearest = trackedElements
+        .map((el) => ({ id: el.id, distance: Math.abs(el.getBoundingClientRect().top - focusLine) }))
+        .sort((a, b) => a.distance - b.distance)[0];
+
+      if (nearest) {
+        setActiveNav(nearest.id);
       }
     };
 
@@ -32,22 +48,25 @@ export default function PortfolioPage() {
         if (visible.length > 0) {
           setActiveNav(visible[0].target.id);
         } else {
-          handleTopState();
+          focusSectionFromViewport();
         }
       },
       {
         root: null,
-        rootMargin: "-25% 0px -25% 0px",
-        threshold: [0.1, 0.4, 0.7],
+        rootMargin: "-35% 0px -35% 0px",
+        threshold: [0, 0.15, 0.35, 0.6],
       }
     );
 
     trackedElements.forEach((el) => observer.observe(el));
-    window.addEventListener("scroll", handleTopState, { passive: true });
+    window.addEventListener("scroll", focusSectionFromViewport, { passive: true });
+    window.addEventListener("resize", focusSectionFromViewport);
+    focusSectionFromViewport();
 
     return () => {
       observer.disconnect();
-      window.removeEventListener("scroll", handleTopState);
+      window.removeEventListener("scroll", focusSectionFromViewport);
+      window.removeEventListener("resize", focusSectionFromViewport);
     };
   }, []);
 

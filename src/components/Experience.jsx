@@ -1,6 +1,27 @@
 import React, { useState } from 'react';
 
-const SKILLS = ["React", "JavaScript", "Node.js", "Tailwind"];
+const TECH_STACK_GROUPS = [
+  {
+    title: "Frontend Development",
+    summary: "Membangun antarmuka web modern yang responsif, konsisten, dan mudah dipelihara.",
+    items: ["React", "JavaScript (ES6+)", "Tailwind CSS", "Vite", "Responsive Design"],
+  },
+  {
+    title: "Backend & Data",
+    summary: "Mengelola logika aplikasi, API, dan struktur data untuk kebutuhan proyek web.",
+    items: ["Node.js", "REST API Integration", "JSON Data Handling", "MySQL (Basic)", "Firebase (Basic)"],
+  },
+  {
+    title: "UI/UX & Design",
+    summary: "Merancang pengalaman pengguna yang jelas dengan pendekatan design-to-development.",
+    items: ["Figma", "Wireframing", "Design System Thinking", "User Flow", "Prototyping"],
+  },
+  {
+    title: "Tools & Workflow",
+    summary: "Menerapkan alur kerja kolaboratif untuk menjaga kualitas dan efisiensi pengembangan.",
+    items: ["Git & GitHub", "VS Code", "NPM", "Deployment Basics", "Team Collaboration"],
+  },
+];
 
 const EXPERIENCE_ITEMS = [
   {
@@ -10,7 +31,7 @@ const EXPERIENCE_ITEMS = [
     certificate: {
       label: "Practicum Assistant Certificate",
       detail: "Klik untuk melihat sertifikat yang diperoleh pada kegiatan Advanced Algorithm and Programming Practicum (2024).",
-      image: "/certificates/gallery/experience/SKA ASDOS.jpg",
+      image: "/gallery/experience/SKA ASDOS.jpg",
       alt: "Practicum Assistant Certificate",
     },
     points: [
@@ -24,7 +45,7 @@ const EXPERIENCE_ITEMS = [
     certificate: {
       label: "Secretary Certificate",
       detail: "Klik untuk melihat sertifikat yang terkait dengan administrasi organisasi dan kegiatan internal.",
-      image: "/certificates/gallery/experience/SKA IK.jpg",
+      image: "/gallery/experience/SKA IK.jpg",
       alt: "Secretary Certificate",
     },
     points: [
@@ -209,14 +230,30 @@ export default function Experience() {
               <div className="mt-2 h-1 w-10 rounded-full bg-violet-500" />
             </div>
 
-            <div className="flex flex-wrap gap-2.5">
-              {SKILLS.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-xs font-medium text-slate-200/90"
+            <p className="mb-5 max-w-3xl text-sm leading-relaxed text-slate-300/90">
+              Teknologi yang saya gunakan berfokus pada pengembangan web modern, dari perancangan UI hingga implementasi aplikasi
+              yang responsif, terstruktur, dan siap dikembangkan lebih lanjut.
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {TECH_STACK_GROUPS.map((group) => (
+                <article
+                  key={group.title}
+                  className="rounded-2xl border border-white/10 bg-gradient-to-r from-slate-900/75 via-slate-900/70 to-indigo-900/20 p-4 backdrop-blur-xl"
                 >
-                  {skill}
-                </span>
+                  <h3 className="text-sm font-bold uppercase tracking-wide text-white">{group.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-300/85">{group.summary}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/12 bg-white/8 px-3 py-1.5 text-[11px] font-medium text-slate-100/90"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </article>
               ))}
             </div>
           </div>

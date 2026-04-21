@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+
+const CONTACT_EMAIL = "refinakusuma.id17@gmail.com";
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const CONTACT_INFO = [
   {
@@ -35,26 +41,75 @@ const CONTACT_INFO = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/refina-kusuma-172a50395/", icon: "Ln" },
-  { label: "GitHub", href: "https://github.com/pinaaa23", icon: "gh" },
-  { label: "Instagram", href: "https://www.instagram.com/refinaka_", icon: "ig" },
+  { 
+    label: "LinkedIn", 
+    href: "https://www.linkedin.com/in/refina-kusuma-172a50395/", 
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+      </svg>
+    )
+  },
+  { 
+    label: "GitHub", 
+    href: "https://github.com/pinaaa23", 
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.744.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+    )
+  },
+  { 
+    label: "Instagram", 
+    href: "https://www.instagram.com/refinaka_", 
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.805.249 2.227.412.558.216.957.475 1.378.896.421.421.68.82.896 1.378.163.422.358 1.057.412 2.227.059 1.266.071 1.646.071 4.85s-.012 3.584-.071 4.85c-.054 1.17-.249 1.805-.412 2.227-.216.558-.475.957-.896 1.378-.421.421-.82.68-1.378.896-.422.163-1.057.358-2.227.412-1.266.059-1.646.071-4.85.071s-3.584-.012-4.85-.071c-1.17-.054-1.805-.249-2.227-.412-.558-.216-.957-.475-1.378-.896-.421-.421-.68-.82-.896-1.378-.163-.422-.358-1.057-.412-2.227-.059-1.266-.071-1.646-.071-4.85s.012-3.584.071-4.85c.054-1.17.249-1.805.412-2.227.216-.558.475-.957.896-1.378.421-.421.82-.68 1.378-.896.422-.163 1.057-.358 2.227-.412 1.266-.059 1.646-.071 4.85-.071zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.057-2.148.258-2.911.554-.79.306-1.46.717-2.128 1.385-.668.667-1.078 1.337-1.385 2.128-.296.763-.497 1.634-.554 2.911-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.057 1.277.258 2.148.554 2.911.306.79.717 1.46 1.385 2.128.667.668 1.337 1.078 2.128 1.385.763.296 1.634.497 2.911.554 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.277-.057 2.148-.258 2.911-.554.79-.306 1.46-.717 2.128-1.385.667-.668 1.337-1.078 2.128-1.385.763-.296 1.634-.497 2.911-.554 1.28-.058 1.688-.072 4.947-.072s3.667-.014 4.947-.072c1.277-.057 2.148-.258 2.911-.554.79-.306 1.46-.717 2.128-1.385.667-.668 1.337-1.078 2.128-1.385.763-.296 1.634-.497 2.911-.554 1.28-.058 1.688-.072 4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    )
+  },
 ];
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: "", email: "", website: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
+    setSubmitted(false);
+    setSubmitError("");
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
       setIsSubmitting(false);
+      setSubmitError("Email service belum disiapkan. Tambahkan variabel env EmailJS terlebih dulu.");
+      return;
+    }
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          to_email: CONTACT_EMAIL,
+          name: formState.name,
+          email: formState.email,
+          website: formState.website || "-",
+          message: formState.message,
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY }
+      );
+
       setSubmitted(true);
       setFormState({ name: "", email: "", website: "", message: "" });
       setTimeout(() => setSubmitted(false), 5000);
-    }, 1500);
+    } catch (error) {
+      setSubmitError("Pesan gagal dikirim. Cek konfigurasi EmailJS dan coba lagi.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -164,6 +219,12 @@ export default function Contact() {
                       Thank you! Your message has been received.
                     </p>
                   )}
+
+                  {submitError && (
+                    <p className="text-center text-rose-400 text-xs font-medium animate-fade-in-up">
+                      {submitError}
+                    </p>
+                  )}
                 </form>
               </div>
             </div>
@@ -186,9 +247,11 @@ export default function Contact() {
                   <a
                     key={link.label}
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-slate-400 transition-all hover:border-violet-500/50 hover:bg-violet-500/10 hover:text-white"
                   >
-                    <span className="text-[10px] font-bold uppercase">{link.icon}</span>
+                    {link.icon}
                   </a>
                 ))}
               </div>
@@ -228,8 +291,8 @@ export default function Contact() {
               <ul className="space-y-3 text-xs text-slate-400">
                 <li>
                   <p className="text-white font-medium mb-1">Email:</p>
-                  <a href="mailto:refinakusuma.id17@gmail.com" className="hover:text-violet-400 transition-colors">
-                    refinakusuma.id17@gmail.com
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-violet-400 transition-colors">
+                    {CONTACT_EMAIL}
                   </a>
                 </li>
                 <li>

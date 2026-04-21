@@ -16,7 +16,7 @@ const ABOUT_SERVICES = [
 
 export default function About() {
   return (
-    <section id="about" className="snap-start scroll-mt-14 flex min-h-[calc(100svh-5.5rem)] items-center pt-8 pb-8 sm:pt-10 sm:pb-10 lg:pt-12 lg:pb-10">
+    <section id="about" className="scroll-mt-14 flex min-h-[calc(100svh-5.5rem)] items-center py-8 sm:py-10 lg:py-12">
           <div className="mx-auto w-full max-w-5xl space-y-4 sm:space-y-5 lg:space-y-4">
 
             <div className="grid items-center gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
