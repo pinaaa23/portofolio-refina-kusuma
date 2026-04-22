@@ -149,7 +149,7 @@ export default function Experience() {
                     <p className="text-xs font-semibold text-cyan-300">{item.period}</p>
                     <h3 className="mt-1 text-base font-extrabold uppercase text-white sm:text-lg">{item.title}</h3>
                     <p className="mt-1 text-sm font-medium text-violet-200/85">{item.organization}</p>
-                    <ul className="mt-3 space-y-1.5 text-sm text-slate-300/90">
+                    <ul className="mt-3 space-y-1.5 text-justify text-sm text-slate-300/90">
                       {item.points.map((point) => (
                         <li key={point} className="flex gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-slate-400" />
@@ -178,7 +178,7 @@ export default function Experience() {
                         </button>
 
                         {openCertificate?.label === item.certificate.label ? (
-                          <div className="mt-2 rounded-2xl border border-cyan-300/15 bg-cyan-400/10 px-3 py-2 text-xs leading-relaxed text-slate-200/90 backdrop-blur-md">
+                          <div className="mt-2 rounded-2xl border border-cyan-300/15 bg-cyan-400/10 px-3 py-2 text-justify text-xs leading-relaxed text-slate-200/90 backdrop-blur-md">
                             {item.certificate.detail}
                           </div>
                         ) : null}
@@ -230,7 +230,7 @@ export default function Experience() {
               <div className="mt-2 h-1 w-10 rounded-full bg-violet-500" />
             </div>
 
-            <p className="mb-5 max-w-3xl text-sm leading-relaxed text-slate-300/90">
+            <p className="mb-5 max-w-3xl text-justify text-sm leading-relaxed text-slate-300/90">
               Teknologi yang saya gunakan berfokus pada pengembangan web modern, dari perancangan UI hingga implementasi aplikasi
               yang responsif, terstruktur, dan siap dikembangkan lebih lanjut.
             </p>
@@ -242,7 +242,7 @@ export default function Experience() {
                   className="rounded-2xl border border-white/10 bg-gradient-to-r from-slate-900/75 via-slate-900/70 to-indigo-900/20 p-4 backdrop-blur-xl"
                 >
                   <h3 className="text-sm font-bold uppercase tracking-wide text-white">{group.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-slate-300/85">{group.summary}</p>
+                  <p className="mt-2 text-justify text-xs leading-relaxed text-slate-300/85">{group.summary}</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {group.items.map((item) => (
                       <span
@@ -292,8 +292,8 @@ export default function Experience() {
                 <div className="p-5 sm:p-6 md:p-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">Certificate</p>
                   <h3 className="mt-2 text-2xl font-black text-white">{openCertificate.label}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-300">{openCertificate.detail}</p>
-                  <p className="mt-5 text-xs leading-relaxed text-slate-400">
+                  <p className="mt-3 text-justify text-sm leading-relaxed text-slate-300">{openCertificate.detail}</p>
+                  <p className="mt-5 text-justify text-xs leading-relaxed text-slate-400">
                     File gambar yang dipakai mengikuti path yang kamu isi di data experience. Simpan file sertifikat ke folder
                     public/certificates/ lalu isi properti image dengan nama file-nya.
                   </p>

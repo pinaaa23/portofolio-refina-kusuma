@@ -25,7 +25,7 @@ export default function About() {
                   <span className="text-violet-300">Hello, I'm</span>
                   <span className="mt-1 block text-white">Refina Kusuma Friambudi</span>
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-300/90 sm:text-base">
+                <p className="mt-3 text-justify text-sm leading-relaxed text-slate-300/90 sm:text-base">
                   I am an Informatics student focused on frontend development and UI/UX design. I enjoy creating modern and responsive web interfaces that are visually appealing and easy to use. By combining design and development skills, I aim to build clean, intuitive, and user-friendly digital experiences while continuously improving my abilities.
                 </p>
 
