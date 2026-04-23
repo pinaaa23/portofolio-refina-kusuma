@@ -44,6 +44,19 @@ const PROJECT_ITEMS = [
     accentFrom: "from-emerald-500",
     accentTo: "to-green-400",
   },
+  {
+    filterKey: "web",
+    category: "Web Development",
+    title: "Monitoring Internship System",
+    description:
+      "A comprehensive platform designed to streamline and improve the tracking of student internship progress. It serves as a unified digital space where interns can report daily activities, mentors approve tasks, and lecturers monitor performance efficiently.",
+    tags: ["React", "Tailwind CSS", "Dashboard"],
+    cover: "/gallery/project/WebDev/Monitoring/cover.png",
+    link: "/project/webdev/monitoring",
+    accentFrom: "from-cyan-600",
+    accentTo: "to-blue-500",
+    objectPosition: "object-left-top",
+  },
 ];
 
 function ProjectCard({ project }) {
@@ -73,7 +86,7 @@ function ProjectCard({ project }) {
             <img
               src={project.cover}
               alt={`${project.title} preview`}
-              className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              className={`h-full w-full object-cover ${project.objectPosition || 'object-top'} transition-transform duration-700 group-hover:scale-105`}
               loading="lazy"
               onError={() => setImgError(true)}
             />

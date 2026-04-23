@@ -136,9 +136,9 @@ export default function ProjectDetailCashier() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-[#050816] text-white">
+    <main className="relative min-h-screen bg-[#0a0512] text-white">
       {/* ── BG Layer ── */}
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(16,185,129,0.32),transparent_28%),radial-gradient(circle_at_90%_20%,rgba(34,211,238,0.18),transparent_26%),radial-gradient(circle_at_20%_90%,rgba(37,99,235,0.25),transparent_30%),linear-gradient(135deg,#04060f_0%,#070b1d_45%,#020308_100%)]" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(139,92,246,0.25),transparent_28%),radial-gradient(circle_at_90%_20%,rgba(168,85,247,0.18),transparent_26%),radial-gradient(circle_at_20%_90%,rgba(217,70,239,0.2),transparent_30%),linear-gradient(135deg,#0a0512_0%,#100318_45%,#05020b_100%)]" />
       <div className="pointer-events-none fixed inset-0 opacity-40 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:56px_56px]" />
 
       <div className="relative mx-auto w-full max-w-4xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
