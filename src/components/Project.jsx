@@ -57,6 +57,18 @@ const PROJECT_ITEMS = [
     accentTo: "to-blue-500",
     objectPosition: "object-left-top",
   },
+  {
+    filterKey: "ui-ux",
+    category: "UI/UX Design",
+    title: "KayuNusa",
+    description:
+      "KayuNusa is an elegant e-commerce web platform designed specifically for premium wooden furniture and home decor. The project aims to bring the warmth and craftsmanship of traditional woodworking into a modern digital shopping experience.",
+    tags: ["Web Design", "UI/UX", "E-Commerce"],
+    cover: "/gallery/project/UIUX/KayuNusa/cover.jpeg",
+    link: "/project/uiux/kayunusa",
+    accentFrom: "from-yellow-600",
+    accentTo: "to-amber-500",
+  },
 ];
 
 function ProjectCard({ project }) {

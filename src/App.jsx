@@ -6,6 +6,7 @@ import ProjectDetailDailyDrip from "./pages/ProjectDetailDailyDrip";
 import ProjectDetailCashier from "./pages/ProjectDetailCashier";
 import ProjectDetailParakelana from "./pages/ProjectDetailParakelana";
 import ProjectDetailMonitoring from "./pages/ProjectDetailMonitoring";
+import ProjectDetailKayuNusa from "./pages/ProjectDetailKayuNusa";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/project/webdev/cashier" element={<ProjectDetailCashier />} />
         <Route path="/project/uiux/parakelana" element={<ProjectDetailParakelana />} />
         <Route path="/project/webdev/monitoring" element={<ProjectDetailMonitoring />} />
+        <Route path="/project/uiux/kayunusa" element={<ProjectDetailKayuNusa />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
