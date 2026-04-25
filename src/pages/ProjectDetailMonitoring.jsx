@@ -11,7 +11,7 @@ const PROJECT = {
   role: "Front End Developer",
   platform: "Web Desktop",
   tools: ["React", "Tailwind CSS", "JavaScript"],
-  cover: "/gallery/project/WebDev/Monitoring/cover.png",
+  cover: "/gallery/project/WebDev/Monitoring/cover1.png",
   about:
     "The Monitoring Internship System is a specialized web platform designed to streamline and improve the tracking of student internship progress. It serves as a unified digital space where interns can report their daily activities, mentors can approve tasks, and university lecturers can monitor overall performance. By digitalizing this workflow, the system removes the hassle of physical logbooks and disjointed communication channels.",
   problem:

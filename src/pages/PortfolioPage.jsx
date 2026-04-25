@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Home from "../components/Home";
 import About from "../components/About";
 import Experience from "../components/Experience";
@@ -11,6 +12,22 @@ import Contact from "../components/Contact";
 export default function PortfolioPage() {
   const [isLightMode, setIsLightMode] = useState(false);
   const [activeNav, setActiveNav] = useState("home");
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location]);
+
   useEffect(() => {
     const trackedIds = ["home", "about", "experience", "project", "contact"];
     const trackedElements = trackedIds

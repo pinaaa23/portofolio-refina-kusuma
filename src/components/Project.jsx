@@ -51,7 +51,7 @@ const PROJECT_ITEMS = [
     description:
       "A comprehensive platform designed to streamline and improve the tracking of student internship progress. It serves as a unified digital space where interns can report daily activities, mentors approve tasks, and lecturers monitor performance efficiently.",
     tags: ["React", "Tailwind CSS", "Dashboard"],
-    cover: "/gallery/project/WebDev/Monitoring/cover.png",
+    cover: "/gallery/project/WebDev/Monitoring/cover1.png",
     link: "/project/webdev/monitoring",
     accentFrom: "from-cyan-600",
     accentTo: "to-blue-500",
