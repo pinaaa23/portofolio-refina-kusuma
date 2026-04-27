@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { motion } from "framer-motion";
+import Spline from "@splinetool/react-spline";
 
 const SKILLS = ["React", "JavaScript", "HTML/CSS", "Tailwind", "Node.js", "Figma"];
 
@@ -37,135 +38,118 @@ const SOCIALS = [
 
 export default function Home() {
   return (
-    <section id="home" className="relative snap-start scroll-mt-14 flex min-h-screen items-center justify-center overflow-hidden bg-[#E8E4D9] text-[#2c2b28] selection:bg-[#E780A8]/30">
+    <section id="home" className="relative snap-start scroll-mt-14 flex h-screen w-full items-center justify-center overflow-hidden bg-[#F5EFE6] text-[#2c2b28] selection:bg-[#E780A8]/30">
+      
+      {/* ─── NOISE OVERLAY (Editorial Texture) ─── */}
+      <div 
+        className="pointer-events-none absolute inset-0 opacity-[0.15] mix-blend-multiply z-0" 
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+      />
       
       {/* 
         Container 
-        - Defines the max width and min height
+        - Removed max-width and excessive py-20
+        - Full width and height guarantees no overflow scroll
       */}
-      <div className="relative w-full h-full max-w-7xl px-4 py-20 flex flex-col items-center justify-center min-h-[650px] lg:min-h-[850px]">
+      <div className="relative w-full h-full px-4 flex flex-col items-center justify-center">
 
-        {/* ─── HANDWRITTEN ANNOTATIONS ─── */}
-        <motion.div 
-           initial={{ opacity: 0, x: -20, rotate: -6 }}
-           animate={{ opacity: 1, x: 0, rotate: -6 }}
-           transition={{ duration: 0.8, delay: 0.2 }}
-           className="absolute top-16 left-6 sm:top-24 sm:left-12 lg:left-32 font-['Caveat',cursive] text-3xl sm:text-4xl lg:text-5xl text-[#2c2b28] z-20 whitespace-nowrap drop-shadow-sm"
+        {/* ─── STORYTELLING TEXT (Handwritten) ─── */}
+        <motion.p 
+          initial={{ opacity: 0, x: -40, rotate: -2 }}
+          animate={{ opacity: 1, x: 0, rotate: -2 }}
+          transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
+          className="absolute top-[8%] left-[6%] text-sm md:text-base text-black/80 font-['IndieFlower',cursive] z-20"
         >
-          Hi. Since you're new here,
-        </motion.div>
+          Hi, since you're here...
+        </motion.p>
 
-        <motion.div 
-           initial={{ opacity: 0, x: 20, rotate: 4 }}
-           animate={{ opacity: 1, x: 0, rotate: 4 }}
-           transition={{ duration: 0.8, delay: 0.4 }}
-           className="absolute top-28 right-6 sm:top-20 sm:right-12 lg:right-32 font-['Caveat',cursive] text-3xl sm:text-4xl lg:text-5xl text-[#2c2b28] z-20 whitespace-nowrap drop-shadow-sm"
+        <motion.p 
+          initial={{ opacity: 0, x: -40, rotate: -2 }}
+          animate={{ opacity: 1, x: 0, rotate: -2 }}
+          transition={{ duration: 1, delay: 2, ease: "easeOut" }}
+          className="absolute top-[18%] left-[18%] sm:left-[20%] lg:left-[22%] text-xs md:text-sm text-black/80 font-['IndieFlower',cursive] z-20"
         >
-          let me be ya tour guide
-        </motion.div>
+          let me guide you through my work
+        </motion.p>
 
-        {/* ─── MASSIVE CENTER TYPOGRAPHY ─── */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-0 pointer-events-none select-none overflow-hidden mix-blend-multiply">
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+        {/* ─── BACKGROUND TYPOGRAPHY (Creative) ─── */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden flex flex-col items-center justify-center">
+          <motion.h1
+            initial={{ scale: 0.95, opacity: 0, rotate: -4 }}
+            animate={{ scale: 1, opacity: 0.75, rotate: -4 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="flex flex-col items-center -space-y-6 sm:-space-y-12 lg:-space-y-24"
+            className="font-['Habanero',cursive] text-[24vw] sm:text-[20vw] leading-[0.8] text-[#E780A8] whitespace-nowrap -translate-y-20 sm:-translate-y-32"
+            style={{ WebkitTextStroke: '0.5px rgba(231,128,168,0.75)', textShadow: '4px 6px 15px rgba(0,0,0,0.15)' }}
           >
-            <h1 className="font-['Lilita_One',cursive] text-[34vw] sm:text-[24vw] lg:text-[18vw] leading-[0.8] text-[#E780A8] -ml-8 sm:-ml-20 lg:-ml-32 tracking-[-0.04em] mix-blend-multiply">
-              REFINA
-            </h1>
-            <h1 className="font-['Lilita_One',cursive] text-[34vw] sm:text-[24vw] lg:text-[18vw] leading-[0.8] text-[#E780A8] ml-8 sm:ml-20 lg:ml-32 tracking-[-0.04em] mix-blend-multiply">
-              KUSUMA
-            </h1>
-          </motion.div>
+            Creative
+          </motion.h1>
         </div>
 
-        {/* ─── PHOTO PLACEHOLDER ─── */}
-        {/* Replace the content of this div with your photo once ready */}
+        {/* ─── MAIN HERO IMAGE (Editorial Bottom-Right) ─── */}
         <motion.div 
-           initial={{ y: 80, opacity: 0 }}
+           initial={{ y: 200, opacity: 0 }}
            animate={{ y: 0, opacity: 1 }}
-           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-           className="relative z-10 mt-20 sm:mt-8 w-[60vw] max-w-[280px] sm:max-w-[340px] lg:max-w-[420px] aspect-[4/5] sm:aspect-[3/4.5] rounded-t-full rounded-b-3xl overflow-hidden bg-[#D3CEc1]/60 shadow-[0_20px_60px_rgba(0,0,0,0.15)] flex flex-col items-center justify-center backdrop-blur-md group border-[6px] border-white/40"
+           transition={{ duration: 1.2, delay: 0.6, ease: "easeOut" }}
+           className="absolute bottom-0 right-[2%] sm:right-[5%] lg:right-[10%] z-10 pointer-events-none"
+           style={{ bottom: "-10px" }}
         >
-          <div className="text-[#64615a] font-bold mb-3 text-center px-4 mix-blend-multiply">
-             <svg className="w-10 h-10 mx-auto mb-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2-2v12a2 2 0 002 2z"></path>
-             </svg>
-             <span className="block text-xl">Insert Photo Here</span>
-          </div>
-          <span className="text-[#84817a] text-[11px] sm:text-xs text-center px-6 leading-relaxed mix-blend-multiply">
-            Delete this placeholder content and use an {"<img>"} tag with a transparent background.
-          </span>
-        </motion.div>
-
-        {/* ─── SKILLS BLOCK (Scrapbook Tape Style) ─── */}
-        <motion.div 
-          initial={{ opacity: 0, rotate: -3 }}
-          animate={{ opacity: 1, rotate: -3 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="absolute z-20 top-[60%] sm:top-1/2 left-4 sm:left-12 lg:left-32 -translate-y-1/2 w-[110px] sm:w-[150px] bg-[#f9f8f4]/80 p-3 sm:p-5 rounded-md shadow-sm border border-black/5 backdrop-blur-md"
-        >
-           <p className="font-['Caveat',cursive] text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 border-b border-[#E780A8]/30 pb-1 text-center text-[#E780A8]">Skills</p>
-           <div className="flex flex-col gap-1.5 sm:gap-2">
-             {SKILLS.map((skill) => (
-               <span key={skill} className="text-[10px] sm:text-[13px] font-semibold text-[#4a4944] bg-white/70 px-2 py-0.5 sm:py-1 rounded shadow-sm border border-black/5 text-center">
-                 {skill}
-               </span>
-             ))}
-           </div>
-        </motion.div>
-
-        {/* ─── SOCIALS (Polaroid / Note Style) ─── */}
-        <motion.div 
-          initial={{ opacity: 0, rotate: 4 }}
-          animate={{ opacity: 1, rotate: 4 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="absolute z-20 top-[60%] sm:top-1/2 right-4 sm:right-12 lg:right-32 -translate-y-1/2 w-[85px] sm:w-[110px]"
-        >
-          <div className="flex flex-col gap-3 sm:gap-4">
-             {SOCIALS.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex flex-col items-center justify-center p-2 sm:p-3 bg-white shadow-md rounded-lg sm:rounded-xl hover:-translate-y-1 hover:shadow-xl hover:rotate-2 transition-all duration-300 border border-transparent hover:border-[#E780A8]/40"
-                >
-                  <span className="text-[#2c2b28] group-hover:text-[#E780A8] transition-colors duration-300">
-                     {social.icon}
-                  </span>
-                  <span className="mt-1 sm:mt-1.5 font-['Caveat',cursive] text-sm sm:text-lg font-bold text-[#4a4944] group-hover:text-[#E780A8] transition-colors duration-300">
-                    {social.label}
-                  </span>
-                </a>
-             ))}
+          <div className="relative w-[240px] sm:w-[320px] lg:w-[380px]">
+             {/* ─── FOTO UTAMA ─── */}
+             <img 
+                src="/gallery/fotoku_home.png" 
+                alt="Refina Kusuma" 
+                className="w-full h-auto object-contain grayscale brightness-105 contrast-110 pointer-events-none" 
+             />
           </div>
         </motion.div>
 
-        {/* ─── FOOTER INFO ─── */}
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-6 sm:bottom-10 left-6 sm:left-12 lg:left-32 z-20"
-        >
-          <p className="text-[9px] sm:text-xs font-bold text-[#4a4944] tracking-[0.15em] sm:tracking-[0.25em] uppercase">
-            Frontend Developer / UI.UX
-          </p>
-        </motion.div>
+        {/* ─── FOREGROUND TYPOGRAPHY (Work) ─── */}
+        <div className="absolute inset-0 z-20 pointer-events-none select-none overflow-hidden flex flex-col items-center justify-center">
+          <motion.h1
+            initial={{ scale: 0.95, opacity: 0, rotate: -4 }}
+            animate={{ scale: 1, opacity: 0.75, rotate: -4 }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            className="font-['Habanero',cursive] text-[22vw] sm:text-[18vw] leading-[0.8] text-[#E780A8] whitespace-nowrap ml-16 sm:ml-32 translate-y-24 sm:translate-y-40"
+            style={{ WebkitTextStroke: '1.5px rgba(231,128,168,0.75)', textShadow: '4px 6px 15px rgba(0,0,0,0.15)' }}
+          >
+            Work
+          </motion.h1>
+        </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.1 }}
-          className="absolute bottom-6 sm:bottom-10 right-6 sm:right-12 lg:right-32 z-20"
-        >
-          <p className="font-['Caveat',cursive] text-lg sm:text-2xl font-bold text-[#4a4944]">
-            By Refina Kusuma
-          </p>
-        </motion.div>
+        {/* ─── SCATTERED FLOATING SOCIAL ICONS ─── */}
+        <div className="absolute inset-0 z-30 pointer-events-none">
+          {SOCIALS.map((social, i) => {
+            const positions = [
+              "top-[68%] left-[2%] sm:left-[4%] lg:left-[6%]", // GitHub (Lower Left)
+              "top-[80%] left-[30%] sm:left-[25%] lg:left-[18%]", // LinkedIn (Adjusted slightly left)
+              "top-[58%] left-[10%] sm:left-[14%] lg:left-[16%]", // Instagram (Lowered and staggered)
+            ];
+            return (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className={`absolute ${positions[i % positions.length]} text-[#E780A8] opacity-80 hover:opacity-100 transition-all duration-300 pointer-events-auto`}
+                initial={{ y: -500, opacity: 0 }}
+                animate={{ y: 0, opacity: 0.8 }}
+                transition={{
+                  duration: 4, // Even slower fall
+                  delay: 2.8 + i * 0.6, // Starts after all text is in
+                  ease: [0.22, 1, 0.36, 1], 
+                }}
+                whileHover={{ scale: 1.15, rotate: i % 2 === 0 ? 8 : -8 }}
+              >
+                {/* ─── CIRCULAR BACKGROUND ─── */}
+                <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center border border-[#E780A8]/30 rounded-full bg-[#E780A8]/5 hover:bg-[#E780A8]/10 hover:border-[#E780A8]/60 transition-all duration-300 shadow-sm backdrop-blur-[2px]">
+                  {social.icon}
+                </div>
+              </motion.a>
+            );
+          })}
+        </div>
+
+
 
       </div>
     </section>

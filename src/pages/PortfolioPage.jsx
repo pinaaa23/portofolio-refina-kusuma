@@ -116,9 +116,11 @@ export default function PortfolioPage() {
         setActiveNav={setActiveNav} 
       />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 pb-3 pt-12 sm:px-6 sm:pb-4 sm:pt-14 lg:px-10 lg:pb-5 lg:pt-14">
-
+      <div className="w-full">
         <Home />
+      </div>
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 pb-3 pt-12 sm:px-6 sm:pb-4 sm:pt-14 lg:px-10 lg:pb-5 lg:pt-14">
         <About />
         <Experience />
         <Project />
