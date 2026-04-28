@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Home from "../components/Home";
 import About from "../components/About";
+import Skills from "../components/Skills";
 import Experience from "../components/Experience";
 import Project from "../components/Project";
 import Sidebar from "../components/Sidebar";
-
 import Contact from "../components/Contact";
 
-
 export default function PortfolioPage() {
-  const [isLightMode, setIsLightMode] = useState(false);
   const [activeNav, setActiveNav] = useState("home");
   const location = useLocation();
 
@@ -89,29 +87,17 @@ export default function PortfolioPage() {
 
   return (
     <main
-      data-theme={isLightMode ? "light" : "dark"}
-      className={`relative min-h-screen snap-y snap-proximity scroll-smooth [scroll-padding-top:3.5rem] transition-colors duration-500 ${
-        isLightMode ? "bg-slate-100 text-slate-900" : "bg-[#050816] text-white"
-      }`}
+      data-theme="light"
+      className="relative min-h-screen snap-y snap-proximity scroll-smooth [scroll-padding-top:3.5rem] transition-colors duration-500 bg-slate-100 text-slate-900"
     >
       <div
-        className={`pointer-events-none fixed inset-0 transition-opacity duration-500 ${
-          isLightMode
-            ? "bg-[radial-gradient(circle_at_10%_20%,rgba(125,211,252,0.4),transparent_30%),radial-gradient(circle_at_90%_20%,rgba(103,232,249,0.24),transparent_30%),radial-gradient(circle_at_20%_90%,rgba(167,243,208,0.26),transparent_34%),linear-gradient(135deg,#f7fbff_0%,#ecf6ff_45%,#e3f2ff_100%)]"
-            : "bg-[radial-gradient(circle_at_10%_20%,rgba(124,58,237,0.38),transparent_28%),radial-gradient(circle_at_90%_20%,rgba(34,211,238,0.18),transparent_26%),radial-gradient(circle_at_20%_90%,rgba(37,99,235,0.3),transparent_30%),linear-gradient(135deg,#04060f_0%,#070b1d_45%,#020308_100%)]"
-        }`}
+        className="pointer-events-none fixed inset-0 transition-opacity duration-500 bg-[radial-gradient(circle_at_10%_20%,rgba(125,211,252,0.4),transparent_30%),radial-gradient(circle_at_90%_20%,rgba(103,232,249,0.24),transparent_30%),radial-gradient(circle_at_20%_90%,rgba(167,243,208,0.26),transparent_34%),linear-gradient(135deg,#f7fbff_0%,#ecf6ff_45%,#e3f2ff_100%)]"
       />
       <div
-        className={`pointer-events-none fixed inset-0 transition-opacity duration-500 ${
-          isLightMode
-            ? "opacity-25 [background-image:linear-gradient(rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.06)_1px,transparent_1px)] [background-size:56px_56px]"
-            : "opacity-40 [background-image:linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:56px_56px]"
-        }`}
+        className="pointer-events-none fixed inset-0 transition-opacity duration-500 opacity-25 [background-image:linear-gradient(rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.06)_1px,transparent_1px)] [background-size:56px_56px]"
       />
 
       <Sidebar 
-        isLightMode={isLightMode} 
-        setIsLightMode={setIsLightMode} 
         activeNav={activeNav} 
         setActiveNav={setActiveNav} 
       />
@@ -120,8 +106,15 @@ export default function PortfolioPage() {
         <Home />
       </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 pb-3 pt-12 sm:px-6 sm:pb-4 sm:pt-14 lg:px-10 lg:pb-5 lg:pt-14">
+      <div className="w-full">
         <About />
+      </div>
+
+      <div className="w-full">
+        <Skills />
+      </div>
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 pb-3 pt-12 sm:px-6 sm:pb-4 sm:pt-14 lg:px-10 lg:pb-5 lg:pt-14">
         <Experience />
         <Project />
         <Contact />

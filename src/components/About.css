@@ -1,0 +1,84 @@
+/* --- About Me Styles --- */
+
+.scrapbook-bg {
+    background-color: #f9f7f2;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Grain / Noise Overlay */
+.grain-texture {
+    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    /* Alternatif grain yang lebih halus */
+    background-repeat: repeat;
+}
+
+/* Grid Paper Decoration */
+.grid-paper {
+    background-image: linear-gradient(#e5e7eb 1px, transparent 1px),
+                      linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Polaroid Base Styles */
+.polaroid {
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.polaroid img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-bottom: 40px solid transparent; /* Space for caption */
+}
+
+/* Tape Effect */
+.tape-effect {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 60px;
+    height: 25px;
+    background-color: rgba(231, 128, 168, 0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+
+/* Torn Paper Effect (SVG jagged edges) */
+.torn-paper {
+    position: relative;
+    clip-path: polygon(
+        0% 2%, 15% 0%, 30% 2%, 45% 0%, 60% 2%, 75% 0%, 90% 2%, 100% 0%,
+        100% 98%, 85% 100%, 70% 98%, 55% 100%, 40% 98%, 25% 100%, 10% 98%, 0% 100%
+    );
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* Custom Scroll Smoothness */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Handwriting Font Integration */
+.font-handwriting {
+    font-family: 'Indie Flower', cursive;
+}
+
+/* Blur Backdrop for Premium feel */
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Transitions for Parallax */
+.motion-safe {
+    transition: transform 0.1s linear;
+}
+
+@media (max-width: 768px) {
+    .polaroid {
+        transform: rotate(0deg) !important;
+    }
+}
