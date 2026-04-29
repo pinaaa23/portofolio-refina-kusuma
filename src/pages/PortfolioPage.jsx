@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Home from "../components/Home";
 import About from "../components/About";
-import Skills from "../components/Skills";
 import Experience from "../components/Experience";
 import Project from "../components/Project";
 import Sidebar from "../components/Sidebar";
@@ -102,10 +101,6 @@ export default function PortfolioPage() {
 
       <div className="w-full">
         <About />
-      </div>
-
-      <div className="w-full">
-        <Skills />
       </div>
 
       <div className="w-full">

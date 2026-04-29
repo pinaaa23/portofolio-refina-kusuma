@@ -97,3 +97,30 @@ body {
 .animate-fade-in-up {
   animation: fade-in-up 0.4s ease-out forwards;
 }
+
+/* --- Paper Card Effect --- */
+.paper-card {
+  position: relative;
+  background: #F5EDE6;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: rotate(-0.5deg);
+  cursor: pointer;
+}
+
+.paper-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  opacity: 0.15;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+.paper-card:hover {
+  transform: translateY(-15px) scale(1.02) rotate(0deg) !important;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+  z-index: 100 !important;
+}
