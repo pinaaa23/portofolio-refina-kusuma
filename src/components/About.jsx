@@ -2,18 +2,18 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./About.css";
 
-const WHAT_I_LOVE = [
-  "Clean UI & neat code",
-  "Building responsive web experiences",
-  "Learning new things everyday",
-  "Coffee & good playlists",
+const MY_APPROACH = [
+  "Design should feel effortless",
+  "Simplicity is powerful",
+  "Users always come first",
+  "Small details create big impact",
 ];
 
-const FUN_FACTS = [
-  { text: "I love pink (a lot!)", icon: "💖" },
-  { text: "Cat person", icon: "🐾" },
-  { text: "Overthinker", icon: "🧠" },
-  { text: "Always healing with music", icon: "🎵" },
+const DESIGN_MINDSET = [
+  { text: "I focus on clarity and usability  ", icon: "📌" },
+  { text: "I think in systems, not just screens", icon: "📌" },
+  { text: "I value consistency across experiences ", icon: "📌" },
+  { text: "I keep learning and improving every day", icon: "📌" },
 ];
 
 const bioText = "Hi, I'm Refina I love creating interfaces that feel simple, clean, and a little bit delightful. With a passion for UI/UX and frontend development, I enjoy crafting digital experiences that are both beautiful and functional.I believe good design should not only be seen, but also felt."
@@ -175,9 +175,9 @@ export default function About() {
           >
             <div className="polaroid w-36 md:w-48 shadow-xl bg-white p-3 pb-10 border border-gray-100">
               <div className="tape-effect" />
-              <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=400" alt="Flowers" className="w-full grayscale-[20%]" />
-              <div className="absolute bottom-2 left-2 right-2 text-center font-handwriting text-black/40 text-[10px]">
-                Designing with clarity. ♡
+              <img src="/gallery/about/uiux_about.png" />
+              <div className="absolute bottom-2 left-2 right-2 text-left font-handwriting text-black/40 text-[10px]">
+                 UI exploration
               </div>
             </div>
           </motion.div>
@@ -195,9 +195,9 @@ export default function About() {
               <div className="absolute top-[-8px] right-2 w-5 h-5 rounded-full bg-slate-200 shadow-inner flex items-center justify-center">
                  <div className="w-1 h-1 bg-slate-400 rounded-full" />
               </div>
-              <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=400" alt="Coffee" className="w-full grayscale-[20%]" />
+              <img src="/gallery/about/code_about.png" alt="Coffee" className="w-full grayscale-[20%]" />
               <div className="absolute bottom-2 left-2 right-2 text-center font-handwriting text-black/40 text-[10px]">
-                focus
+                Frontend work
               </div>
             </div>
           </motion.div>
@@ -206,7 +206,7 @@ export default function About() {
         {/* ─── RIGHT ZONE: CARDS (z-30) ─── */}
         <div className="flex flex-col gap-10 lg:block lg:w-1/2 h-full lg:absolute lg:top-0 lg:right-0 z-30 pointer-events-none">
           
-          {/* Note: What I Love */}
+          {/* Note:my approach */}
           <motion.div 
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -216,9 +216,9 @@ export default function About() {
           >
             <div className="torn-paper w-48 md:w-60 bg-[#fdfdfd] shadow-lg p-6 relative overflow-hidden">
               <div className="absolute top-[-8px] left-[30%] w-12 h-12 bg-[#e7d9c1] opacity-50 rotate-45 z-0" />
-              <h3 className="font-handwriting text-2xl text-black border-b border-black/10 pb-1 mb-4 relative z-10">What I love</h3>
+              <h3 className="font-handwriting text-2xl text-black border-b border-black/10 pb-1 mb-4 relative z-10">My Approach</h3>
               <ul className="space-y-2.5 relative z-10">
-                {WHAT_I_LOVE.slice(0, 4).map((item, i) => (
+                {MY_APPROACH.slice(0, 4).map((item, i) => (
                   <li key={i} className="flex items-center gap-2 text-xs md:text-sm text-black/80">
                     <span className="text-[#E780A8]">♥</span> {item}
                   </li>
@@ -227,7 +227,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Note: Fun Facts */}
+          {/* Note: Design Mindset */}
           <motion.div 
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -237,9 +237,9 @@ export default function About() {
           >
             <div className="bg-white/90 p-6 shadow-2xl border border-black/5 w-48 md:w-64 relative backdrop-blur-sm">
               <div className="absolute top-[-15px] left-4 w-7 h-14 border-2 border-slate-300 rounded-full opacity-60" />
-              <h3 className="font-handwriting text-2xl text-[#E780A8] mb-3 underline decoration-[#E780A8]/20 underline-offset-4 font-bold">Fun facts</h3>
+              <h3 className="font-handwriting text-2xl text-[#E780A8] mb-3 underline decoration-[#E780A8]/20 underline-offset-4 font-bold">Design Mindset</h3>
               <ul className="space-y-2.5">
-                {FUN_FACTS.map((fact, i) => (
+                {DESIGN_MINDSET.map((fact, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-xs md:text-sm text-black/80 border-b border-dashed border-black/10 pb-2">
                     <span className="mt-0.5">{fact.icon}</span> 
                     <span>{fact.text}</span>

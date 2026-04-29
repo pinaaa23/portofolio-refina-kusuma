@@ -19,11 +19,8 @@ export default function Sidebar({ activeNav, setActiveNav }) {
         delay: 5, // Animate LAST (after typewriter and elements)
         ease: [0.25, 1, 0.5, 1] 
       }}
-      className="fixed top-0 left-0 w-full z-50 px-6 sm:px-12 lg:px-24 py-6 sm:py-8 flex justify-between items-center pointer-events-auto transition-all duration-700 ease-in-out bg-transparent"
+      className="fixed top-0 left-0 w-full z-50 px-6 sm:px-12 lg:px-24 py-6 sm:py-8 flex justify-end items-center pointer-events-auto transition-all duration-700 ease-in-out bg-transparent"
     >
-      <h1 className="font-[inter,sans-serif] font-bold text-lg md:text-xl tracking-widest text-slate-900 uppercase">
-        REFINKSM
-      </h1>
 
       <div className="flex items-center gap-6 lg:gap-10">
         <div className="flex items-center gap-4 lg:gap-8">

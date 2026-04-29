@@ -88,14 +88,8 @@ export default function PortfolioPage() {
   return (
     <main
       data-theme="light"
-      className="relative min-h-screen snap-y snap-proximity scroll-smooth [scroll-padding-top:3.5rem] transition-colors duration-500 bg-slate-100 text-slate-900"
+      className="relative min-h-screen transition-colors duration-500 bg-[#F5EFE6] text-[#2c2b28]"
     >
-      <div
-        className="pointer-events-none fixed inset-0 transition-opacity duration-500 bg-[radial-gradient(circle_at_10%_20%,rgba(125,211,252,0.4),transparent_30%),radial-gradient(circle_at_90%_20%,rgba(103,232,249,0.24),transparent_30%),radial-gradient(circle_at_20%_90%,rgba(167,243,208,0.26),transparent_34%),linear-gradient(135deg,#f7fbff_0%,#ecf6ff_45%,#e3f2ff_100%)]"
-      />
-      <div
-        className="pointer-events-none fixed inset-0 transition-opacity duration-500 opacity-25 [background-image:linear-gradient(rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.06)_1px,transparent_1px)] [background-size:56px_56px]"
-      />
 
       <Sidebar 
         activeNav={activeNav} 
@@ -114,9 +108,15 @@ export default function PortfolioPage() {
         <Skills />
       </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 pb-3 pt-12 sm:px-6 sm:pb-4 sm:pt-14 lg:px-10 lg:pb-5 lg:pt-14">
+      <div className="w-full">
         <Experience />
+      </div>
+
+      <div className="w-full">
         <Project />
+      </div>
+
+      <div className="w-full">
         <Contact />
       </div>
 
