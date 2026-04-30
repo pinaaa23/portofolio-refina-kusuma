@@ -43,10 +43,23 @@ export default function PortfolioPage() {
         return;
       }
 
-      const focusLine = window.innerHeight * 0.42;
+      // Ambil section yang top-nya sudah melewati 30% viewport ke atas
+      // (artinya user sudah masuk ke dalam section tersebut)
+      const focusLine = window.innerHeight * 0.3;
+      const passedSections = trackedElements
+        .filter((el) => el.getBoundingClientRect().top <= focusLine)
+        .sort((a, b) => b.getBoundingClientRect().top - a.getBoundingClientRect().top);
+
+      if (passedSections.length > 0) {
+        setActiveNav(passedSections[0].id);
+        return;
+      }
+
+      // Fallback: section yang paling dekat dari atas
       const nearest = trackedElements
-        .map((el) => ({ id: el.id, distance: Math.abs(el.getBoundingClientRect().top - focusLine) }))
-        .sort((a, b) => a.distance - b.distance)[0];
+        .map((el) => ({ id: el.id, top: el.getBoundingClientRect().top }))
+        .filter((el) => el.top >= 0)
+        .sort((a, b) => a.top - b.top)[0];
 
       if (nearest) {
         setActiveNav(nearest.id);
@@ -55,20 +68,14 @@ export default function PortfolioPage() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visible.length > 0) {
-          setActiveNav(visible[0].target.id);
-        } else {
-          focusSectionFromViewport();
-        }
+        // Gunakan scroll-based logic yang lebih akurat daripada IntersectionObserver
+        // karena IO bisa mis-trigger saat section besar (Experience) overlap dengan section berikutnya
+        focusSectionFromViewport();
       },
       {
         root: null,
-        rootMargin: "-35% 0px -35% 0px",
-        threshold: [0, 0.15, 0.35, 0.6],
+        rootMargin: "-20% 0px -20% 0px",
+        threshold: [0, 0.05, 0.1],
       }
     );
 

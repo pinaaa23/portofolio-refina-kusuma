@@ -220,7 +220,7 @@ export default function Experience() {
                         </motion.button>
                       ) : (
                         <div className={`px-6 py-2 rounded-full border text-[9px] md:text-[10px] font-black tracking-[0.2em] transition-all duration-300 uppercase cursor-default ${item.dark ? "border-white/20 text-white/30" : "border-[#2e1065]/10 text-[#2e1065]/20"}`}>
-                          In Progress
+                          View
                         </div>
                       )}
                     </div>

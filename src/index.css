@@ -41,6 +41,8 @@ body {
 
 * {
   box-sizing: border-box;
+  /* Hide default cursor — replaced by CustomCursor.jsx */
+  cursor: none !important;
 }
 
 /* --- Shared Design System --- */

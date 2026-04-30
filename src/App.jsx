@@ -7,10 +7,13 @@ import ProjectDetailCashier from "./pages/ProjectDetailCashier";
 import ProjectDetailParakelana from "./pages/ProjectDetailParakelana";
 import ProjectDetailMonitoring from "./pages/ProjectDetailMonitoring";
 import ProjectDetailKayuNusa from "./pages/ProjectDetailKayuNusa";
+import CustomCursor from "./components/CustomCursor";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <>
+      <CustomCursor />
+      <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/" element={<LandingPage />} />
@@ -22,6 +25,7 @@ export default function App() {
         <Route path="/project/uiux/kayunusa" element={<ProjectDetailKayuNusa />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+    </>
   );
 }
