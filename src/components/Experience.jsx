@@ -29,7 +29,7 @@ const EXPERIENCE_ITEMS = [
     period: "2023 - 2024",
     title: "Assistant Lecturer",
     organization: "Advanced Algorithm and Programming Practicum (2024)",
-    color: "#f3e8ff", // Soft purple paper
+    color: "#ffffff", // Pure white for clean contrast
     certificate: {
       label: "Practicum Assistant Certificate",
       detail: "Klik untuk melihat sertifikat yang diperoleh pada kegiatan Advanced Algorithm and Programming Practicum (2024).",
@@ -44,7 +44,7 @@ const EXPERIENCE_ITEMS = [
     period: "2023 - 2024",
     title: "Secretary",
     organization: "Informatics & Computer Student Activity Unit",
-    color: "#d8b4fe", // Medium lilac paper
+    color: "#f3e8ff", // Soft Lilac (Purple-100)
     certificate: {
       label: "Secretary Certificate",
       detail: "Klik untuk melihat sertifikat yang terkait dengan administrasi organisasi dan kegiatan internal.",
@@ -56,11 +56,11 @@ const EXPERIENCE_ITEMS = [
     ],
   },
   {
-    period: "2024 - Until Now",
+    period: "2025 - Until Now",
     title: "Web Developer Intern",
     organization: "Internship Team Project",
-    color: "#a855f7", // Deep purple paper
-    dark: true,
+    color: "#e9d5ff", // Muted Purple (Purple-200)
+    dark: false,
     points: [
       "Developed an internship monitoring system to track student activities and progress in real-time, while building responsive interfaces with React.js, optimizing performance through reusable components, and designing user-friendly dashboards for efficient monitoring and reporting.",
     ],
@@ -118,17 +118,21 @@ export default function Experience() {
     },
   };
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: cubicBezier } }
+  };
+
+
   return (
-    <section id="experience" className="bg-[#e9d5ff] min-h-screen py-32 px-6 md:px-16 relative overflow-hidden">
-      {/* ─── SMOOTH SECTION TRANSITION: About Me → Experience ─── */}
-      {/* Fades from About Me cream (#F5EFE6) into the lilac background */}
-      <div 
-        className="absolute top-0 left-0 right-0 pointer-events-none z-0"
-        style={{
-          height: "280px",
-          background: "linear-gradient(to bottom, #F5EFE6 0%, #efe1ff 40%, transparent 100%)"
-        }}
-      />
+    <section 
+      id="experience" 
+      className="min-h-screen py-32 px-6 md:px-16 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(180deg, #F5EFE6 0%, #fdfaff 25%, #f3e8ff 60%, #e9d5ff 100%)",
+      }}
+    >
 
       {/* ─── DECORATIVE GRAIN ─── */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] grain-texture" />
@@ -213,7 +217,7 @@ export default function Experience() {
                         <motion.button
                           whileHover={{ scale: 1.05, backgroundColor: item.dark ? "#ffffff" : "#2e1065", color: item.dark ? "#2e1065" : "#fdfaff" }}
                           whileTap={{ scale: 0.95 }}
-                          onClick={() => setSelectedCert(item.certificate)}
+                          onClick={() => setSelectedCert(item)}
                           className={`px-6 py-2 rounded-full border text-[9px] md:text-[10px] font-black tracking-[0.2em] transition-all duration-300 uppercase bg-transparent ${item.dark ? "border-white/60 text-white" : "border-[#2e1065]/40 text-[#2e1065]"}`}
                         >
                           View
@@ -263,7 +267,7 @@ export default function Experience() {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.9, ease: cubicBezier, delay: 0.4 + index * 0.1 }}
-                          className={`text-sm md:text-lg leading-relaxed font-light max-w-md ${item.dark ? "text-white/80" : "text-[#2e1065]/60"}`}
+                          className={`text-sm md:text-lg leading-relaxed font-light max-w-md text-justify ${item.dark ? "text-white/80" : "text-[#2e1065]/60"}`}
                         >
                           {item.points.map((point, pIndex) => (
                             <p key={pIndex}>{point}</p>
@@ -350,16 +354,18 @@ export default function Experience() {
                   <motion.div 
                     key={index} 
                     variants={itemVariants} 
-                    whileHover={{ y: -5 }}
-                    className="bg-white p-10 rounded-3xl shadow-[0_4px_20px_rgba(44,43,40,0.03)] hover:shadow-[0_15px_30px_rgba(44,43,40,0.05)] transition-all duration-500 border border-[#2e1065]/5"
+                    className="group relative bg-white/60 backdrop-blur-xl p-10 md:p-12 rounded-[32px] border border-white/50 shadow-[0_10px_40px_rgba(46,16,101,0.05)] hover:shadow-[0_20px_60px_rgba(46,16,101,0.1)] hover:-translate-y-1 transition-all duration-500"
                   >
-                    <h3 className="font-serif font-black text-2xl text-[#2e1065] mb-3">{group.title}</h3>
-                    <p className="text-sm md:text-base text-[#2e1065]/50 mb-8 leading-relaxed font-light">{group.summary}</p>
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[#a855f7]/80">0{index + 1}</span>
+                      <h3 className="font-serif font-black text-2xl md:text-3xl text-[#2e1065]">{group.title}</h3>
+                    </div>
+                    <p className="text-sm md:text-base text-[#2e1065]/60 mb-8 leading-relaxed font-light text-justify">{group.summary}</p>
+                    <div className="flex flex-wrap gap-2.5">
                       {group.items.map((tech, tIndex) => (
                         <span 
                           key={tIndex}
-                          className="px-4 py-2 bg-[#fdfaff]/50 text-[#2e1065] text-[10px] font-black uppercase tracking-widest rounded-lg border border-[#2e1065]/5 hover:bg-[#7e22ce] hover:text-white hover:border-[#7e22ce] transition-all duration-300 cursor-default"
+                          className="px-5 py-2.5 bg-[#2e1065]/5 text-[#2e1065] text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-[#2e1065] hover:text-white transition-colors duration-300 cursor-default"
                         >
                           {tech}
                         </span>
@@ -382,51 +388,65 @@ export default function Experience() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-12"
           >
-            <div className="absolute inset-0 bg-[#2e1065]/80 backdrop-blur-md" onClick={() => setSelectedCert(null)} />
+            {/* Blurred Background Overlay */}
+            <div 
+              className="absolute inset-0 bg-[#fdfaff]/80 md:bg-[#fdfaff]/60 backdrop-blur-xl" 
+              onClick={() => setSelectedCert(null)} 
+            />
             
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="bg-[#fdfaff] w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl relative z-10 flex flex-col md:grid md:grid-cols-[1.2fr_0.8fr]"
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, ease: cubicBezier }}
+              className="relative z-10 w-full max-w-7xl h-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-20 p-4 md:p-8"
             >
               {/* Close Button */}
               <button 
                 onClick={() => setSelectedCert(null)}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center text-[#2e1065] z-20 transition-colors"
+                className="absolute top-2 right-2 md:top-8 md:right-8 w-12 h-12 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center text-[#2e1065] z-50 transition-all duration-300 backdrop-blur-md shadow-sm border border-white/30"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
 
-              {/* Image Side */}
-              <div className="bg-[#2e1065]/5 p-6 md:p-10 flex items-center justify-center">
-                <div className="bg-white p-2 md:p-4 shadow-xl rotate-[-1deg]">
-                  <img 
-                    src={selectedCert.image} 
-                    alt={selectedCert.label} 
-                    className="w-full h-auto max-h-[70vh] object-contain"
-                  />
-                </div>
+              {/* Main Certificate Image (Left: 60%) */}
+              <div className="relative w-full md:w-[60%] h-[40vh] md:h-full flex items-center justify-center lg:justify-end">
+                <motion.img 
+                  src={selectedCert.certificate.image} 
+                  alt={selectedCert.certificate.label} 
+                  className="w-auto h-auto max-w-full max-h-[85vh] object-contain shadow-[0_30px_80px_rgba(46,16,101,0.35)] rounded-md"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.5, ease: cubicBezier }}
+                />
               </div>
 
-              {/* Text Side */}
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <span className="text-[10px] font-bold tracking-widest text-[#7e22ce] uppercase mb-2">CERTIFICATE DETAILS</span>
-                <h3 className="text-2xl md:text-3xl font-serif font-black text-[#2e1065] mb-6 leading-tight">
-                  {selectedCert.label}
-                </h3>
-                <div className="space-y-4">
-                  <p className="text-sm md:text-base leading-relaxed text-[#2e1065]/80">
-                    {selectedCert.detail}
-                  </p>
-                </div>
-                <div className="mt-auto pt-10">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-[1px] bg-[#7e22ce]/40" />
-                    <span className="font-handwriting text-xl text-[#7e22ce]">Refina Kusuma</span>
+              {/* Metadata Panel (Right: 40%) */}
+              <div className="w-full md:w-[40%] flex flex-col justify-center items-center md:items-start max-w-md">
+                <div className="w-full bg-white/70 backdrop-blur-xl p-8 md:p-12 rounded-[32px] border border-white/40 shadow-[0_10px_30px_rgba(111,76,255,0.08)] flex flex-col gap-8">
+                  {/* ROLE */}
+                  <div className="flex flex-col gap-2">
+                    <p className="text-[9px] font-black tracking-[0.25em] uppercase text-[#a855f7]/80">Role</p>
+                    <p className="text-xl md:text-2xl font-serif font-bold text-[#2e1065] leading-snug">{selectedCert.title}</p>
+                  </div>
+                  
+                  {/* YEAR */}
+                  <div className="flex flex-col gap-2">
+                    <p className="text-[9px] font-black tracking-[0.25em] uppercase text-[#a855f7]/80">Year</p>
+                    <p className="text-xl md:text-2xl font-serif font-bold text-[#2e1065] leading-snug">{selectedCert.period}</p>
+                  </div>
+
+                  {/* INSTITUTION */}
+                  <div className="flex flex-col gap-2">
+                    <p className="text-[9px] font-black tracking-[0.25em] uppercase text-[#a855f7]/80">Institution</p>
+                    <p className="text-[15px] md:text-base font-medium text-[#2e1065]/90 leading-snug">{selectedCert.organization}</p>
+                  </div>
+
+                  {/* CREDENTIAL */}
+                  <div className="flex flex-col gap-2">
+                    <p className="text-[9px] font-black tracking-[0.25em] uppercase text-[#a855f7]/80">Credential</p>
+                    <p className="text-[15px] md:text-base font-medium text-[#2e1065]/90 leading-snug">{selectedCert.certificate.label}</p>
                   </div>
                 </div>
               </div>
