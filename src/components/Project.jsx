@@ -142,8 +142,8 @@ function ProjectCursor({ active }) {
 // ─── DEPTH STACK ───────────────────────────────────────────────────────────────
 // Renders 2 ghost cards behind the active frame — pure CSS transform, no JS math
 const GHOST_CONFIG = [
-  { scale: 0.88, opacity: 0.3, x: 52, y: -18, z: 1 },
-  { scale: 0.93, opacity: 0.52, x: 26, y: -9,  z: 2 },
+  { scale: 0.88, opacity: 0.3, x: 60, y: -18, z: 1 },
+  { scale: 0.94, opacity: 0.52, x: 30, y: -9,  z: 2 },
 ];
 
 function DepthStack({ current }) {
@@ -163,7 +163,7 @@ function DepthStack({ current }) {
               y:       cfg.y,
             }}
             transition={{ duration: 0.65, ease: EASE }}
-            className="absolute inset-0 rounded-3xl overflow-hidden border border-white/20"
+            className="absolute inset-y-0 left-0 right-8 md:right-16 rounded-3xl overflow-hidden border border-white/20"
             style={{
               zIndex: cfg.z,
               boxShadow: "0 12px 40px rgba(46,16,101,0.10)",
@@ -291,7 +291,7 @@ export default function Project() {
       />
 
       {/* ── Page content ── */}
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col gap-10">
+      <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-10">
 
         {/* ── Section header ── */}
         <header>
@@ -335,7 +335,7 @@ export default function Project() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="absolute inset-0 rounded-3xl overflow-hidden"
+                className="absolute inset-y-0 left-0 right-8 md:right-16 rounded-3xl overflow-hidden"
                 style={{
                   zIndex: 10,
                   willChange: "transform, opacity",
@@ -488,83 +488,27 @@ export default function Project() {
               </motion.div>
             </AnimatePresence>
 
-            {/* ── NUMBER NAVIGATION ── */}
-            <div className="flex flex-col gap-3">
-              {/* Number circles */}
-              <div className="flex items-center gap-2">
-                {PROJECT_ITEMS.map((p, i) => {
-                  const isActive = i === current;
-                  return (
-                    <motion.button
-                      key={p.title}
-                      onClick={() => goTo(i)}
-                      aria-label={`Project ${i + 1}: ${p.title}`}
-                      whileHover={{ scale: isActive ? 1 : 1.1 }}
-                      whileTap={{ scale: 0.92 }}
-                      transition={{ duration: 0.14 }}
-                      className="flex flex-col items-center gap-1 focus:outline-none"
-                    >
-                      {/* Circle */}
-                      <motion.div
-                        animate={{
-                          backgroundColor: isActive ? "#7e22ce" : "transparent",
-                          borderColor: isActive ? "#7e22ce" : "rgba(46,16,101,0.18)",
-                          scale: isActive ? 1.15 : 1,
-                          boxShadow: isActive
-                            ? "0 0 14px rgba(126,34,206,0.35)"
-                            : "none",
-                        }}
-                        transition={{ duration: 0.3, ease: EASE }}
-                        className="w-9 h-9 rounded-full border-2 flex items-center justify-center"
-                        style={{ willChange: "transform" }}
-                      >
-                        <motion.span
-                          animate={{ color: isActive ? "#ffffff" : "rgba(46,16,101,0.35)" }}
-                          transition={{ duration: 0.22 }}
-                          className="text-[10px] font-black tracking-wide"
-                        >
-                          {String(i + 1).padStart(2, "0")}
-                        </motion.span>
-                      </motion.div>
-
-                      {/* Underline */}
-                      <AnimatePresence>
-                        {isActive ? (
-                          <motion.div
-                            layoutId="nav-bar"
-                            className="h-[2px] rounded-full bg-[#7e22ce]"
-                            style={{ width: 18 }}
-                            transition={{ duration: 0.3, ease: EASE }}
-                          />
-                        ) : (
-                          <div
-                            className="h-[2px] rounded-full bg-transparent"
-                            style={{ width: 18 }}
-                          />
-                        )}
-                      </AnimatePresence>
-                    </motion.button>
-                  );
-                })}
-
-                {/* Progress line — fills right of last number */}
-                <div className="flex-1 ml-1">
-                  <div className="relative h-[2px] bg-[#2e1065]/10 rounded-full overflow-hidden">
-                    <motion.div
-                      className="absolute inset-y-0 left-0 bg-[#7e22ce] rounded-full"
-                      animate={{ width: `${((current + 1) / total) * 100}%` }}
-                      transition={{ duration: 0.6, ease: EASE }}
-                    />
-                  </div>
-                </div>
-
-                {/* Indicator: 01 / 05 — right-aligned with last number */}
-                <span className="text-[10px] font-black tracking-[0.28em] text-[#7e22ce]/50 whitespace-nowrap ml-1">
-                  {String(current + 1).padStart(2, "0")}
-                  <span className="text-[#2e1065]/18 mx-1">/</span>
-                  {String(total).padStart(2, "0")}
-                </span>
-              </div>
+            {/* ── NAVIGATION ── */}
+            <div className="flex items-center gap-4 mt-2">
+              <button
+                onClick={() => goTo((current - 1 + total) % total)}
+                className="group flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[#2e1065]/10 bg-white/50 hover:bg-white text-[#2e1065] hover:text-[#7e22ce] hover:border-[#7e22ce]/30 transition-all duration-300 shadow-sm"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:-translate-x-1">
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                <span className="text-xs font-black tracking-[0.15em] uppercase">Back</span>
+              </button>
+              
+              <button
+                onClick={() => goTo((current + 1) % total)}
+                className="group flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-[#2e1065]/10 bg-white/50 hover:bg-white text-[#2e1065] hover:text-[#7e22ce] hover:border-[#7e22ce]/30 transition-all duration-300 shadow-sm"
+              >
+                <span className="text-xs font-black tracking-[0.15em] uppercase">Next</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:translate-x-1">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>

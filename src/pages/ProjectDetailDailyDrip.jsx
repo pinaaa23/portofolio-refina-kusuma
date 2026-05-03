@@ -369,7 +369,7 @@ export default function ProjectDetailDailyDrip() {
             <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-10" />
             
             {/* Cover Image */}
-            <div className="relative overflow-hidden bg-[#fceaf2]">
+            <div className="relative z-20 overflow-hidden bg-[#fceaf2]">
               <motion.img
                 initial={{ scale: 1.05, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -380,11 +380,10 @@ export default function ProjectDetailDailyDrip() {
                 className="h-64 w-full object-cover object-center sm:h-80 lg:h-[420px]"
                 onLoad={() => setImgLoaded(true)}
               />
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#fff7f9] to-transparent pointer-events-none" />
             </div>
 
             {/* Hero Info */}
-            <div className="p-6 sm:p-8 lg:p-10 relative z-20 bg-white/30 backdrop-blur-md border-t border-white/50">
+            <div className="p-6 sm:p-8 lg:p-10 relative z-20 bg-white/30 backdrop-blur-md">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="rounded-full border border-[#f39999]/30 bg-white/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#f45b5b] shadow-sm">
                   {PROJECT.category}

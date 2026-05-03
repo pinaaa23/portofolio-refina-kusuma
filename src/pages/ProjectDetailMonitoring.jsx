@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 const PROJECT = {
@@ -41,7 +42,7 @@ const PROJECT = {
       title: "Role User",
       image: "/gallery/project/WebDev/Monitoring/foto1.png",
       description: "As a student, the user can easily submit daily activity logs, upload required documentation like PDFs or images, track their weekly progress, and view evaluations from both mentors and lecturers in real-time.",
-      accent: "cyan"
+      accent: "sky"
     },
     {
       title: "Role Admin",
@@ -76,51 +77,75 @@ const PROJECT = {
   ]
 };
 
-/* ─────────────────── INTERSECTION OBSERVER HOOK ─────────────────── */
-function useInView(options = {}) {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setInView(true); obs.disconnect(); }
-    }, { threshold: 0.12, ...options });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-  return [ref, inView];
-}
+const cubicBezier = [0.22, 1, 0.36, 1];
 
 /* ─────────────────── ANIMATED SECTION WRAPPER ─────────────────── */
 function FadeUp({ children, delay = 0, className = "" }) {
-  const [ref, inView] = useInView();
   return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+    <motion.div
+      initial={{ opacity: 0, y: 30, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.9, ease: cubicBezier, delay: delay / 1000 }}
+      className={className}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
 /* ─────────────────── SECTION HEADER ─────────────────── */
-function SectionHeader({ label, title, color = "cyan" }) {
+function SectionHeader({ label, title, color = "sky" }) {
   const gradients = {
-    cyan: "from-cyan-500 to-blue-500",
+    sky: "from-sky-500 to-blue-500",
     blue: "from-blue-500 to-indigo-500",
+    indigo: "from-indigo-500 to-sky-500"
   };
   const textColors = {
-    cyan: "text-cyan-400",
-    blue: "text-blue-400",
+    sky: "text-sky-600",
+    blue: "text-blue-600",
+    indigo: "text-indigo-600"
   };
   
   return (
     <div className="mb-6 sm:mb-8 text-left">
       <span className={`text-[10px] font-bold uppercase tracking-[0.25em] ${textColors[color]}`}>{label}</span>
-      <h2 className="mt-1.5 text-2xl font-black text-white sm:text-3xl">{title}</h2>
+      <h2 className="mt-1.5 text-2xl font-black text-slate-900 sm:text-3xl">{title}</h2>
       <div className={`mt-3 h-0.5 w-10 rounded-full bg-gradient-to-r ${gradients[color]}`} />
     </div>
+  );
+}
+
+/* ─────────────────── CUSTOM CURSOR ─────────────────── */
+function CustomCursor() {
+  const mouseX = useMotionValue(-300);
+  const mouseY = useMotionValue(-300);
+
+  const x = useSpring(mouseX, { damping: 28, stiffness: 200, mass: 0.5 });
+  const y = useSpring(mouseY, { damping: 28, stiffness: 200, mass: 0.5 });
+  const tx = useSpring(mouseX, { damping: 40, stiffness: 140, mass: 0.8 });
+  const ty = useSpring(mouseY, { damping: 40, stiffness: 140, mass: 0.8 });
+
+  useEffect(() => {
+    const move = (e) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, [mouseX, mouseY]);
+
+  return (
+    <>
+      <motion.div
+        className="pointer-events-none fixed top-0 left-0 z-[9999] w-12 h-12 rounded-full border border-sky-500/40 bg-sky-500/10 backdrop-blur-[2px]"
+        style={{ x: tx, y: ty, translateX: "-50%", translateY: "-50%" }}
+      />
+      <motion.div
+        className="pointer-events-none fixed top-0 left-0 z-[9999] w-2 h-2 rounded-full bg-blue-500"
+        style={{ x, y, translateX: "-50%", translateY: "-50%" }}
+      />
+    </>
   );
 }
 
@@ -134,32 +159,79 @@ export default function ProjectDetailMonitoring() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-[#030712] text-white">
-      {/* ── BG Layer ── */}
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(14,165,233,0.2),transparent_28%),radial-gradient(circle_at_90%_20%,rgba(59,130,246,0.2),transparent_26%),radial-gradient(circle_at_20%_90%,rgba(2,132,199,0.2),transparent_30%),linear-gradient(135deg,#030712_0%,#0a192f_45%,#02040a_100%)]" />
-      <div className="pointer-events-none fixed inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] [background-size:56px_56px]" />
+    <main className="relative min-h-screen text-slate-900 overflow-hidden bg-gradient-shift font-sans">
+      <style>{`
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .bg-gradient-shift {
+          background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #eff6ff, #f0f9ff);
+          background-size: 200% 200%;
+          animation: gradientShift 15s ease infinite;
+        }
+        .btn-gradient-shift {
+          background-size: 200% auto;
+          transition: background-position 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-gradient-shift:hover {
+          background-position: right center;
+        }
+        .glass-card {
+          background: rgba(255, 255, 255, 0.65);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          box-shadow: 0 10px 40px -10px rgba(14, 165, 233, 0.15);
+        }
+        .glass-card-inner {
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+        }
+      `}</style>
 
-      <div className="relative mx-auto w-full max-w-4xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
+      <CustomCursor />
+
+      {/* ── Floating Ambient Glow ── */}
+      <motion.div
+        animate={{ x: [-20, 30, -20], y: [-20, 40, -20], scale: [1, 1.1, 1] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[rgba(14,165,233,0.15)] blur-[120px] z-0"
+      />
+      <motion.div
+        animate={{ x: [20, -30, 20], y: [20, -40, 20], scale: [1, 1.2, 1] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none fixed bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-[rgba(99,102,241,0.15)] blur-[120px] z-0"
+      />
+
+      <div className="relative mx-auto w-full max-w-4xl px-4 pb-24 pt-10 sm:px-6 lg:px-8 z-10">
 
         {/* ── Back Button ── */}
-        <button
-          type="button"
-          onClick={() => navigate("/refinakusuma#project")}
-          className="group mb-10 inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-slate-300 backdrop-blur-md transition-all duration-300 hover:-translate-x-0.5 hover:border-cyan-400/30 hover:text-white"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
-          </svg>
-          Back to Projects
-        </button>
+        <FadeUp delay={0}>
+          <button
+            type="button"
+            onClick={() => navigate("/refinakusuma#project")}
+            className="group mb-10 inline-flex items-center gap-2 rounded-2xl border border-white/40 bg-white/50 px-4 py-2.5 text-sm font-semibold text-slate-800 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(14,165,233,0.2)] active:scale-95"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
+            </svg>
+            Back to Projects
+          </button>
+        </FadeUp>
 
         {/* ══════════════ HERO SECTION ══════════════ */}
-        <FadeUp>
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-[0_32px_80px_rgba(2,6,23,0.6)] backdrop-blur-xl">
+        <FadeUp delay={100}>
+          <div className="overflow-hidden rounded-3xl glass-card relative group">
+            <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-10" />
+            
             {/* Cover Image */}
-            <div className="relative overflow-hidden bg-black/30">
-              <div className={`absolute inset-0 bg-gradient-to-br from-cyan-900/50 to-blue-900/50 transition-opacity duration-700 ${imgLoaded ? "opacity-0" : "opacity-100"}`} />
-              <img
+            <div className="relative z-20 overflow-hidden bg-sky-50">
+              <motion.img
+                initial={{ scale: 1.05, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.9, ease: cubicBezier }}
+                whileHover={{ scale: 1.03 }}
                 src={PROJECT.cover}
                 alt={`${PROJECT.title} cover`}
                 className="h-64 w-full object-cover object-left-top sm:h-80 lg:h-[420px]"
@@ -167,32 +239,31 @@ export default function ProjectDetailMonitoring() {
                 onError={(e) => {
                   e.target.style.display = 'none';
                   const placeholder = document.createElement('div');
-                  placeholder.className = 'w-full h-full min-h-[320px] flex items-center justify-center bg-gradient-to-br from-cyan-950 to-indigo-950 text-cyan-500/50';
+                  placeholder.className = 'w-full h-full min-h-[320px] flex items-center justify-center bg-gradient-to-br from-sky-100 to-indigo-100 text-sky-500/50';
                   placeholder.innerHTML = '<span class="text-4xl">Image Placeholder</span>';
                   e.target.parentElement.appendChild(placeholder);
                 }}
               />
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#070b1d] via-[#070b1d]/40 to-transparent" />
             </div>
 
             {/* Hero Info */}
-            <div className="p-6 sm:p-8 lg:p-10">
+            <div className="p-6 sm:p-8 lg:p-10 relative z-20 bg-white/30 backdrop-blur-md">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-300">
+                <span className="rounded-full border border-sky-400/30 bg-white/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-sky-600 shadow-sm">
                   {PROJECT.category}
                 </span>
-                <span className="rounded-full border border-blue-400/30 bg-blue-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-300">
+                <span className="rounded-full border border-blue-400/30 bg-white/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 shadow-sm">
                   {PROJECT.label}
                 </span>
               </div>
 
-              <h1 className="mt-4 text-5xl font-black leading-none tracking-tight text-white sm:text-6xl">
+              <h1 className="mt-4 text-5xl font-black leading-none tracking-tight text-slate-900 sm:text-6xl drop-shadow-sm">
                 {PROJECT.title}
               </h1>
-              <p className="mt-2 text-base font-medium text-slate-400">{PROJECT.subtitle}</p>
+              <p className="mt-2 text-base font-medium text-slate-700">{PROJECT.subtitle}</p>
 
               {/* Meta row */}
-              <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/8 pt-6 sm:grid-cols-4">
+              <div className="mt-8 grid grid-cols-2 gap-4 border-t border-sky-200/50 pt-6 sm:grid-cols-4">
                 {[
                   { label: "Year", value: PROJECT.year },
                   { label: "Role", value: PROJECT.role },
@@ -201,7 +272,7 @@ export default function ProjectDetailMonitoring() {
                 ].map((meta) => (
                   <div key={meta.label}>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">{meta.label}</p>
-                    <p className="mt-1 text-xs font-semibold leading-relaxed text-white">{meta.value}</p>
+                    <p className="mt-1 text-xs font-bold leading-relaxed text-slate-900">{meta.value}</p>
                   </div>
                 ))}
               </div>
@@ -209,9 +280,9 @@ export default function ProjectDetailMonitoring() {
               {/* Stats row */}
               <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {PROJECT.stats.map((stat) => (
-                  <div key={stat.label} className="rounded-2xl border border-white/8 bg-white/5 p-3 text-center">
-                    <p className="text-2xl font-black text-cyan-300">{stat.value}</p>
-                    <p className="mt-0.5 text-[10px] font-medium text-slate-400">{stat.label}</p>
+                  <div key={stat.label} className="rounded-2xl border border-sky-200/50 bg-white/60 p-3 text-center shadow-sm">
+                    <p className="text-2xl font-black text-sky-600 drop-shadow-sm">{stat.value}</p>
+                    <p className="mt-0.5 text-[10px] font-bold text-slate-600">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -220,22 +291,25 @@ export default function ProjectDetailMonitoring() {
         </FadeUp>
 
         {/* ══════════════ ABOUT & PROBLEM STATEMENT ══════════════ */}
-        <FadeUp delay={100} className="mt-8">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8">
-            <SectionHeader label="Overview" title="About This Project" color="cyan" />
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-400">System Purpose</p>
-                <p className="mt-3 text-sm leading-7 text-slate-300/90 text-justify">{PROJECT.about}</p>
-              </div>
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-400">Problem Statement</p>
-                <p className="mt-3 text-sm leading-7 text-slate-300/90 text-justify">{PROJECT.problem}</p>
-                <div className="mt-4 rounded-2xl border border-blue-500/20 bg-blue-500/8 p-4 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-blue-500/50"></div>
-                  <p className="text-xs font-semibold italic text-blue-200/80 text-justify pl-2">
-                    "How might we digitize and connect the internship tracking process to ensure transparency, prevent data loss, and simplify evaluation for all stakeholders?"
-                  </p>
+        <FadeUp delay={200} className="mt-8">
+          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(14,165,233,0.15)]">
+            <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-0" />
+            <div className="relative z-10">
+              <SectionHeader label="Overview" title="About This Project" color="sky" />
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-sky-600">System Purpose</p>
+                  <p className="mt-3 text-sm leading-7 text-slate-700 text-justify font-medium">{PROJECT.about}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">Problem Statement</p>
+                  <p className="mt-3 text-sm leading-7 text-slate-700 text-justify font-medium">{PROJECT.problem}</p>
+                  <div className="mt-4 rounded-2xl border border-blue-200/50 bg-blue-50 p-4 relative overflow-hidden shadow-sm">
+                    <div className="absolute top-0 left-0 w-1 h-full bg-blue-400"></div>
+                    <p className="text-xs font-semibold italic text-blue-700 text-justify pl-2">
+                      "How might we digitize and connect the internship tracking process to ensure transparency, prevent data loss, and simplify evaluation for all stakeholders?"
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -243,199 +317,205 @@ export default function ProjectDetailMonitoring() {
         </FadeUp>
 
         {/* ══════════════ ROLES & FEATURES (ALTERNATING LAYOUT) ══════════════ */}
-        <FadeUp delay={120} className="mt-8">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8">
-            <SectionHeader label="Core Features" title="System by Role" color="blue" />
+        <FadeUp delay={300} className="mt-8">
+          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(59,130,246,0.15)]">
+            <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-0" />
+            <div className="relative z-10">
+              <SectionHeader label="Core Features" title="System by Role" color="blue" />
 
-            <div className="space-y-8 sm:space-y-10 mt-8">
-              {PROJECT.roles.map((roleInfo, idx) => {
-                // Role User & Admin (idx 0,1) -> Image on Right
-                // Role Mentor & Dosen (idx 2,3) -> Image on Left
-                const flexLayout = (idx === 0 || idx === 1) ? 'sm:flex-row-reverse' : 'sm:flex-row';
-                
-                // Color maps for dynamic styling based on role accent
-                const borderColors = {
-                  cyan: "group-hover:border-cyan-400/30",
-                  blue: "group-hover:border-blue-400/30",
-                  indigo: "group-hover:border-indigo-400/30",
-                  sky: "group-hover:border-sky-400/30"
-                };
-                
-                const textColors = {
-                  cyan: "text-cyan-400",
-                  blue: "text-blue-400",
-                  indigo: "text-indigo-400",
-                  sky: "text-sky-400"
-                };
+              <div className="space-y-8 sm:space-y-10 mt-8">
+                {PROJECT.roles.map((roleInfo, idx) => {
+                  // Role User & Admin (idx 0,1) -> Image on Right
+                  // Role Mentor & Dosen (idx 2,3) -> Image on Left
+                  const flexLayout = (idx === 0 || idx === 1) ? 'sm:flex-row-reverse' : 'sm:flex-row';
+                  
+                  // Color maps for dynamic styling based on role accent
+                  const borderColors = {
+                    sky: "group-hover:border-sky-300/50",
+                    blue: "group-hover:border-blue-300/50",
+                    indigo: "group-hover:border-indigo-300/50",
+                  };
+                  
+                  const textColors = {
+                    sky: "text-sky-600",
+                    blue: "text-blue-600",
+                    indigo: "text-indigo-600",
+                  };
 
-                const bgGradients = {
-                  cyan: "from-cyan-500/10 to-transparent",
-                  blue: "from-blue-500/10 to-transparent",
-                  indigo: "from-indigo-500/10 to-transparent",
-                  sky: "from-sky-500/10 to-transparent"
-                };
+                  const bgGradients = {
+                    sky: "from-sky-50 to-white",
+                    blue: "from-blue-50 to-white",
+                    indigo: "from-indigo-50 to-white",
+                  };
 
-                return (
-                  <FadeUp key={roleInfo.title} delay={idx * 80}>
-                    <div className={`group relative flex flex-col gap-6 sm:gap-8 rounded-3xl border border-white/5 bg-white/[0.02] p-4 sm:p-6 transition-all duration-500 hover:bg-white/[0.04] hover:border-white/10 ${flexLayout} items-center`}>
-                      
-                      {/* Image Preview */}
-                      <div className={`w-full sm:w-[55%] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${bgGradients[roleInfo.accent]} shadow-[0_12px_40px_rgba(0,0,0,0.3)] transition-all duration-500 group-hover:-translate-y-1 ${borderColors[roleInfo.accent]}`}>
-                        <div className="relative w-full h-auto overflow-hidden bg-black/40">
-                          <img
-                            src={roleInfo.image}
-                            alt={roleInfo.title}
-                            className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.03]"
-                            loading="lazy"
-                            onError={(e) => {
-                              e.target.style.display = 'none';
-                              const placeholder = document.createElement('div');
-                              placeholder.className = 'w-full h-full flex flex-col items-center justify-center text-slate-500';
-                              placeholder.innerHTML = `<span class="text-3xl mb-2">💻</span><span class="text-xs">Image: ${roleInfo.title}</span>`;
-                              e.target.parentElement.appendChild(placeholder);
-                            }}
-                          />
+                  return (
+                    <FadeUp key={roleInfo.title} delay={idx * 100}>
+                      <div className={`group relative flex flex-col gap-6 sm:gap-8 rounded-3xl border border-white/50 bg-white/60 p-4 sm:p-6 transition-all duration-500 hover:bg-white/80 hover:border-white/80 ${flexLayout} items-center shadow-sm hover:shadow-md`}>
+                        
+                        {/* Image Preview */}
+                        <div className={`w-full sm:w-[55%] shrink-0 overflow-hidden rounded-2xl border border-white/60 bg-gradient-to-br ${bgGradients[roleInfo.accent]} shadow-sm transition-all duration-500 group-hover:-translate-y-1 ${borderColors[roleInfo.accent]}`}>
+                          <div className="relative w-full h-auto overflow-hidden bg-slate-100 flex items-center justify-center">
+                            <img
+                              src={roleInfo.image}
+                              alt={roleInfo.title}
+                              className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+                              loading="lazy"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                                const placeholder = document.createElement('div');
+                                placeholder.className = 'w-full h-full py-10 flex flex-col items-center justify-center text-slate-400';
+                                placeholder.innerHTML = `<span class="text-3xl mb-2">💻</span><span class="text-xs font-medium">Image: ${roleInfo.title}</span>`;
+                                e.target.parentElement.appendChild(placeholder);
+                              }}
+                            />
+                          </div>
                         </div>
-                      </div>
 
-                      {/* Text Content */}
-                      <div className="w-full sm:w-[45%] flex flex-col justify-center sm:px-2">
-                        <div className="inline-flex items-center gap-3 mb-4">
-                          <span className={`h-px w-8 bg-${roleInfo.accent}-500/50`}></span>
-                          <span className={`text-[10px] font-bold uppercase tracking-[0.2em] ${textColors[roleInfo.accent]}`}>
-                            Feature Overview
-                          </span>
+                        {/* Text Content */}
+                        <div className="w-full sm:w-[45%] flex flex-col justify-center sm:px-2">
+                          <div className="inline-flex items-center gap-3 mb-4">
+                            <span className={`h-px w-8 bg-${roleInfo.accent}-400`}></span>
+                            <span className={`text-[10px] font-bold uppercase tracking-[0.2em] ${textColors[roleInfo.accent]}`}>
+                              Feature Overview
+                            </span>
+                          </div>
+                          <h3 className={`text-2xl sm:text-3xl font-black text-slate-900 mb-4 leading-tight transition-all duration-300 group-hover:${textColors[roleInfo.accent]}`}>
+                            {roleInfo.title}
+                          </h3>
+                          <p className="text-sm leading-relaxed text-slate-700 text-justify font-medium">
+                            {roleInfo.description}
+                          </p>
                         </div>
-                        <h3 className="text-2xl sm:text-3xl font-black text-white mb-4 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400 transition-all duration-300">
-                          {roleInfo.title}
-                        </h3>
-                        <p className="text-sm leading-relaxed text-slate-300/90 text-justify">
-                          {roleInfo.description}
-                        </p>
-                      </div>
 
-                    </div>
-                  </FadeUp>
-                );
-              })}
+                      </div>
+                    </FadeUp>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </FadeUp>
 
         {/* ══════════════ TYPOGRAPHY & DESIGN SYSTEM (EXPLORATIVE LAYOUT) ══════════════ */}
-        <FadeUp delay={100} className="mt-8">
-           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8">
-            <SectionHeader label="Visual Identity" title="Typography & Palette" color="cyan" />
-            
-            <div className="mt-8 grid gap-8 lg:grid-cols-[1.5fr_1fr]">
-              {/* Typography Explorative Area */}
-              <div className="rounded-2xl bg-gradient-to-br from-white/5 to-white/2 border border-white/10 p-6 relative overflow-hidden group">
-                 {/* Decorative background letter */}
-                 <div className="absolute -right-10 -bottom-16 text-[15rem] font-black text-white/[0.02] pointer-events-none select-none transition-transform duration-700 group-hover:scale-110">
-                   Aa
-                 </div>
-                 
-                 <div className="relative z-10">
-                   <p className="mb-6 text-xs font-bold uppercase tracking-[0.22em] text-slate-400">Primary Typeface</p>
+        <FadeUp delay={400} className="mt-8">
+           <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(14,165,233,0.15)]">
+            <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-0" />
+            <div className="relative z-10">
+              <SectionHeader label="Visual Identity" title="Typography & Palette" color="cyan" />
+              
+              <div className="mt-8 grid gap-8 lg:grid-cols-[1.5fr_1fr]">
+                {/* Typography Explorative Area */}
+                <div className="rounded-2xl bg-white/60 border border-white/50 p-6 relative overflow-hidden group shadow-sm">
+                   {/* Decorative background letter */}
+                   <div className="absolute -right-10 -bottom-16 text-[15rem] font-black text-slate-900/[0.03] pointer-events-none select-none transition-transform duration-700 group-hover:scale-110">
+                     Aa
+                   </div>
                    
-                   <div className="flex border-b border-white/10 pb-6 mb-6">
-                     <div className="text-6xl sm:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 mr-6 tracking-tighter">
-                       Inter
-                     </div>
-                     <div className="flex flex-col justify-end">
-                       <p className="text-sm text-slate-300">A highly legible typeface optimizing the dashboard experience.</p>
-                     </div>
-                   </div>
-
-                   <div className="space-y-4">
-                     {PROJECT.typography.map((t, idx) => (
-                       <div key={idx} className="flex flex-wrap items-end justify-between gap-2">
-                         <div className="min-w-[200px]">
-                           <span className="block text-[10px] uppercase tracking-wider text-slate-500 mb-1">{t.role}</span>
-                           <span className="text-white truncate" style={{ fontFamily: t.name, fontWeight: t.weight, fontSize: t.size === '32px' ? '24px' : t.size }}>
-                             {t.text}
-                           </span>
-                         </div>
-                         <div className="text-right">
-                           <span className="text-[10px] font-mono text-slate-400 bg-white/5 px-2 py-1 rounded-md">{t.weight} / {t.size}</span>
-                         </div>
+                   <div className="relative z-10">
+                     <p className="mb-6 text-xs font-bold uppercase tracking-[0.22em] text-slate-500">Primary Typeface</p>
+                     
+                     <div className="flex border-b border-sky-200/50 pb-6 mb-6">
+                       <div className="text-6xl sm:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600 mr-6 tracking-tighter">
+                         Inter
                        </div>
-                     ))}
-                   </div>
-                 </div>
-              </div>
+                       <div className="flex flex-col justify-end">
+                         <p className="text-sm font-medium text-slate-600">A highly legible typeface optimizing the dashboard experience.</p>
+                       </div>
+                     </div>
 
-              {/* Color Palette Grid */}
-              <div className="flex flex-col gap-3">
-                 <p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-400">Color System</p>
-                 <div className="grid grid-cols-2 gap-3 h-full">
-                    {PROJECT.palette.map((c) => (
-                      <div key={c.hex} className="relative rounded-2xl border border-white/10 overflow-hidden group h-24 sm:h-auto min-h-[100px] transition-transform duration-300 hover:scale-[1.02]">
-                        <div className="absolute inset-0 transition-opacity duration-300" style={{ backgroundColor: c.hex }}></div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        <div className="absolute bottom-0 left-0 p-3 w-full">
-                           <p className="text-[10px] font-bold text-white tracking-wide">{c.name}</p>
-                           <p className="text-[9px] font-mono text-white/70 uppercase">{c.hex} · {c.role}</p>
+                     <div className="space-y-4">
+                       {PROJECT.typography.map((t, idx) => (
+                         <div key={idx} className="flex flex-wrap items-end justify-between gap-2">
+                           <div className="min-w-[200px]">
+                             <span className="block text-[10px] uppercase tracking-wider font-bold text-slate-500 mb-1">{t.role}</span>
+                             <span className="text-slate-900 truncate" style={{ fontFamily: t.name, fontWeight: t.weight, fontSize: t.size === '32px' ? '24px' : t.size }}>
+                               {t.text}
+                             </span>
+                           </div>
+                           <div className="text-right">
+                             <span className="text-[10px] font-bold font-mono text-slate-600 bg-white/80 px-2 py-1 rounded-md shadow-sm border border-white/60">{t.weight} / {t.size}</span>
+                           </div>
+                         </div>
+                       ))}
+                     </div>
+                   </div>
+                </div>
+
+                {/* Color Palette Grid */}
+                <div className="flex flex-col gap-3">
+                   <p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-slate-500">Color System</p>
+                   <div className="grid grid-cols-2 gap-3 h-full">
+                      {PROJECT.palette.map((c) => (
+                        <div key={c.hex} className="relative rounded-2xl border border-white/50 overflow-hidden group h-24 sm:h-auto min-h-[100px] transition-transform duration-300 hover:scale-[1.02] shadow-sm">
+                          <div className="absolute inset-0 transition-opacity duration-300" style={{ backgroundColor: c.hex }}></div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                          <div className="absolute bottom-0 left-0 p-3 w-full">
+                             <p className="text-[10px] font-bold text-white tracking-wide">{c.name}</p>
+                             <p className="text-[9px] font-mono font-medium text-white/90 uppercase">{c.hex} · {c.role}</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                 </div>
+                      ))}
+                   </div>
+                </div>
               </div>
             </div>
            </div>
         </FadeUp>
 
         {/* ══════════════ MOCKUPS SHOWCASE ══════════════ */}
-        <FadeUp delay={100} className="mt-8">
-           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl sm:p-8">
-            <SectionHeader label="Final Outcome" title="Design Mockups" color="blue" />
-            
-            <div className="space-y-6 mt-8">
-              {PROJECT.mockups.map((mockup, idx) => (
-                <FadeUp key={mockup.title} delay={idx * 80}>
-                  <div className="group overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-cyan-900/10 to-blue-900/5 shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(14,165,233,0.2)]">
-                    {/* Large mockup image */}
-                    <div className="relative overflow-hidden bg-black/30">
-                      <img
-                        src={mockup.image}
-                        alt={mockup.title}
-                        className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.parentElement.classList.add('flex', 'items-center', 'justify-center', 'min-h-[280px]');
-                          const placeholder = document.createElement('div');
-                          placeholder.className = 'text-center p-8';
-                          placeholder.innerHTML = `<div class="text-4xl mb-3">🖥️</div><p class="text-sm text-slate-500">${mockup.title}</p><p class="text-xs text-slate-600 mt-1">Image placeholder</p>`;
-                          e.target.parentElement.appendChild(placeholder);
-                        }}
-                      />
-                    </div>
-                    {/* Caption */}
-                    <div className="p-6 sm:p-8 lg:p-10">
-                      <div className="flex items-center gap-3">
-                        <span className="rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-blue-300">
-                          Mockup {String(idx + 1).padStart(2, '0')}
-                        </span>
+        <FadeUp delay={500} className="mt-8">
+           <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(59,130,246,0.15)]">
+            <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-0" />
+            <div className="relative z-10">
+              <SectionHeader label="Final Outcome" title="Design Mockups" color="blue" />
+              
+              <div className="space-y-6 mt-8">
+                {PROJECT.mockups.map((mockup, idx) => (
+                  <FadeUp key={mockup.title} delay={idx * 100}>
+                    <div className="group overflow-hidden rounded-2xl border border-white/60 bg-white/70 shadow-md transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(14,165,233,0.2)]">
+                      {/* Large mockup image */}
+                      <div className="relative overflow-hidden bg-sky-50 flex items-center justify-center">
+                        <img
+                          src={mockup.image}
+                          alt={mockup.title}
+                          className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                          loading="lazy"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.parentElement.classList.add('flex', 'items-center', 'justify-center', 'min-h-[280px]');
+                            const placeholder = document.createElement('div');
+                            placeholder.className = 'text-center p-8';
+                            placeholder.innerHTML = `<div class="text-4xl mb-3">🖥️</div><p class="text-sm font-bold text-slate-500">${mockup.title}</p><p class="text-xs font-medium text-slate-400 mt-1">Image placeholder</p>`;
+                            e.target.parentElement.appendChild(placeholder);
+                          }}
+                        />
                       </div>
-                      <h3 className="mt-4 text-2xl font-black text-white">{mockup.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-300/90 text-justify">{mockup.description}</p>
+                      {/* Caption */}
+                      <div className="p-6 sm:p-8 lg:p-10 border-t border-white/50">
+                        <div className="flex items-center gap-3">
+                          <span className="rounded-full border border-blue-300/50 bg-white/80 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-blue-600 shadow-sm">
+                            Mockup {String(idx + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                        <h3 className="mt-4 text-2xl font-black text-slate-900">{mockup.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-700 text-justify font-medium">{mockup.description}</p>
+                      </div>
                     </div>
-                  </div>
-                </FadeUp>
-              ))}
+                  </FadeUp>
+                ))}
+              </div>
             </div>
            </div>
         </FadeUp>
 
         {/* ══════════════ FOOTER NAV ══════════════ */}
-        <FadeUp delay={80} className="mt-10 flex items-center justify-start">
+        <FadeUp delay={600} className="mt-10 flex items-center justify-start relative z-10">
           <button
             type="button"
             onClick={() => navigate("/refinakusuma#project")}
-            className="group inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-slate-300 backdrop-blur-md transition-all duration-300 hover:-translate-x-0.5 hover:border-cyan-400/30 hover:text-white"
+            className="group inline-flex items-center gap-2 rounded-2xl border border-white/40 bg-white/50 px-5 py-2.5 text-sm font-bold text-slate-800 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(14,165,233,0.25)] active:scale-95"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-0.5" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
             </svg>
             All Projects
