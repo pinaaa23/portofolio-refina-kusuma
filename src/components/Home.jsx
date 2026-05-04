@@ -41,10 +41,7 @@ export default function Home() {
     <section id="home" className="relative snap-start scroll-mt-14 flex h-screen w-full items-center justify-center overflow-hidden bg-[#F5EFE6] text-[#2c2b28] selection:bg-[#E780A8]/30">
       
       {/* ─── NOISE OVERLAY (Editorial Texture) ─── */}
-      <div 
-        className="pointer-events-none absolute inset-0 opacity-[0.15] mix-blend-multiply z-0" 
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
-      />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.06] grain-texture z-0" />
       
       {/* 
         Container 
@@ -149,7 +146,16 @@ export default function Home() {
           })}
         </div>
 
-
+        {/* ─── EDITORIAL DIVIDER (Bottom of Home) ─── */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 3.2 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-40 pointer-events-none"
+        >
+          <span className="text-[8px] font-black tracking-[0.5em] uppercase text-[#2c2b28]/25">✦ about me ✦</span>
+          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#E780A8]/50 to-transparent" />
+        </motion.div>
 
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
+import Loader from "./components/Loader";
 import PortfolioPage from "./pages/PortfolioPage";
 import ProjectDetailDailyDrip from "./pages/ProjectDetailDailyDrip";
 import ProjectDetailCashier from "./pages/ProjectDetailCashier";
@@ -15,8 +15,7 @@ export default function App() {
       <CustomCursor />
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Loader />} />
         <Route path="/refinakusuma" element={<PortfolioPage />} />
         <Route path="/project/uiux/dailydrip" element={<ProjectDetailDailyDrip />} />
         <Route path="/project/webdev/cashier" element={<ProjectDetailCashier />} />

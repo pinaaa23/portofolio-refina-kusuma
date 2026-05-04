@@ -219,39 +219,44 @@ export default function Project() {
     return () => window.removeEventListener("keydown", fn);
   }, [current, total, goTo]);
 
-  // Slide variants — GPU-accelerated translateX
+  // Slide variants — GPU-accelerated translateX with subtle blur
   const slideVariants = {
     enter: (d) => ({
-      x: d > 0 ? "5%" : "-5%",
+      x: d > 0 ? "40%" : "-40%",
       opacity: 0,
-      scale: 0.97,
+      scale: 0.85,
+      filter: "blur(16px)",
     }),
     center: {
       x: 0,
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.7, ease: EASE },
+      filter: "blur(0px)",
+      transition: { duration: 1.1, ease: EASE },
     },
     exit: (d) => ({
-      x: d > 0 ? "-5%" : "5%",
+      x: d > 0 ? "-40%" : "40%",
       opacity: 0,
-      scale: 0.97,
-      transition: { duration: 0.55, ease: EASE },
+      scale: 0.85,
+      filter: "blur(16px)",
+      transition: { duration: 0.8, ease: EASE },
     }),
   };
 
   // Text info variants (vertical wipe)
   const infoVariants = {
-    enter: (d) => ({ y: d > 0 ? 20 : -20, opacity: 0 }),
+    enter: (d) => ({ y: d > 0 ? 80 : -80, opacity: 0, filter: "blur(10px)" }),
     center: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.55, ease: EASE },
+      filter: "blur(0px)",
+      transition: { duration: 0.9, ease: EASE, delay: 0.1 },
     },
     exit: (d) => ({
-      y: d > 0 ? -20 : 20,
+      y: d > 0 ? -80 : 80,
       opacity: 0,
-      transition: { duration: 0.4, ease: EASE },
+      filter: "blur(10px)",
+      transition: { duration: 0.6, ease: EASE },
     }),
   };
 
@@ -334,7 +339,13 @@ export default function Project() {
         </header>
 
         {/* ── Two-column slider ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 lg:gap-12 items-stretch">
+        <motion.div 
+          initial={{ opacity: 0, y: 150, filter: "blur(24px)", scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.4, ease: EASE, delay: 0.1 }}
+          className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 lg:gap-12 items-stretch"
+        >
 
           {/* ── LEFT — Hero image ── */}
           <div
@@ -529,7 +540,7 @@ export default function Project() {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
