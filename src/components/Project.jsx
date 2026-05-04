@@ -21,6 +21,7 @@ const PROJECT_ITEMS = [
     accentFrom: "from-violet-600",
     accentTo: "to-indigo-500",
     accent: "#7e22ce",
+    bgGradient: "linear-gradient(180deg, #e9d5ff 0%, #fdfaff 15%, #fdf2f8 40%, #fce7f3 85%, #F5EFE6 100%)",
   },
   {
     filterKey: "web",
@@ -34,6 +35,7 @@ const PROJECT_ITEMS = [
     accentFrom: "from-emerald-600",
     accentTo: "to-teal-500",
     accent: "#059669",
+    bgGradient: "linear-gradient(180deg, #e9d5ff 0%, #fdfaff 15%, #ecfdf5 40%, #d1fae5 85%, #F5EFE6 100%)",
   },
   {
     filterKey: "ui-ux",
@@ -47,6 +49,7 @@ const PROJECT_ITEMS = [
     accentFrom: "from-emerald-500",
     accentTo: "to-green-400",
     accent: "#16a34a",
+    bgGradient: "linear-gradient(180deg, #e9d5ff 0%, #fdfaff 15%, #f0fdf4 40%, #dcfce7 85%, #F5EFE6 100%)",
   },
   {
     filterKey: "web",
@@ -61,6 +64,7 @@ const PROJECT_ITEMS = [
     accentTo: "to-blue-500",
     accent: "#0284c7",
     objectPosition: "object-left-top",
+    bgGradient: "linear-gradient(180deg, #e9d5ff 0%, #fdfaff 15%, #f0f9ff 40%, #e0f2fe 85%, #F5EFE6 100%)",
   },
   {
     filterKey: "ui-ux",
@@ -74,6 +78,7 @@ const PROJECT_ITEMS = [
     accentFrom: "from-yellow-600",
     accentTo: "to-amber-500",
     accent: "#d97706",
+    bgGradient: "linear-gradient(180deg, #e9d5ff 0%, #fdfaff 15%, #fffbeb 40%, #fef3c7 85%, #F5EFE6 100%)",
   },
 ];
 
@@ -253,41 +258,54 @@ export default function Project() {
   return (
     <section
       id="project"
-      className="relative min-h-screen overflow-hidden py-20 px-6 md:px-16"
-      style={{
-        background:
-          "linear-gradient(160deg, #e9d5ff 0%, #f3e8ff 30%, #fdfaff 70%)",
-      }}
+      className="relative min-h-screen overflow-hidden py-20 px-6 md:px-16 bg-[#F5EFE6]"
     >
+      {/* ── Background Color Stack ── */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {PROJECT_ITEMS.map((p, idx) => (
+          <motion.div
+            key={idx}
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: current === idx ? 1 : 0 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            style={{ background: p.bgGradient }}
+          />
+        ))}
+      </div>
+
       {/* Custom cursor */}
       <ProjectCursor active={hovering} />
-
-      {/* Top fade — blends into Experience section above */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-44 z-0"
-        style={{
-          background: "linear-gradient(to bottom, #e9d5ff 0%, transparent 100%)",
-        }}
-      />
 
       {/* Grain texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.022] grain-texture z-0" />
 
-      {/* Ambient orbs */}
+      {/* Ambient orbs (Color updates dynamically based on project.accent) */}
       <motion.div
         aria-hidden="true"
-        animate={{ y: [0, -14, 0], x: [0, 9, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute top-24 left-6 w-80 h-80 rounded-full blur-3xl opacity-[0.18] z-0"
-        style={{ background: "radial-gradient(circle, #c084fc, transparent 70%)" }}
+        animate={{ 
+          y: [0, -14, 0], x: [0, 9, 0],
+          background: `radial-gradient(circle, ${project.accent}, transparent 70%)`
+        }}
+        transition={{ 
+          y: { duration: 10, repeat: Infinity, ease: "easeInOut" },
+          x: { duration: 10, repeat: Infinity, ease: "easeInOut" },
+          background: { duration: 0.8 }
+        }}
+        className="pointer-events-none absolute top-24 left-6 w-80 h-80 rounded-full blur-3xl opacity-[0.12] z-0"
       />
       <motion.div
         aria-hidden="true"
-        animate={{ y: [0, 16, 0], x: [0, -11, 0] }}
-        transition={{ duration: 13, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-        className="pointer-events-none absolute bottom-24 right-12 w-96 h-96 rounded-full blur-3xl opacity-[0.10] z-0"
-        style={{ background: "radial-gradient(circle, #a78bfa, transparent 70%)" }}
+        animate={{ 
+          y: [0, 16, 0], x: [0, -11, 0],
+          background: `radial-gradient(circle, ${project.accent}, transparent 70%)`
+        }}
+        transition={{ 
+          y: { duration: 13, repeat: Infinity, ease: "easeInOut", delay: 3 },
+          x: { duration: 13, repeat: Infinity, ease: "easeInOut", delay: 3 },
+          background: { duration: 0.8 }
+        }}
+        className="pointer-events-none absolute bottom-24 right-12 w-96 h-96 rounded-full blur-3xl opacity-[0.08] z-0"
       />
 
       {/* ── Page content ── */}
