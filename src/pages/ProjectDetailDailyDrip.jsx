@@ -551,7 +551,7 @@ export default function ProjectDetailDailyDrip() {
                   <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-slate-500">Color Palette</p>
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
                     {PROJECT.palette.map((c) => (
-                      <div key={c.hex} className="group flex flex-col items-center gap-2">
+                      <div key={`${c.hex}-${c.role}`} className="group flex flex-col items-center gap-2">
                         <div
                           className="h-14 w-full rounded-xl border border-white/40 shadow-[0_4px_14px_rgba(0,0,0,0.1)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_8px_20px_rgba(243,153,153,0.3)] sm:h-16"
                           style={{ backgroundColor: c.hex }}

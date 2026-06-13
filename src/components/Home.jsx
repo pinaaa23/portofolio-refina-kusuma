@@ -1,6 +1,5 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import Spline from "@splinetool/react-spline";
 
 const SKILLS = ["React", "JavaScript", "HTML/CSS", "Tailwind", "Node.js", "Figma"];
 

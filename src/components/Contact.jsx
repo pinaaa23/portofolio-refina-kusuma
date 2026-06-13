@@ -26,8 +26,15 @@ export default function Contact() {
     setSubmitError("");
 
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      const subject = encodeURIComponent(`Contact Form - ${formState.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formState.name}\nEmail: ${formState.email}\nWebsite: ${formState.website || "-"}\n\nMessage:\n${formState.message}`
+      );
+      window.open(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`, "_blank");
       setIsSubmitting(false);
-      setSubmitError("Email service belum disiapkan. Tambahkan variabel env EmailJS terlebih dulu.");
+      setSubmitted(true);
+      setFormState({ name: "", email: "", website: "", message: "" });
+      setTimeout(() => setSubmitted(false), 5000);
       return;
     }
 
