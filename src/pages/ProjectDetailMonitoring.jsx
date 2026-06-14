@@ -286,6 +286,23 @@ export default function ProjectDetailMonitoring() {
                   </div>
                 ))}
               </div>
+
+              {/* Internal Project Pill Badge */}
+              <div className="mt-7 relative inline-flex">
+                <div 
+                  tabIndex="0"
+                  className="peer inline-flex items-center gap-2 rounded-full border border-sky-200/60 bg-sky-50/60 px-4 py-2 shadow-sm backdrop-blur-sm cursor-pointer outline-none focus:ring-2 focus:ring-sky-200/50"
+                >
+                  <span className="text-sm">🔒</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wide text-sky-700">Internal Company Project</span>
+                </div>
+                {/* Tooltip */}
+                <div className="absolute z-50 left-0 top-full mt-2 sm:left-full sm:top-1/2 sm:mt-0 sm:ml-3 w-max rounded-lg border border-sky-100 bg-white px-3 py-1.5 shadow-md opacity-0 invisible transition-all duration-300 translate-y-1 sm:-translate-y-1/2 sm:-translate-x-1 peer-hover:opacity-100 peer-hover:visible peer-hover:translate-y-0 sm:peer-hover:-translate-y-1/2 sm:peer-hover:translate-x-0 peer-focus:opacity-100 peer-focus:visible peer-focus:translate-y-0 sm:peer-focus:-translate-y-1/2 sm:peer-focus:translate-x-0 hover:opacity-100 hover:visible hover:translate-y-0 sm:hover:-translate-y-1/2 sm:hover:translate-x-0">
+                  <span className="text-[10px] font-medium text-slate-600 whitespace-nowrap">
+                    Developed during internship • Internal use only
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </FadeUp>
