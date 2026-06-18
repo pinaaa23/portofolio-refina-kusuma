@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
+import FadeUp from "../components/ui/FadeUp";
+import BaseSectionHeader from "../components/ui/SectionHeader";
+import ProjectCursor from "../components/ui/ProjectCursor";
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 const PROJECT = {
@@ -173,67 +176,19 @@ function DesignVisual() {
 
 const PROCESS_VISUALS = { research: ResearchVisual, define: DefineVisual, ideate: IdeateVisual, design: DesignVisual };
 
-/* ─────────────────── ANIMATED SECTION WRAPPER ─────────────────── */
-function FadeUp({ children, delay = 0, className = "" }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.98 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.9, ease: cubicBezier, delay: delay / 1000 }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-/* ─────────────────── SECTION HEADER ─────────────────── */
-function SectionHeader({ label, title, color = "emerald" }) {
+const SectionHeader = ({ label, title, color = "emerald" }) => {
   const gradient = color === "emerald" ? "from-emerald-500 to-lime-500" : "from-yellow-500 to-amber-500";
   const labelColor = color === "emerald" ? "text-emerald-600" : "text-yellow-600";
-  
   return (
-    <div className="mb-6 sm:mb-8 text-left">
-      <span className={`text-[10px] font-bold uppercase tracking-[0.25em] ${labelColor}`}>{label}</span>
-      <h2 className="mt-1.5 text-2xl font-black text-slate-900 sm:text-3xl">{title}</h2>
-      <div className={`mt-3 h-0.5 w-10 rounded-full bg-gradient-to-r ${gradient}`} />
-    </div>
+    <BaseSectionHeader 
+      label={label} 
+      title={title} 
+      className="text-left" 
+      labelClassName={labelColor} 
+      gradientClassName={gradient} 
+    />
   );
-}
-
-/* ─────────────────── CUSTOM CURSOR ─────────────────── */
-function CustomCursor() {
-  const mouseX = useMotionValue(-300);
-  const mouseY = useMotionValue(-300);
-
-  const x = useSpring(mouseX, { damping: 28, stiffness: 200, mass: 0.5 });
-  const y = useSpring(mouseY, { damping: 28, stiffness: 200, mass: 0.5 });
-  const tx = useSpring(mouseX, { damping: 40, stiffness: 140, mass: 0.8 });
-  const ty = useSpring(mouseY, { damping: 40, stiffness: 140, mass: 0.8 });
-
-  useEffect(() => {
-    const move = (e) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, [mouseX, mouseY]);
-
-  return (
-    <>
-      <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] w-12 h-12 rounded-full border border-emerald-500/40 bg-emerald-500/10 backdrop-blur-[2px]"
-        style={{ x: tx, y: ty, translateX: "-50%", translateY: "-50%" }}
-      />
-      <motion.div
-        className="pointer-events-none fixed top-0 left-0 z-[9999] w-2 h-2 rounded-full bg-lime-500"
-        style={{ x, y, translateX: "-50%", translateY: "-50%" }}
-      />
-    </>
-  );
-}
+};
 
 /* ═══════════════════════════ MAIN PAGE ═══════════════════════════ */
 export default function ProjectDetailParakelana() {
@@ -245,38 +200,9 @@ export default function ProjectDetailParakelana() {
   }, []);
 
   return (
-    <main className="relative min-h-screen text-slate-900 overflow-hidden bg-gradient-shift font-sans">
-      <style>{`
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .bg-gradient-shift {
-          background: linear-gradient(135deg, #f0fdf4, #ecfccb, #fef9c3, #f0fdf4);
-          background-size: 200% 200%;
-          animation: gradientShift 15s ease infinite;
-        }
-        .btn-gradient-shift {
-          background-size: 200% auto;
-          transition: background-position 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .btn-gradient-shift:hover {
-          background-position: right center;
-        }
-        .glass-card {
-          background: rgba(255, 255, 255, 0.65);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.5);
-          box-shadow: 0 10px 40px -10px rgba(16, 185, 129, 0.15);
-        }
-        .glass-card-inner {
-          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
-        }
-      `}</style>
+    <main className="relative min-h-screen text-slate-900 overflow-hidden bg-gradient-shift font-sans" style={{ background: 'linear-gradient(135deg, #f0fdf4, #ecfccb, #fef9c3, #f0fdf4)' }}>
 
-      <CustomCursor />
+      <ProjectCursor outerClassName="border-emerald-500/40 bg-emerald-500/10" innerClassName="bg-lime-500" />
 
       {/* ── Floating Ambient Glow ── */}
       <motion.div
@@ -308,7 +234,7 @@ export default function ProjectDetailParakelana() {
 
         {/* ══════════════ HERO SECTION ══════════════ */}
         <FadeUp delay={100}>
-          <div className="overflow-hidden rounded-3xl glass-card relative group">
+          <div className="overflow-hidden rounded-3xl glass-card relative group shadow-[0_10px_40px_-10px_rgba(16,185,129,0.15)]">
             <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-10" />
             
             {/* Cover Image */}
@@ -393,7 +319,7 @@ export default function ProjectDetailParakelana() {
 
         {/* ══════════════ ABOUT SECTION ══════════════ */}
         <FadeUp delay={200} className="mt-8">
-          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(16,185,129,0.15)]">
+          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(16,185,129,0.15)] shadow-[0_10px_40px_-10px_rgba(16,185,129,0.15)]">
             <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-0" />
             <div className="relative z-10">
               <SectionHeader label="Overview" title="About This Project" />
@@ -418,7 +344,7 @@ export default function ProjectDetailParakelana() {
 
         {/* ══════════════ PROCESS / METODE ══════════════ */}
         <FadeUp delay={300} className="mt-8">
-          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(16,185,129,0.15)]">
+          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(16,185,129,0.15)] shadow-[0_10px_40px_-10px_rgba(16,185,129,0.15)]">
             <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-0" />
             <div className="relative z-10">
               <SectionHeader label="Methodology" title="Design Thinking" />
@@ -462,7 +388,7 @@ export default function ProjectDetailParakelana() {
 
         {/* ══════════════ SWOT ANALYSIS ══════════════ */}
         <FadeUp delay={400} className="mt-8">
-          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(250,204,21,0.15)]">
+          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(250,204,21,0.15)] shadow-[0_10px_40px_-10px_rgba(16,185,129,0.15)]">
             <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-0" />
             <div className="relative z-10">
               <SectionHeader label="Strategic Analysis" title="SWOT Overview" color="yellow" />
@@ -491,7 +417,7 @@ export default function ProjectDetailParakelana() {
 
         {/* ══════════════ DESIGN SYSTEM ══════════════ */}
         <FadeUp delay={500} className="mt-8">
-          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(16,185,129,0.15)]">
+          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(16,185,129,0.15)] shadow-[0_10px_40px_-10px_rgba(16,185,129,0.15)]">
             <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-0" />
             <div className="relative z-10">
               <SectionHeader label="Visual Identity" title="Design System" />
@@ -553,7 +479,7 @@ export default function ProjectDetailParakelana() {
 
         {/* ══════════════ FINAL MOCKUPS ══════════════ */}
         <FadeUp delay={600} className="mt-8">
-          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(16,185,129,0.15)]">
+          <div className="rounded-3xl glass-card relative p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(16,185,129,0.15)] shadow-[0_10px_40px_-10px_rgba(16,185,129,0.15)]">
             <div className="absolute inset-0 pointer-events-none glass-card-inner rounded-3xl z-0" />
             <div className="relative z-10">
               <SectionHeader label="Design Outcome" title="Final Web Mockups" color="emerald" />

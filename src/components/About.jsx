@@ -175,9 +175,9 @@ export default function About() {
           >
             <div className="polaroid w-36 md:w-48 shadow-xl bg-white p-3 pb-10 border border-gray-100">
               <div className="tape-effect" />
-              <img src="/gallery/about/uiux_about.png" />
+              <img src="/gallery/aesthetic_desk.png" alt="Creative Space" className="w-full" />
               <div className="absolute bottom-2 left-2 right-2 text-left font-handwriting text-black/40 text-[10px]">
-                 UI exploration
+                 Creative space
               </div>
             </div>
           </motion.div>
@@ -192,12 +192,9 @@ export default function About() {
             className="absolute top-[350px] left-[52%] z-20 cursor-pointer"
           >
             <div className="polaroid w-32 md:w-44 shadow-2xl bg-white p-3 pb-10 border border-gray-100">
-              <div className="absolute top-[-8px] right-2 w-5 h-5 rounded-full bg-slate-200 shadow-inner flex items-center justify-center">
-                 <div className="w-1 h-1 bg-slate-400 rounded-full" />
-              </div>
-              <img src="/gallery/about/code_about.png" alt="Coffee" className="w-full grayscale-[20%]" />
+              <img src="/gallery/aesthetic_cafe.png" alt="Coffee and Code" className="w-full" />
               <div className="absolute bottom-2 left-2 right-2 text-center font-handwriting text-black/40 text-[10px]">
-                Frontend work
+                Coffee & code
               </div>
             </div>
           </motion.div>

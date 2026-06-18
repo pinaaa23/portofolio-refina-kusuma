@@ -152,7 +152,7 @@ export default function Home() {
           transition={{ duration: 1.2, delay: 3.2 }}
           className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-40 pointer-events-none"
         >
-          <span className="text-[8px] font-black tracking-[0.5em] uppercase text-[#2c2b28]/25">✦ about me ✦</span>
+          <span className="text-[8px] font-black tracking-[0.5em] uppercase text-[#2c2b28]/25">✦ discover more ✦</span>
           <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#E780A8]/50 to-transparent" />
         </motion.div>
 
