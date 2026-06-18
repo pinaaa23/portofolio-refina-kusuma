@@ -3,24 +3,24 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const TECH_STACK_GROUPS = [
   {
-    title: "Frontend Development",
+    title: "Frontend\nDevelopment",
     summary: "Building modern, responsive, and maintainable web interfaces.",
-    items: ["React", "JavaScript (ES6+)", "Tailwind CSS", "Vite", "Responsive Design"],
+    items: ["React.js", "JavaScript", "Tailwind CSS", "Vite", "Responsive Design"],
   },
   {
-    title: "Backend & Data",
+    title: "Backend &\nData",
     summary: "Managing application logic, APIs, and data structures.",
-    items: ["Node.js", "REST API Integration", "JSON Data Handling", "MySQL (Basic)", "Firebase (Basic)"],
+    items: ["Node.js", "MySQL", "Firebase", "REST API", "JSON Handling"],
   },
   {
-    title: "UI/UX & Design",
+    title: "UI/UX\nDesign",
     summary: "Crafting clear user experiences with a design-to-development approach.",
-    items: ["Figma", "Wireframing", "Design System Thinking", "User Flow", "Prototyping"],
+    items: ["Figma", "Wireframing", "Prototyping", "User Flow", "Design Systems"],
   },
   {
-    title: "Tools & Workflow",
+    title: "Tools &\nWorkflow",
     summary: "Implementing collaborative workflows for quality and efficiency.",
-    items: ["Git & GitHub", "VS Code", "NPM", "Deployment Basics", "Team Collaboration"],
+    items: ["Git & GitHub", "VS Code", "NPM", "Vercel", "Team Collaboration"],
   },
 ];
 
@@ -102,6 +102,87 @@ const TABS = [
 ];
 
 const cubicBezier = [0.22, 1, 0.36, 1];
+
+const IsometricIcon = ({ index }) => {
+  return (
+    <div className="w-24 h-24 md:w-28 md:h-28 flex items-center justify-center relative group-hover:scale-110 transition-transform duration-700">
+      {index === 0 && (
+        <svg viewBox="0 0 100 100" fill="none" stroke="#2e1065" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full relative z-10">
+          {/* < */}
+          <motion.path initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 0.6, ease: cubicBezier, delay: 0.2}} d="M40 30 L20 50 L40 70" />
+          {/* / */}
+          <motion.path initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 0.6, ease: cubicBezier, delay: 0.6}} d="M60 25 L45 75" />
+          {/* > */}
+          <motion.path initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 0.6, ease: cubicBezier, delay: 1.0}} d="M65 30 L85 50 L65 70" />
+          {/* Cursor _ */}
+          <motion.path 
+             initial={{opacity: 0}} 
+             whileInView={{opacity: 1}} 
+             viewport={{ once: true }}
+             transition={{duration: 0.8, delay: 1.6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut"}} 
+             d="M85 75 L95 75" 
+          />
+        </svg>
+      )}
+      {index === 1 && (
+        <svg viewBox="0 0 100 100" fill="none" stroke="#2e1065" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full relative z-10">
+          {/* Bottom Cylinder */}
+          <motion.ellipse initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 0.8, ease: cubicBezier, delay: 0.2}} cx="50" cy="75" rx="25" ry="10" />
+          <motion.path initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 0.8, ease: cubicBezier, delay: 0.4}} d="M25 55 V75 A 25 10 0 0 0 75 75 V55" />
+          
+          {/* Middle Cylinder */}
+          <motion.ellipse initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 0.8, ease: cubicBezier, delay: 0.8}} cx="50" cy="55" rx="25" ry="10" />
+          <motion.path initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 0.8, ease: cubicBezier, delay: 1.0}} d="M25 35 V55 A 25 10 0 0 0 75 55 V35" />
+
+          {/* Top Cylinder */}
+          <motion.ellipse initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 0.8, ease: cubicBezier, delay: 1.4}} cx="50" cy="35" rx="25" ry="10" />
+          
+          {/* Server / connection element */}
+          <motion.path initial={{opacity: 0, y: 10}} whileInView={{opacity: 1, y: 0}} viewport={{ once: true }} transition={{duration: 0.8, ease: cubicBezier, delay: 2.0}} d="M50 25 V15" strokeDasharray="4 4" />
+          <motion.circle initial={{opacity: 0, scale: 0}} whileInView={{opacity: 1, scale: 1}} viewport={{ once: true }} transition={{duration: 0.5, ease: cubicBezier, delay: 2.2}} cx="50" cy="15" r="3" fill="#7e22ce" />
+        </svg>
+      )}
+      {index === 2 && (
+        <svg viewBox="0 0 100 100" fill="none" stroke="#2e1065" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full relative z-10">
+          {/* Main Bezier Curve */}
+          <motion.path initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 1.2, ease: cubicBezier, delay: 0.2}} d="M20 75 C 20 25, 80 25, 80 75" />
+          
+          {/* Handles (draw after curve) */}
+          <motion.path initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 0.5}} viewport={{ once: true }} transition={{duration: 0.8, ease: cubicBezier, delay: 1.4}} d="M20 75 L20 25 L80 25 L80 75" strokeDasharray="4 4" strokeWidth="1" />
+          
+          {/* Anchor Points */}
+          <motion.rect initial={{opacity: 0, scale: 0}} whileInView={{opacity: 1, scale: 1}} viewport={{ once: true }} transition={{duration: 0.4, delay: 2.0}} x="16" y="71" width="8" height="8" fill="#ffffff" stroke="#2e1065" strokeWidth="2" />
+          <motion.rect initial={{opacity: 0, scale: 0}} whileInView={{opacity: 1, scale: 1}} viewport={{ once: true }} transition={{duration: 0.4, delay: 2.2}} x="76" y="71" width="8" height="8" fill="#ffffff" stroke="#2e1065" strokeWidth="2" />
+          
+          {/* Handle Dots */}
+          <motion.circle initial={{opacity: 0, scale: 0}} whileInView={{opacity: 1, scale: 1}} viewport={{ once: true }} transition={{duration: 0.4, delay: 2.4}} cx="20" cy="25" r="3" fill="#7e22ce" />
+          <motion.circle initial={{opacity: 0, scale: 0}} whileInView={{opacity: 1, scale: 1}} viewport={{ once: true }} transition={{duration: 0.4, delay: 2.4}} cx="80" cy="25" r="3" fill="#7e22ce" />
+        </svg>
+      )}
+      {index === 3 && (
+        <svg viewBox="0 0 100 100" fill="none" stroke="#2e1065" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full relative z-10">
+          {/* Gear */}
+          <motion.g initial={{opacity: 0, rotate: -90, scale: 0.5}} whileInView={{opacity: 1, rotate: 0, scale: 1}} viewport={{ once: true }} transition={{duration: 1.2, ease: cubicBezier, delay: 0.2}} style={{ originX: "35px", originY: "35px" }}>
+            <circle cx="35" cy="35" r="12" />
+            <path d="M35 23 V19 M35 47 V51 M23 35 H19 M47 35 H51 M26.5 26.5 L23 23 M43.5 43.5 L47 47 M26.5 43.5 L23 47 M43.5 26.5 L47 23" strokeWidth="2" />
+          </motion.g>
+
+          {/* Git Workflow Graph */}
+          {/* Main branch line */}
+          <motion.path initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 1.0, ease: cubicBezier, delay: 1.2}} d="M65 85 V25" strokeWidth="2" />
+          
+          {/* Branching line */}
+          <motion.path initial={{pathLength: 0, opacity: 0}} whileInView={{pathLength: 1, opacity: 1}} viewport={{ once: true }} transition={{duration: 0.8, ease: cubicBezier, delay: 2.0}} d="M65 70 C 85 60, 85 50, 65 40" strokeWidth="2" />
+          
+          {/* Nodes */}
+          <motion.circle initial={{opacity: 0, scale: 0}} whileInView={{opacity: 1, scale: 1}} viewport={{ once: true }} transition={{duration: 0.4, delay: 1.8}} cx="65" cy="70" r="5" fill="#ffffff" stroke="#2e1065" strokeWidth="2" />
+          <motion.circle initial={{opacity: 0, scale: 0}} whileInView={{opacity: 1, scale: 1}} viewport={{ once: true }} transition={{duration: 0.4, delay: 2.6}} cx="81" cy="55" r="5" fill="#ffffff" stroke="#2e1065" strokeWidth="2" />
+          <motion.circle initial={{opacity: 0, scale: 0}} whileInView={{opacity: 1, scale: 1}} viewport={{ once: true }} transition={{duration: 0.4, delay: 2.8}} cx="65" cy="40" r="5" fill="#ffffff" stroke="#2e1065" strokeWidth="2" />
+        </svg>
+      )}
+    </div>
+  );
+};
 
 function CertificateItem({ cert, index, setSelectedCert }) {
   const isEven = index % 2 === 0;
@@ -220,7 +301,7 @@ export default function Experience() {
   return (
     <section 
       id="experience" 
-      className="min-h-screen py-32 px-6 md:px-16 relative overflow-hidden"
+      className="min-h-screen pt-20 pb-32 md:pt-24 px-6 md:px-16 relative overflow-hidden"
       style={{
         background:
           "linear-gradient(180deg, #F5EFE6 0%, #fdfaff 25%, #f3e8ff 60%, #e9d5ff 100%)",
@@ -232,7 +313,7 @@ export default function Experience() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* ─── HEADER SECTION ─── */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <motion.span
             className="font-handwriting text-[#7e22ce] text-xl block mb-3"
             initial={{ opacity: 0, y: 20 }}
@@ -254,7 +335,7 @@ export default function Experience() {
         </div>
 
         {/* ─── TAB NAVIGATION ─── */}
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-10">
           <div className="flex gap-8 md:gap-16 border-b border-[#2e1065]/10 pb-2">
             {TABS.map((tab) => (
               <button
@@ -404,33 +485,114 @@ export default function Experience() {
             {activeTab === "tech-stack" && (
               <motion.div
                 key="tech-stack"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="grid grid-cols-1 md:grid-cols-2 gap-12"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, transition: { duration: 0.3 } }}
+                className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:gap-y-16 lg:divide-x divide-[#2e1065]/10 mt-12"
               >
                 {TECH_STACK_GROUPS.map((group, index) => (
                   <motion.div 
                     key={index} 
-                    variants={itemVariants} 
-                    className="group relative bg-white/60 backdrop-blur-xl p-10 md:p-12 rounded-[32px] border border-white/50 shadow-[0_10px_40px_rgba(46,16,101,0.05)] hover:shadow-[0_20px_60px_rgba(46,16,101,0.1)] hover:-translate-y-1 transition-all duration-500"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={{
+                      hidden: { opacity: 0 },
+                      visible: { 
+                        opacity: 1, 
+                        transition: { 
+                          duration: 0.8, 
+                          ease: cubicBezier, 
+                          delay: index * 0.15,
+                          staggerChildren: 0.15,
+                          delayChildren: index * 0.15 + 0.2
+                        } 
+                      }
+                    }}
+                    className="group flex flex-col items-start text-left px-0 py-12 md:py-8 lg:px-12 first:lg:pl-0 last:lg:pr-0"
                   >
-                    <div className="flex items-center gap-4 mb-6">
-                      <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[#a855f7]/80">0{index + 1}</span>
-                      <h3 className="font-serif font-black text-2xl md:text-3xl text-[#2e1065]">{group.title}</h3>
+                    {/* STEP 03: Section Number */}
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: cubicBezier } }
+                      }}
+                      className="text-[#a855f7] font-serif font-black text-lg mb-6"
+                    >
+                      0{index + 1}
+                    </motion.div>
+
+                    {/* STEP 02: Isometric Illustration */}
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0, scale: 0.8, y: 20 },
+                        visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: cubicBezier } }
+                      }}
+                      className="mb-5"
+                    >
+                      <IsometricIcon index={index} />
+                    </motion.div>
+
+                    {/* STEP 04: Title */}
+                    <div className="mb-4 w-full">
+                      <motion.h3
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-20px" }}
+                        variants={{
+                          hidden: { opacity: 0, y: 30 },
+                          visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: cubicBezier } }
+                        }}
+                        className="font-serif font-black text-2xl lg:text-3xl text-[#2e1065] leading-[1.1] pr-4"
+                      >
+                        {group.title.split('\n').map((line, i) => (
+                           <span key={i} className="block">{line}</span>
+                        ))}
+                      </motion.h3>
                     </div>
-                    <p className="text-sm md:text-base text-[#2e1065]/60 mb-8 leading-relaxed font-light text-justify">{group.summary}</p>
-                    <div className="flex flex-wrap gap-2.5">
+
+                    {/* STEP 05: Description */}
+                    <motion.p
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-20px" }}
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: cubicBezier } }
+                      }}
+                      className="text-sm text-[#2e1065]/60 mb-8 leading-relaxed font-light pr-4"
+                    >
+                      {group.summary}
+                    </motion.p>
+
+                    {/* STEP 06: Skills as Plain Text */}
+                    <motion.ul 
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-40px" }}
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { 
+                          opacity: 1,
+                          transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+                        }
+                      }}
+                      className="flex flex-col gap-5 w-full mt-auto border-t border-[#2e1065]/10 pt-8"
+                    >
                       {group.items.map((tech, tIndex) => (
-                        <span 
+                        <motion.li
                           key={tIndex}
-                          className="px-5 py-2.5 bg-[#2e1065]/5 text-[#2e1065] text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-[#2e1065] hover:text-white transition-colors duration-300 cursor-default"
+                          variants={{
+                            hidden: { opacity: 0, y: 30 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: cubicBezier } }
+                          }}
+                          className="text-[13px] md:text-sm font-medium text-[#2e1065]/90 flex items-center group/item cursor-default hover:text-[#a855f7] transition-colors duration-300"
                         >
+                          <span className="w-0 overflow-hidden group-hover/item:w-4 transition-all duration-300 text-[#a855f7]/50">- </span>
                           {tech}
-                        </span>
+                        </motion.li>
                       ))}
-                    </div>
+                    </motion.ul>
                   </motion.div>
                 ))}
               </motion.div>

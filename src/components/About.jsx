@@ -16,7 +16,7 @@ const DESIGN_MINDSET = [
   { text: "I keep learning and improving every day", icon: "📌" },
 ];
 
-const bioText = "Hi, I'm Refina I love creating interfaces that feel simple, clean, and a little bit delightful. With a passion for UI/UX and frontend development, I enjoy crafting digital experiences that are both beautiful and functional.I believe good design should not only be seen, but also felt."
+const bioText = "Hi, I'm Refina I love creating interfaces that feel simple, clean, and a little bit delightful. With a passion for UI/UX and frontend development, I enjoy crafting digital experiences that are both beautiful and functional. I believe good design should not only be seen, but also felt.";
 
 const cubicBezier = [0.25, 1, 0.5, 1];
 
@@ -112,28 +112,31 @@ export default function About() {
           </div>
 
           {/* Bio Text (Typewriter Effect) */}
-          <div className="text-[#2c2b28] text-sm md:text-base leading-snug font-medium mb-12">
-            <div className="flex flex-wrap">
+          <div className="text-[#2c2b28] text-sm md:text-base leading-snug font-medium mb-12 text-justify">
+            <div>
               {bioText.split(" ").map((word, wordIndex) => {
                 // Hitung index awal kata ini untuk delay animasi yang tepat
                 const wordsBefore = bioText.split(" ").slice(0, wordIndex);
                 const charOffset = wordsBefore.join(" ").length + (wordIndex > 0 ? 1 : 0);
                 
                 return (
-                  <span key={wordIndex} className="inline-block mr-1.5 whitespace-nowrap">
-                    {word.split("").map((char, charIndex) => (
-                      <motion.span
-                        key={charIndex}
-                        variants={characterVariants}
-                        transition={{ 
-                          duration: 0.1, 
-                          delay: 1.2 + ((charOffset + charIndex) * 0.02) 
-                        }}
-                      >
-                        {char}
-                      </motion.span>
-                    ))}
-                  </span>
+                  <React.Fragment key={wordIndex}>
+                    <span className="inline-block">
+                      {word.split("").map((char, charIndex) => (
+                        <motion.span
+                          key={charIndex}
+                          variants={characterVariants}
+                          transition={{ 
+                            duration: 0.1, 
+                            delay: 1.2 + ((charOffset + charIndex) * 0.02) 
+                          }}
+                        >
+                          {char}
+                        </motion.span>
+                      ))}
+                    </span>
+                    {wordIndex < bioText.split(" ").length - 1 ? " " : ""}
+                  </React.Fragment>
                 );
               })}
             </div>
