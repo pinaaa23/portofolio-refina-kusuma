@@ -37,7 +37,7 @@ const SOCIALS = [
 
 export default function Home() {
   return (
-    <section id="home" className="relative snap-start scroll-mt-14 flex h-screen w-full items-center justify-center overflow-hidden bg-[#F5EFE6] text-[#2c2b28] selection:bg-[#E780A8]/30">
+    <section id="home" className="relative snap-start scroll-mt-14 flex h-[100dvh] w-full items-center justify-center overflow-hidden bg-[#F5EFE6] text-[#2c2b28] selection:bg-[#E780A8]/30">
       
       {/* ─── NOISE OVERLAY (Editorial Texture) ─── */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.06] grain-texture z-0" />
@@ -54,7 +54,7 @@ export default function Home() {
           initial={{ opacity: 0, x: -40, rotate: -2 }}
           animate={{ opacity: 1, x: 0, rotate: -2 }}
           transition={{ duration: 1, delay: 1.4, ease: "easeOut" }}
-          className="absolute top-[8%] left-[6%] text-sm md:text-base text-black/80 font-['IndieFlower',cursive] z-20"
+          className="absolute top-[14%] md:top-[8%] left-[6%] text-sm md:text-base text-black/80 font-['IndieFlower',cursive] z-20"
         >
           Hi, since you're here...
         </motion.p>
@@ -63,7 +63,7 @@ export default function Home() {
           initial={{ opacity: 0, x: -40, rotate: -2 }}
           animate={{ opacity: 1, x: 0, rotate: -2 }}
           transition={{ duration: 1, delay: 2, ease: "easeOut" }}
-          className="absolute top-[18%] left-[18%] sm:left-[20%] lg:left-[22%] text-xs md:text-sm text-black/80 font-['IndieFlower',cursive] z-20"
+          className="absolute top-[20%] md:top-[18%] left-[18%] sm:left-[20%] lg:left-[22%] text-xs md:text-sm text-black/80 font-['IndieFlower',cursive] z-20"
         >
           let me guide you through my work
         </motion.p>
@@ -74,7 +74,7 @@ export default function Home() {
             initial={{ scale: 0.95, opacity: 0, rotate: -4 }}
             animate={{ scale: 1, opacity: 0.75, rotate: -4 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="font-['Habanero',cursive] text-[24vw] sm:text-[20vw] leading-[0.8] text-[#E780A8] whitespace-nowrap -translate-y-20 sm:-translate-y-32"
+            className="font-['Habanero',cursive] text-[18vw] sm:text-[24vw] lg:text-[20vw] leading-[0.8] text-[#E780A8] whitespace-nowrap -translate-y-32 sm:-translate-y-32"
             style={{ WebkitTextStroke: '0.5px rgba(231,128,168,0.75)', textShadow: '4px 6px 15px rgba(0,0,0,0.15)' }}
           >
             Creative
@@ -86,10 +86,10 @@ export default function Home() {
            initial={{ y: 200, opacity: 0 }}
            animate={{ y: 0, opacity: 1 }}
            transition={{ duration: 1.2, delay: 0.6, ease: "easeOut" }}
-           className="absolute bottom-0 right-[2%] sm:right-[5%] lg:right-[10%] z-10 pointer-events-none"
+           className="absolute bottom-0 right-0 sm:right-[5%] lg:right-[10%] z-10 pointer-events-none"
            style={{ bottom: "-10px" }}
         >
-          <div className="relative w-[240px] sm:w-[320px] lg:w-[380px]">
+          <div className="relative w-[210px] sm:w-[320px] lg:w-[380px]">
              {/* ─── FOTO UTAMA ─── */}
              <img 
                 src="/gallery/fotoku_home.png" 
@@ -105,7 +105,7 @@ export default function Home() {
             initial={{ scale: 0.95, opacity: 0, rotate: -4 }}
             animate={{ scale: 1, opacity: 0.75, rotate: -4 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="font-['Habanero',cursive] text-[22vw] sm:text-[18vw] leading-[0.8] text-[#E780A8] whitespace-nowrap ml-16 sm:ml-32 translate-y-24 sm:translate-y-40"
+            className="font-['Habanero',cursive] text-[18vw] sm:text-[22vw] lg:text-[18vw] leading-[0.8] text-[#E780A8] whitespace-nowrap ml-0 sm:ml-32 translate-y-0 sm:translate-y-40"
             style={{ WebkitTextStroke: '1.5px rgba(231,128,168,0.75)', textShadow: '4px 6px 15px rgba(0,0,0,0.15)' }}
           >
             Work
@@ -116,9 +116,9 @@ export default function Home() {
         <div className="absolute inset-0 z-30 pointer-events-none">
           {SOCIALS.map((social, i) => {
             const positions = [
-              "top-[68%] left-[2%] sm:left-[4%] lg:left-[6%]", // GitHub (Lower Left)
-              "top-[80%] left-[30%] sm:left-[25%] lg:left-[18%]", // LinkedIn (Adjusted slightly left)
-              "top-[58%] left-[10%] sm:left-[14%] lg:left-[16%]", // Instagram (Lowered and staggered)
+              "top-[60%] left-[8%] sm:top-[68%] sm:left-[4%] lg:left-[6%]", // GitHub (Lower Left)
+              "top-[72%] left-[20%] sm:top-[80%] sm:left-[25%] lg:left-[18%]", // LinkedIn (Adjusted slightly left)
+              "top-[84%] left-[10%] sm:top-[58%] sm:left-[14%] lg:left-[16%]", // Instagram (Lowered and staggered)
             ];
             return (
               <motion.a
@@ -137,7 +137,7 @@ export default function Home() {
                 whileHover={{ scale: 1.15, rotate: i % 2 === 0 ? 8 : -8 }}
               >
                 {/* ─── CIRCULAR BACKGROUND ─── */}
-                <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center border border-[#E780A8]/30 rounded-full bg-[#E780A8]/5 hover:bg-[#E780A8]/10 hover:border-[#E780A8]/60 transition-all duration-300 shadow-sm backdrop-blur-[2px]">
+                <div className="w-10 h-10 sm:w-14 sm:h-14 flex items-center justify-center border border-[#E780A8]/30 rounded-full bg-[#E780A8]/5 hover:bg-[#E780A8]/10 hover:border-[#E780A8]/60 transition-all duration-300 shadow-sm backdrop-blur-[2px]">
                   {social.icon}
                 </div>
               </motion.a>

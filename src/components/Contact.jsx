@@ -14,7 +14,7 @@ const CONTACT_DETAILS = [
 ];
 
 export default function Contact() {
-  const [formState, setFormState] = useState({ name: "", email: "", website: "", message: "" });
+  const [formState, setFormState] = useState({ name: "", email: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -28,12 +28,12 @@ export default function Contact() {
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
       const subject = encodeURIComponent(`Contact Form - ${formState.name}`);
       const body = encodeURIComponent(
-        `Name: ${formState.name}\nEmail: ${formState.email}\nWebsite: ${formState.website || "-"}\n\nMessage:\n${formState.message}`
+        `Name: ${formState.name}\nEmail: ${formState.email}\nSubject: ${formState.subject || "-"}\n\nMessage:\n${formState.message}`
       );
       window.open(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`, "_blank");
       setIsSubmitting(false);
       setSubmitted(true);
-      setFormState({ name: "", email: "", website: "", message: "" });
+      setFormState({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setSubmitted(false), 5000);
       return;
     }
@@ -46,14 +46,14 @@ export default function Contact() {
           to_email: CONTACT_EMAIL,
           name: formState.name,
           email: formState.email,
-          website: formState.website || "-",
+          subject: formState.subject || "-",
           message: formState.message,
         },
         { publicKey: EMAILJS_PUBLIC_KEY }
       );
 
       setSubmitted(true);
-      setFormState({ name: "", email: "", website: "", message: "" });
+      setFormState({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setSubmitted(false), 5000);
     } catch (error) {
       setSubmitError("Pesan gagal dikirim. Cek konfigurasi EmailJS dan coba lagi.");
@@ -202,11 +202,11 @@ export default function Contact() {
                 </div>
 
                 <div className="relative group">
-                  <label className="block text-[10px] uppercase tracking-[0.2em] text-[#6b7280] mb-2">Website <span className="opacity-50 lowercase tracking-normal font-normal">(optional)</span></label>
+                  <label className="block text-[10px] uppercase tracking-[0.2em] text-[#6b7280] mb-2">Subject <span className="opacity-50 lowercase tracking-normal font-normal">(optional)</span></label>
                   <input
                     type="text"
-                    value={formState.website}
-                    onChange={(e) => setFormState({ ...formState, website: e.target.value })}
+                    value={formState.subject}
+                    onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
                     className="w-full bg-transparent border-b border-black/[0.08] px-0 py-2 text-[#2c2b28] text-[15px] focus:outline-none transition-colors duration-500"
                   />
                   <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#E780A8] scale-x-0 group-focus-within:scale-x-100 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] origin-left"></div>

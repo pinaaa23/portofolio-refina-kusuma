@@ -168,7 +168,7 @@ function DepthStack({ current }) {
               y:       cfg.y,
             }}
             transition={{ duration: 0.65, ease: EASE }}
-            className="absolute inset-y-0 left-0 right-8 md:right-16 rounded-3xl overflow-hidden border border-white/20"
+            className="hidden md:block absolute inset-y-0 left-0 md:right-16 rounded-3xl overflow-hidden border border-white/20"
             style={{
               zIndex: cfg.z,
               boxShadow: "0 12px 40px rgba(46,16,101,0.10)",
@@ -349,8 +349,7 @@ export default function Project() {
 
           {/* ── LEFT — Hero image ── */}
           <div
-            className="relative"
-            style={{ height: "clamp(360px, 58vh, 520px)" }}
+            className="relative w-full aspect-[16/9] lg:aspect-auto lg:h-[clamp(360px,58vh,520px)]"
           >
             {/* Ghost depth layers */}
             <DepthStack current={current} />
@@ -364,7 +363,7 @@ export default function Project() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="absolute inset-y-0 left-0 right-8 md:right-16 rounded-3xl overflow-hidden"
+                className="absolute inset-y-0 left-0 right-0 md:right-16 rounded-3xl overflow-hidden"
                 style={{
                   zIndex: 10,
                   willChange: "transform, opacity",
@@ -400,7 +399,7 @@ export default function Project() {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={`badge-${current}`}
-                    className="absolute top-5 left-5"
+                    className="hidden md:block absolute top-5 left-5"
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
@@ -417,7 +416,7 @@ export default function Project() {
                 </AnimatePresence>
 
                 {/* Bottom title overlay */}
-                <div className="absolute bottom-0 inset-x-0 p-7 pointer-events-none">
+                <div className="hidden md:block absolute bottom-0 inset-x-0 p-7 pointer-events-none">
                   <p className="text-white/45 text-[10px] font-semibold tracking-widest uppercase mb-1.5">
                     {project.tags.join(" · ")}
                   </p>
