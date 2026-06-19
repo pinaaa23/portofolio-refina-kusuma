@@ -14,7 +14,7 @@ const PROJECT_ITEMS = [
     category: "UI/UX Design",
     title: "DailyDrip",
     description:
-      "A mobile social app that lets users share beverage and café moments in a pressure-free environment—built on deep user research.",
+      "A mobile social app that lets users share beverage and cafe moments in a pressure free environment built on deep user research.",
     tags: ["Mobile Design", "Figma", "UX Research"],
     cover: "/gallery/project/UIUX/DailyDrip/cover.png",
     link: "/project/uiux/dailydrip",
@@ -79,6 +79,20 @@ const PROJECT_ITEMS = [
     accentTo: "to-amber-500",
     accent: "#d97706",
     bgGradient: "linear-gradient(180deg, #e9d5ff 0%, #fdfaff 15%, #fffbeb 40%, #fef3c7 85%, #F5EFE6 100%)",
+  },
+  {
+    filterKey: "web",
+    category: "Web Development",
+    title: "Asset Management",
+    description:
+      "A centralized enterprise platform to track asset inventory, monitor borrowing histories, and schedule maintenance.",
+    tags: ["React", "Enterprise", "Dashboard"],
+    cover: "/gallery/project/WebDev/asset/cover.png",
+    link: "/project/webdev/asset",
+    accentFrom: "from-red-600",
+    accentTo: "to-rose-500",
+    accent: "#e11d48",
+    bgGradient: "linear-gradient(180deg, #fecaca 0%, #fff1f2 15%, #fee2e2 40%, #fecaca 85%, #F5EFE6 100%)",
   },
 ];
 

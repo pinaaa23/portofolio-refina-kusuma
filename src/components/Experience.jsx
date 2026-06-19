@@ -26,43 +26,45 @@ const TECH_STACK_GROUPS = [
 
 const EXPERIENCE_ITEMS = [
   {
-    period: "2024 - 2025",
+    period: "2026 – Present",
+    title: "Full Stack Developer Intern",
+    organization: "Global Intermedia Nusantara",
+    color: "#FFFFFF",
+    points: [
+      "Developing and maintaining internship monitoring systems and asset management platforms while contributing to both frontend and backend development using modern web technologies.",
+    ],
+  },
+  {
+    period: "2025",
     title: "Assistant Lecturer",
-    organization: "Advanced Algorithm and Programming Practicum (2024)",
-    color: "#ffffff", // Pure white for clean contrast
+    organization: "Advanced Algorithm & Programming Practicum",
+    color: "#F3E8FF",
     certificate: {
       label: "Practicum Assistant Certificate",
-      detail: "Klik untuk melihat sertifikat yang diperoleh pada kegiatan Advanced Algorithm and Programming Practicum (2024).",
+      detail: "Assisted students in understanding algorithms, data structures, object-oriented programming, and problem solving techniques through practical laboratory sessions.",
       image: "/gallery/experience/SKA ASDOS.jpg",
       alt: "Practicum Assistant Certificate",
     },
     points: [
-      "Responsible for assisting students in understanding advanced algorithm concepts and guiding them in implementing problem-solving logic using the Java programming language. Demonstrated the use of data structures, algorithm optimization, OOP concepts, and coding practices through hands-on labs and real-case exercises.",
+      "Assisted students in understanding algorithms, data structures, object-oriented programming, and problem solving techniques through practical laboratory sessions.",
     ],
   },
   {
-    period: "2024 - 2025",
-    title: "Secretary",
-    organization: "Informatics & Computer Student Activity Unit",
-    color: "#f3e8ff", // Soft Lilac (Purple-100)
-    certificate: {
-      label: "Secretary Certificate",
-      detail: "Klik untuk melihat sertifikat yang terkait dengan administrasi organisasi dan kegiatan internal.",
-      image: "/gallery/experience/SKA IK.jpg",
-      alt: "Secretary Certificate",
-    },
+    period: "2025",
+    title: "Mobile App Developer",
+    organization: "SmartKasir Project",
+    color: "#E9D5FF",
     points: [
-      "Responsible for managing organizational administration, including drafting official documents, recording meeting minutes, managing correspondence, and organizing schedules for internal activities. Actively maintained internal communication through structured information distribution, coordinated event documentation, and ensured all data and records were neatly archived.",
+      "Designed and developed a mobile based point of sale application focused on transaction management, usability, and operational efficiency.",
     ],
   },
   {
-    period: "2026",
-    title: "Web Developer Intern",
-    organization: "Internship Team Project",
-    color: "#e9d5ff", // Muted Purple (Purple-200)
-    dark: false,
+    period: "2024",
+    title: "UI/UX Designer",
+    organization: "Komunitas Parakelana",
+    color: "#D8B4FE",
     points: [
-      "Developed an internship monitoring system to track student activities and progress in real-time, while building responsive interfaces with React.js, optimizing performance through reusable components, and designing user-friendly dashboards for efficient monitoring and reporting.",
+      "Created user flows, wireframes, high fidelity interfaces, design systems, and interactive prototypes for an outdoor equipment rental platform. Focused on usability, user centered design, and translating business requirements into intuitive digital experiences.",
     ],
   },
 ];
@@ -386,8 +388,8 @@ export default function Experience() {
                     className="paper-card p-10 md:p-16 min-h-[300px] md:min-h-[400px] flex flex-col justify-center"
                   >
                     {/* Top Right Corner: View Button */}
-                    <div className="absolute top-8 right-8 md:top-12 md:right-12 z-20">
-                      {item.certificate ? (
+                    {item.certificate && (
+                      <div className="absolute top-8 right-8 md:top-12 md:right-12 z-20">
                         <motion.button
                           whileHover={{ scale: 1.05, backgroundColor: item.dark ? "#ffffff" : "#2e1065", color: item.dark ? "#2e1065" : "#fdfaff" }}
                           whileTap={{ scale: 0.95 }}
@@ -396,12 +398,8 @@ export default function Experience() {
                         >
                           View
                         </motion.button>
-                      ) : (
-                        <div className={`px-6 py-2 rounded-full border text-[9px] md:text-[10px] font-black tracking-[0.2em] transition-all duration-300 uppercase cursor-default ${item.dark ? "border-white/20 text-white/30" : "border-[#2e1065]/10 text-[#2e1065]/20"}`}>
-                          View
-                        </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
 
                     <div className="relative z-10 flex flex-col md:flex-row md:items-start justify-between gap-10">
                       

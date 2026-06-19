@@ -7,6 +7,7 @@ import ProjectDetailCashier from "./pages/ProjectDetailCashier";
 import ProjectDetailParakelana from "./pages/ProjectDetailParakelana";
 import ProjectDetailMonitoring from "./pages/ProjectDetailMonitoring";
 import ProjectDetailKayuNusa from "./pages/ProjectDetailKayuNusa";
+import ProjectDetailAsset from "./pages/ProjectDetailAsset";
 import CustomCursor from "./components/CustomCursor";
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/project/uiux/parakelana" element={<ProjectDetailParakelana />} />
         <Route path="/project/webdev/monitoring" element={<ProjectDetailMonitoring />} />
         <Route path="/project/uiux/kayunusa" element={<ProjectDetailKayuNusa />} />
+        <Route path="/project/webdev/asset" element={<ProjectDetailAsset />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       </BrowserRouter>
