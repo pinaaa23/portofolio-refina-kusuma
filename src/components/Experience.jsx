@@ -26,7 +26,7 @@ const TECH_STACK_GROUPS = [
 
 const EXPERIENCE_ITEMS = [
   {
-    period: "2026 – Present",
+    period: "March 2026 – Present",
     title: "Full Stack Developer Intern",
     organization: "Global Intermedia Nusantara",
     color: "#FFFFFF",
@@ -35,7 +35,7 @@ const EXPERIENCE_ITEMS = [
     ],
   },
   {
-    period: "2025",
+    period: "August 2024 - August 2025",
     title: "Assistant Lecturer",
     organization: "Advanced Algorithm & Programming Practicum",
     color: "#F3E8FF",
@@ -50,7 +50,7 @@ const EXPERIENCE_ITEMS = [
     ],
   },
   {
-    period: "2025",
+    period: "Jan - Feb 2026",
     title: "Mobile App Developer",
     organization: "SmartKasir Project",
     color: "#E9D5FF",
@@ -59,7 +59,7 @@ const EXPERIENCE_ITEMS = [
     ],
   },
   {
-    period: "2024",
+    period: "Sep - Okt 2024",
     title: "UI/UX Designer",
     organization: "Komunitas Parakelana",
     color: "#D8B4FE",
