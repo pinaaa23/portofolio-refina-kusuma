@@ -25,11 +25,11 @@ export default function ProjectCursor({
   return (
     <>
       <motion.div
-        className={`pointer-events-none fixed top-0 left-0 z-[9999] w-12 h-12 rounded-full border backdrop-blur-[2px] ${outerClassName}`}
+        className={`hide-on-touch pointer-events-none fixed top-0 left-0 z-[9999] w-12 h-12 rounded-full border backdrop-blur-[2px] ${outerClassName}`}
         style={{ x: tx, y: ty, translateX: "-50%", translateY: "-50%" }}
       />
       <motion.div
-        className={`pointer-events-none fixed top-0 left-0 z-[9999] w-2 h-2 rounded-full ${innerClassName}`}
+        className={`hide-on-touch pointer-events-none fixed top-0 left-0 z-[9999] w-2 h-2 rounded-full ${innerClassName}`}
         style={{ x, y, translateX: "-50%", translateY: "-50%" }}
       />
     </>

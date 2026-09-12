@@ -71,7 +71,7 @@ export default function CustomCursor() {
           height: { duration: 0.25, ease: "easeOut" },
           opacity: { duration: 0.2 },
         }}
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999]"
+        className="hide-on-touch fixed top-0 left-0 rounded-full pointer-events-none z-[9999]"
         style={{
           translateX: ringX,
           translateY: ringY,
@@ -99,7 +99,7 @@ export default function CustomCursor() {
           y: "-50%",
           willChange: "transform",
         }}
-        className="fixed top-0 left-0 w-[7px] h-[7px] rounded-full bg-[#E780A8] pointer-events-none z-[9999] shadow-[0_0_8px_rgba(231,128,168,0.8)]"
+        className="hide-on-touch fixed top-0 left-0 w-[7px] h-[7px] rounded-full bg-[#E780A8] pointer-events-none z-[9999] shadow-[0_0_8px_rgba(231,128,168,0.8)]"
       />
     </>
   );

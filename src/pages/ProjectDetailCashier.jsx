@@ -5,6 +5,8 @@ import FadeUp from "../components/ui/FadeUp";
 import SectionHeader from "../components/ui/SectionHeader";
 import ProjectCursor from "../components/ui/ProjectCursor";
 
+const cubicBezier = [0.25, 1, 0.5, 1];
+
 /* ─────────────────────────── DATA ─────────────────────────── */
 const PROJECT = {
   title: "SmartKasir POS",
@@ -159,6 +161,13 @@ export default function ProjectDetailCashier() {
                 alt={`${PROJECT.title} cover`}
                 className="h-64 w-full object-cover object-center sm:h-80 lg:h-[420px]"
                 onLoad={() => setImgLoaded(true)}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  const placeholder = document.createElement('div');
+                  placeholder.className = 'w-full h-full min-h-[320px] flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-500/50';
+                  placeholder.innerHTML = '<span class="text-4xl">Image Placeholder</span>';
+                  e.target.parentElement.appendChild(placeholder);
+                }}
               />
             </div>
 

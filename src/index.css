@@ -45,6 +45,16 @@ body {
   cursor: none !important;
 }
 
+/* Disable custom cursor and restore default on touch devices */
+@media (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+  .hide-on-touch {
+    display: none !important;
+  }
+}
+
 /* --- Shared Design System --- */
 
 .grain-texture {

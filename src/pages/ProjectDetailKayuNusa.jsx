@@ -5,6 +5,8 @@ import FadeUp from "../components/ui/FadeUp";
 import BaseSectionHeader from "../components/ui/SectionHeader";
 import ProjectCursor from "../components/ui/ProjectCursor";
 
+const cubicBezier = [0.25, 1, 0.5, 1];
+
 /* ─────────────────────────── DATA ─────────────────────────── */
 const PROJECT = {
   title: "KayuNusa",

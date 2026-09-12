@@ -161,6 +161,38 @@ export default function About() {
               </div>
               <p className="font-handwriting text-2xl text-[#E780A8]">Let's create something amazing! ❤️</p>
             </motion.div>
+
+            {/* ─── CV VIEW BUTTON (Torn Paper Style) ─── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 + (bioText.length * 0.02) + 0.6 }}
+              viewport={{ once: true }}
+              className="mt-6 flex"
+            >
+              <motion.a 
+                href="/cv/cv_refina.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, rotate: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative inline-flex items-center gap-2 bg-[#fdfdfd] px-5 py-2 shadow-sm hover:shadow-md transition-all duration-300 torn-paper"
+              >
+                {/* Pita perekat (Tape) di atas */}
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-3 bg-[#e7d9c1] opacity-70 rotate-[-4deg] z-0" />
+                
+                <span className="font-handwriting text-xl text-[#2c2b28] relative z-10 group-hover:text-[#E780A8] transition-colors">
+                  View My Resume
+                </span>
+                
+                {/* Icon External Link (bukan icon download) */}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-[#2c2b28]/60 relative z-10 group-hover:text-[#E780A8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </motion.a>
+            </motion.div>
           </div>
         </div>
 
@@ -196,7 +228,7 @@ export default function About() {
             whileHover={{ scale: 1.05, rotate: -1, transition: { duration: 0.3 } }}
             viewport={{ once: true }}
             style={{ y: "calc(var(--scroll-y) * 0.2px)" }}
-            className="col-span-5 flex justify-center lg:block lg:absolute lg:top-[200px] lg:left-[42%] z-20 cursor-pointer pointer-events-auto"
+            className="col-span-5 flex justify-center lg:block lg:absolute lg:top-[200px] lg:left-[47%] z-20 cursor-pointer pointer-events-auto"
           >
             <div className="polaroid w-full max-w-[140px] md:w-48 shadow-xl bg-white p-2 pb-8 sm:p-3 sm:pb-10 border border-gray-100">
               <div className="tape-effect" />
@@ -214,7 +246,7 @@ export default function About() {
             transition={{ duration: 1, ease: cubicBezier, delay: 1.2 + (bioText.length * 0.02) + 0.7 }}
             whileHover={{ scale: 1.05, rotate: 2, transition: { duration: 0.3 } }}
             viewport={{ once: true }}
-            className="col-span-5 flex justify-center lg:block lg:absolute lg:top-[350px] lg:left-[52%] z-20 cursor-pointer pointer-events-auto"
+            className="col-span-5 flex justify-center lg:block lg:absolute lg:top-[350px] lg:left-[57%] z-20 cursor-pointer pointer-events-auto"
           >
             <div className="polaroid w-full max-w-[120px] md:w-44 shadow-2xl bg-white p-2 pb-8 sm:p-3 sm:pb-10 border border-gray-100">
               <img src="/gallery/aesthetic_cafe.png" alt="Coffee and Code" className="w-full" />

@@ -126,6 +126,7 @@ export default function Home() {
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
+                aria-label={social.label}
                 className={`absolute ${positions[i % positions.length]} text-[#E780A8] opacity-80 hover:opacity-100 transition-all duration-300 pointer-events-auto`}
                 initial={{ y: -500, opacity: 0 }}
                 animate={{ y: 0, opacity: 0.8 }}
